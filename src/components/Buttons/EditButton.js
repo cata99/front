@@ -1,7 +1,7 @@
 function EditButton(){
     return (
         <button>
-           
+           Editar   
         </button>
     );
 }
