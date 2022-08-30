@@ -1,6 +1,6 @@
 function SearchButton(){
     return (
-        <button>
+        <button className="button">
             Search
         </button>
     );

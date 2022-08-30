@@ -1,6 +1,6 @@
 function RegisterButton(){
     return (
-        <button>
+        <button className="button">
             Registrar
         </button>
     );

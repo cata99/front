@@ -1,6 +1,6 @@
 function CreateButton(){
     return (
-        <button>Crear</button>
+        <button className="button">Crear</button>
     );
 }
 

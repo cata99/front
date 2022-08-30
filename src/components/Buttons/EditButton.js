@@ -1,6 +1,6 @@
 function EditButton(){
     return (
-        <button>
+        <button className="button">
            Editar   
         </button>
     );
