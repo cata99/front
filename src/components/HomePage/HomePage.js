@@ -1,5 +1,6 @@
 import HomeItem from "./HomeItem";
 
+
 function HomePage(){
     const boxHome=[
         {title:'Donaciones recibidas hasta la fecha', quantity:'10'},

@@ -2,6 +2,7 @@ import StringInput from "../Inputs/StringInput";
 import DateInput from "../Inputs/DateInput";
 import CheckboxInput from "../Inputs/CheckboxInput";
 import Card from "../Card/Card";
+import './MovementsFilter.css'
 
 function MovementFilter() {
   return (

@@ -1,4 +1,4 @@
-import Card from "../Card";
+import Card from "../Card/Card";
 import "./HomeItem.css";
 import axios from "axios";
 
@@ -16,7 +16,6 @@ function HomeItem(props) {
       <div>
         <h3 className="home-item__quantity">{props.quantity}</h3>
       </div>
-      <button onClick={getQuantity()}> Mostrar Cantidad</button>
     </Card>
   );
 }

@@ -3,3 +3,13 @@
     box-shadow: 0 1px 8px rgba(0,0,0,0.25);
     background-color: #4EAB9E;
 }
+
+.general{
+    background-color: white;
+    display: flex;
+}
+
+.right{
+   margin-left: auto;
+   padding: 20px;
+}
