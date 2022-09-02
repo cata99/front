@@ -1,0 +1,8 @@
+.horizontal {
+  background-color: #043c34;
+  line-height: 100px;
+  display: flex;
+  justify-content: right;
+  padding-right: 180px;
+  color:white
+}

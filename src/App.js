@@ -1,13 +1,11 @@
-
-import HomePage from './components/HomePage/HomePage';
-import GeneralCard from './components/Card/GeneralCard';
-
+import Header from "./components/Layout/Header";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <div>
-      <GeneralCard></GeneralCard>
-    </div>
+    <Layout>
+      <Header></Header>
+    </Layout>
   );
 }
 
