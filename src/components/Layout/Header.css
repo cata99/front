@@ -4,5 +4,9 @@
   display: flex;
   justify-content: right;
   padding-right: 180px;
-  color:white
+  color:white;  
+}
+
+.right-li{  
+  text-decoration: none;
 }
