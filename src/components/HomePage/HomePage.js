@@ -1,5 +1,5 @@
 import HomeItem from "./HomeItem";
-
+import Layout from "../Layout/Layout";
 
 function HomePage(){
     const boxHome=[
@@ -10,12 +10,12 @@ function HomePage(){
       ]
     
       return (
-        <div>
+        <Layout>
        <HomeItem title={boxHome[0].title} quantity={boxHome[0].quantity}></HomeItem>
        <HomeItem title={boxHome[1].title} quantity={boxHome[1].quantity}></HomeItem>
        <HomeItem title={boxHome[2].title} quantity={boxHome[2].quantity}></HomeItem>
        <HomeItem title={boxHome[3].title} quantity={boxHome[3].quantity}></HomeItem>
-       </div>
+       </Layout>
       );
 }
 

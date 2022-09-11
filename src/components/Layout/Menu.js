@@ -6,16 +6,16 @@ function Menu() {
     <nav>
       <ul  className="menu">
         <li>
-          <a><Link to="/"></Link>Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a><Link to="/movements"></Link>Movimientos</a>
+         <Link to="/movements">Movimientos</Link>
         </li>
         <li>
-          <a><Link to="/institutions"></Link>Institutiones</a>
+          <Link to="/institutions">Institutiones</Link>
         </li>
         <li>
-          <a><Link to="/users"></Link>Usuarios</a>
+          <Link to="/users">Usuarios</Link>
         </li>
       </ul>
     </nav>

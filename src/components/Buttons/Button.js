@@ -1,6 +1,7 @@
 import './Button.css';
 function Button(props) {
-  return <button className="button">{props.label}</button>;
+  const classes='button ' + props.className
+  return <button className={classes}>{props.label}</button>;
 }
 
 export default Button;

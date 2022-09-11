@@ -1,0 +1,17 @@
+.page-button-movement {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+/*Create movement page*/
+.movement{
+  color: white;
+  font-weight: 100;
+  text-align: center;
+  line-height: 4em;
+  font-size: xxx-large;
+}
+
+.create-movement{
+  margin: 0 15rem;
+}

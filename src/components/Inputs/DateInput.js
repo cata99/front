@@ -1,8 +1,10 @@
+import "./DateInput.css";
+
 function DateInput (props){
     return (
-        <div>
+        <div className="date-input">
         <label>{props.label}</label>
-        <input type="date" className="date input"></input>
+        <input type="date" className="date-input"></input>
         </div>
     )
 }

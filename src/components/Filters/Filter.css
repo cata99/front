@@ -1,0 +1,15 @@
+.filter {
+  background-color: #4eab9e;
+  padding: 20px 27px;
+  font-size: x-large;
+  color: white;
+}
+
+input{
+  font-size: large;
+}
+
+.button-div{
+  display:flex;
+  justify-content:flex-end;
+}

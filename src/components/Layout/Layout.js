@@ -1,26 +1,18 @@
 import Header from "./Header";
 import Menu from "./Menu";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "../HomePage/HomePage";
-import MovementPage from "../MovementPage/MovementPage";
-import InstitutionPage from "../InstitutionsPage/InstitutionsPage";
-import UserPage from "../UsersPage/UsersPage";
 
-function Layout(){
+function Layout(props) {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movements" element={<MovementPage />} />
-        <Route path="/institutions" element={<InstitutionPage />} />
-        <Route path="/users" element={<UserPage />} />
-      </Routes>
-      <Header>
-      </Header>
-      <Menu></Menu>
-      <main></main>
+    <div style={{display:'flex',flexDirection:'column'}}>
+      
+        <Header></Header>
+      
+      <div style={{display:'flex',gap:'0px',minHeight:'100vh'}}>
+        <Menu></Menu>
+        <div style={{width:'90vw',padding:'20px',background:'#97CECC'}}>{props.children}</div>
+      </div>
     </div>
   );
-};
+}
 
 export default Layout;
