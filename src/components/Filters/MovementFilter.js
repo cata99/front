@@ -22,15 +22,15 @@ function MovementFilter() {
             <b>Fecha donación</b>
           </p>
           <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <DateInput label="From: "></DateInput>
-            <DateInput label="To: "></DateInput>
+            <DateInput className="date-filter" label="From: "></DateInput>
+            <DateInput className="date-filter" label="To: "></DateInput>
           </div>
           <p>
             <b>Fecha entrega</b>
           </p>
           <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <DateInput label="From: "></DateInput>
-            <DateInput label="To: "></DateInput>
+            <DateInput className="date-filter" label="From: "></DateInput>
+            <DateInput className="date-filter" label="To: "></DateInput>
           </div>
         </div>
         <div

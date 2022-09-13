@@ -1,6 +1,7 @@
 import "./StringInput.css";
 function StringInput (props){
 
+    const classes= 'string-input '+ props.className
     const stringHandler = () =>{
         console.log("String Change");
     }
@@ -8,7 +9,7 @@ function StringInput (props){
     return (
         <div className="string-input">
         <label>{props.label}</label>
-        <input type="text" className="string-input" onChange={stringHandler}></input>
+        <input type="text" className={classes} onChange={stringHandler}></input>
         </div>
     )
 }

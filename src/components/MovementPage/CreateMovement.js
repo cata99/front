@@ -2,6 +2,7 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import "./MovementStyles.css";
 import Button from "../Buttons/Button";
+import { Link } from "react-router-dom";
 
 function CreateMovement() {
   return (
@@ -9,8 +10,8 @@ function CreateMovement() {
       <Card className="select-movement">
         <h2 className="movement">Seleccione el movimiento a ingresar</h2>
         <div className="create-movement">
-          <Button className="create-movement"label="Entrega"></Button>
-          <Button className="create-movement"label="Delivery"></Button>
+          <Link to="/create_delivery"><Button className="create-movement"label="Entrega"></Button></Link>
+          <Button className="create-movement"label="Donación"></Button>
         </div>
       </Card>
     </Layout>
