@@ -12,13 +12,16 @@ function CreateInstitution() {
         <StringInput label="Ubicacion: "></StringInput>
         <StringInput label="Telefono: "></StringInput>
         <Card className="add-authority">
-          <p>Autoridades</p>
+            <div>
+          <p>Autoridades</p></div>
           <div className="button-wrapper">
             <Button label="asociar"></Button>
           </div>
         </Card>
         <Card className="add-diasease">
-          <p>Enfermedades</p>
+          <div>
+            <p>Enfermedades</p>
+          </div>
           <div className="button-wrapper">
             <Button label="asociar"></Button>
           </div>
