@@ -10,7 +10,7 @@ function CreateOption() {
         <form>
             <div className="title">
           <h2>Seleccione elemento a crear</h2></div>
-          <div>
+          <div className="button-options">
             <Button label="Comedor"></Button>
             <Button label="Enfermedad"></Button>
             <Button label="Autoridad"></Button>

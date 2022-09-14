@@ -9,4 +9,12 @@
   text-align: center;
   color:white;
   font-size: xxx-large;
-}  
+}
+
+.button-options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+  margin-top: 1%;
+}
