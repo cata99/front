@@ -3,3 +3,10 @@
     justify-content: flex-end;
     padding: 1%;
   }
+
+/*Create Option Page*/
+.title h2{
+  text-align: center;
+  color:white;
+  font-size: xxx-large;
+}  
