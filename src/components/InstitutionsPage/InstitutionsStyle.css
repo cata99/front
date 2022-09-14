@@ -18,3 +18,19 @@
   gap: 20%;
   margin-top: 1%;
 }
+
+/*Create Institution*/
+.new-institution-card{
+  color:white;
+  font-size: x-large;
+  padding:25px;
+}
+
+.add-diasease, .add-authority{
+  background-color: #97CECC;
+}
+
+.button-wrapper{
+  display:flex;
+  justify-content:flex-end;
+}

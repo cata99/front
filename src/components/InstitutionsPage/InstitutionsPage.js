@@ -10,7 +10,7 @@ function InstitutionPage() {
     <Layout>
       <InstitutionFilter></InstitutionFilter>
       <div className="page-button-institution">
-        <Link to="/create_institution_option"><Button className="new"label="+"></Button></Link>
+        <Link to="/institution_option"><Button className="new"label="+"></Button></Link>
       </div>
       <GeneralCard></GeneralCard>
       <GeneralCard></GeneralCard>
