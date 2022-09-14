@@ -4,7 +4,7 @@ import "./MovementStyles.css";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 
-function CreateMovement() {
+function OptionsMovement() {
   return (
     <Layout>
       <Card className="select-movement">
@@ -18,4 +18,4 @@ function CreateMovement() {
   );
 }
 
-export default CreateMovement;
+export default OptionsMovement;

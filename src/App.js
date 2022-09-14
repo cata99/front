@@ -3,7 +3,7 @@ import HomePage from "./components/HomePage/HomePage";
 import MovementPage from "./components/MovementPage/MovementPage";
 import InstitutionPage from "./components/InstitutionsPage/InstitutionsPage";
 import UserPage from "./components/UsersPage/UsersPage";
-import CreateMovement from "./components/MovementPage/CreateMovement";
+import OptionsMovement from "./components/MovementPage/OptionsMovement";
 import CreateDelivery from "./components/MovementPage/CreateDelivery";
 import AddProductsDelivery from "./components/MovementPage/AddProductsDelivery";
 import AddProduct from "./components/MovementPage/AddProduct";
@@ -17,7 +17,7 @@ function App() {
         <Route path="/movements" element={<MovementPage />} />
         <Route path="/institutions" element={<InstitutionPage />} />
         <Route path="/users" element={<UserPage />} />
-        <Route path="/create_movement" element={<CreateMovement />} />
+        <Route path="/create_movement" element={<OptionsMovement />} />
         <Route path="/create_delivery" element={<CreateDelivery />} />
         <Route path="/add_products_delivery" element={<AddProductsDelivery />} />
         <Route path="/add_product_delivery" element={<AddProduct />} />
