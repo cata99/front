@@ -9,7 +9,7 @@ function OptionInstitution() {
     <Layout>
       <Card className="options">
         <form>
-            <div className="title">
+            <div className="option-title">
           <h2>Seleccione elemento a crear</h2></div>
           <div className="button-options">
             <Link to="/create_institution"><Button className="new-institution"label="Comedor"></Button></Link>

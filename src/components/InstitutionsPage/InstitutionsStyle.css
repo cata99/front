@@ -1,36 +1,51 @@
 .page-button-institution {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1%;
-  }
-
-/*Create Option Page*/
-.title h2{
-  text-align: center;
-  color:white;
-  font-size: xxx-large;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
 }
 
-.button-options{
+/*Create Option Page*/
+.option-title h2 {
+  text-align: center;
+  color: white;
+  font-size: xxx-large;
+  padding: 10px;
+}
+
+.button-options {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20%;
-  margin-top: 1%;
+  margin: 1% 0;
+  padding-bottom: 1%;
 }
 
 /*Create Institution*/
-.new-institution-card{
-  color:white;
+.new-institution-card {
+  color: white;
   font-size: x-large;
-  padding:25px;
+  padding: 25px;
 }
 
-.add-diasease, .add-authority{
-  background-color: #97CECC;
+.add-diasease,
+.add-authority {
+  background-color: #97cecc;
+  display: flex;
+  margin: 25px 0px;
+  text-align: right;
+  font-size: larger;
+  font-weight: 600;
 }
 
-.button-wrapper{
-  display:flex;
-  justify-content:flex-end;
+.button-wrapper {
+  display: flex;
+  margin-left: auto;
+  padding: 1%;
+}
+
+.create-button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
 }

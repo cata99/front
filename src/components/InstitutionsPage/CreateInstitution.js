@@ -12,8 +12,9 @@ function CreateInstitution() {
         <StringInput label="Ubicacion: "></StringInput>
         <StringInput label="Telefono: "></StringInput>
         <Card className="add-authority">
-            <div>
-          <p>Autoridades</p></div>
+          <div>
+            <p>Autoridades</p>
+          </div>
           <div className="button-wrapper">
             <Button label="asociar"></Button>
           </div>
@@ -26,7 +27,9 @@ function CreateInstitution() {
             <Button label="asociar"></Button>
           </div>
         </Card>
-        <div className="create-button"></div>
+        <div className="create-button-div">
+          <Button className="create-button" label="Registrar"></Button>
+        </div>
       </Card>
     </Layout>
   );
