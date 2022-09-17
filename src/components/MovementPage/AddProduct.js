@@ -1,5 +1,4 @@
 import Card from "../Card/Card";
-import StringInput from "../Inputs/StringInput";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
@@ -10,20 +9,20 @@ function AddProduct() {
     <Layout>
       <Card className="add-product">
         <form>
-          <StringInput
-            className="product-register"
-            label="Product"
-          ></StringInput>
+          <div className="string-input">
+            <label>Producto</label>
+            <input type="text"></input>
+          </div>
           <div className="add-type">
-            <StringInput
-              className="product-register"
-              label="Tipo de producto"
-            ></StringInput>
+          <div className="string-input">
+            <label>Tipo Producto</label>
+            <input type="text"></input>
+          </div>
             <div className="type-button-div">
               <Link to="/new_type">
                 <Button label="Agregar Tipo"></Button>
               </Link>
-            </div>  
+            </div>
           </div>
           <div className="container right">
             <Link to="/add_product_delivery">

@@ -1,6 +1,3 @@
-import StringInput from "../Inputs/StringInput";
-import DateInput from "../Inputs/DateInput";
-import CheckboxInput from "../Inputs/CheckboxInput";
 import Card from "../Card/Card";
 import "./Filter.css";
 import Button from "../Buttons/Button";
@@ -10,10 +7,19 @@ function MovementFilter() {
     <Card className="filter">
       <form>
         <div className="first-row" style={{ display: "flex" }}>
-          <StringInput label="Institución: "></StringInput>
+          <div className="string-input">
+            <label>Comedor</label>
+            <input type="text"></input>
+          </div>
           <div style={{ display: "flex", gap: "40px", lineHeight: "2em" }}>
-            <CheckboxInput label="Donación: "></CheckboxInput>
-            <CheckboxInput label="Entrega: "></CheckboxInput>
+            <div className="checkbox-input">
+              <label>donación</label>
+              <input type="checkbox" className="checkbox-input"></input>
+            </div>
+            <div className="checkbox-input">
+              <label>entrega</label>
+              <input type="checkbox" className="checkbox-input"></input>
+            </div>
           </div>
         </div>
 
@@ -22,15 +28,27 @@ function MovementFilter() {
             <b>Fecha donación</b>
           </p>
           <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <DateInput className="date-filter" label="From: "></DateInput>
-            <DateInput className="date-filter" label="To: "></DateInput>
+            <div className="date-input">
+              <label>Desde</label>
+              <input type="date"></input>
+            </div>
+            <div className="date-input">
+              <label>Hasta</label>
+              <input type="date"></input>
+            </div>
           </div>
           <p>
             <b>Fecha entrega</b>
           </p>
           <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <DateInput className="date-filter" label="From: "></DateInput>
-            <DateInput className="date-filter" label="To: "></DateInput>
+            <div className="date-input">
+              <label>Desde</label>
+              <input type="date"></input>
+            </div>
+            <div className="date-input">
+              <label>Hasta</label>
+              <input type="date"></input>
+            </div>
           </div>
         </div>
         <div
@@ -41,10 +59,19 @@ function MovementFilter() {
             margin: "25px 0px",
           }}
         >
-          <StringInput label="Tipo de producto: "></StringInput>
-          <StringInput label="Producto: "></StringInput>
+          <div className="string-input">
+            <label>dropDown</label>
+            <input type="text"></input>
+          </div>
+          <div className="string-input">
+            <label>DropDown</label>
+            <input type="text"></input>
+          </div>
         </div>
-        <div className="button-div" style={{display:'flex',justifyContent:'flex-end'}}>
+        <div
+          className="button-div"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
           <Button label="Buscar"></Button>
         </div>
       </form>
