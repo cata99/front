@@ -1,11 +1,9 @@
+import { useState } from "react";
 import "./StringInput.css";
 function StringInput (props){
 
-    const classes= 'string-input '+ props.className
-    const stringHandler = () =>{
-        console.log("String Change");
-    }
-
+  
+const classes= 'string-input '+ props.className
     return (
         <div className="string-input">
         <label>{props.label}</label>
