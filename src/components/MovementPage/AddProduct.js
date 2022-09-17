@@ -3,20 +3,22 @@ import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import "./MovementStyles.css";
+import Title from "../Card/Title";
 
 function AddProduct() {
   return (
     <Layout>
       <Card className="add-product">
         <form>
+          <Title label="Asociar Producto"></Title>
           <div className="string-input">
             <label>Producto</label>
-            <input type="text"></input>
+            <input type="text" className="product-input"></input>
           </div>
           <div className="add-type">
           <div className="string-input">
             <label>Tipo Producto</label>
-            <input type="text"></input>
+            <input type="text" className="type-product-input"></input>
           </div>
             <div className="type-button-div">
               <Link to="/new_type">

@@ -3,12 +3,26 @@
   justify-content: flex-end;
   padding: 1%;
 }
+
 /*Create movement page*/
+
+.creation-delivery-form {
+  padding: 0px;
+}
 .movement {
   color: white;
   text-align: center;
   padding: 3rem;
   font-size: xxx-large;
+}
+
+.institution-input {
+  margin-left: 5px;
+}
+
+.delivery-date-input {
+  margin-left: 5px;
+  padding-right: 29.5rem;
 }
 
 .create-movement {
@@ -42,36 +56,47 @@
 }
 
 /*Add product*/
-.add-type{
+.add-type {
   display: flex;
 }
 
-.type-button-div{
-  margin: 1.2rem -13rem;
+.product-input {
+  margin-left: 60px;
 }
 
-.right{
+.type-product-input {
+  margin-left: 5px;
+}
+
+.right {
   display: flex;
   justify-content: flex-end;
 }
 
-.add-product{
+.add-product {
   display: block;
   color: white;
   font-size: xx-large;
 }
 
-.product-register{
-  margin:10px;
+.product-register {
+  margin: 10px;
 }
 
 /*New type*/
-.new-type{
+.form-new-type {
+  padding: 0px;
+}
+
+.product-type-input{
+  margin-left: 10px;
+}
+.new-type {
   display: block;
   color: white;
   font-size: xx-large;
 }
 
-.type-name{
-  margin:10px
+.type-name {
+  margin: 10px;
 }
