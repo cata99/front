@@ -4,14 +4,74 @@
   padding: 1%;
 }
 /*Create movement page*/
-.movement{
+.movement {
   color: white;
-  font-weight: 100;
   text-align: center;
-  line-height: 4em;
+  padding: 3rem;
   font-size: xxx-large;
 }
 
-.create-movement{
-  margin: 0 15rem;
+.create-movement {
+  margin: 0 -1rem 2rem 16.5rem;
+}
+
+/*Create delivery form*/
+.creation-delivery {
+  color: white;
+  font-size: x-large;
+  padding: 15px 40px;
+}
+.date-creation-delivery {
+  margin-left: 0px;
+  margin-top: 1rem;
+}
+
+.create-delivery-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
+/*Add Products*/
+.congrats-register {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  padding: 20px;
+}
+
+/*Add product*/
+.add-type{
+  display: flex;
+}
+
+.type-button-div{
+  margin: 1.2rem -13rem;
+}
+
+.right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-product{
+  display: block;
+  color: white;
+  font-size: xx-large;
+}
+
+.product-register{
+  margin:10px;
+}
+
+/*New type*/
+.new-type{
+  display: block;
+  color: white;
+  font-size: xx-large;
+}
+
+.type-name{
+  margin:10px
 }

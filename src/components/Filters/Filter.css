@@ -13,3 +13,7 @@ input{
   display:flex;
   justify-content:flex-end;
 }
+
+.date-filter{
+  margin-left: 10px;
+}
