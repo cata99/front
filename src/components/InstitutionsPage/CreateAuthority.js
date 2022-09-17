@@ -10,16 +10,16 @@ function CreateAuthority() {
         <Title label="Registrar autoridad"></Title>
         <div className="title-authority">
           <div className="string-input">
-            <label>Nombre</label>
-            <input type="text"></input>
-          </div>
-          <div className="string-input">
-            <label>Ubicación</label>
-            <input type="text"></input>
-          </div>
-          <div className="string-input">
-            <label>Teléfono</label>
-            <input type="text"></input>
+          <label>Nombre</label>
+          <input type="text" className="name-input"></input>
+        </div>
+        <div className="string-input">
+          <label>Ubicacion</label>
+          <input type="text" className="location-input"></input>
+        </div>
+        <div className="string-input">
+          <label>Teléfono</label>
+          <input type="text" className="phone-input"></input>
           </div>
         </div>
         <div className="create-button-div">

@@ -28,6 +28,10 @@
   padding: 25px;
 }
 
+.string-input{
+  margin: 1% 0;
+}
+
 .add-diasease,
 .add-authority {
   background-color: #97cecc;
@@ -47,7 +51,19 @@
 .create-button-div {
   display: flex;
   justify-content: flex-end;
-  padding: 1%;
+}
+
+/* Inputs for create forms */
+.name-input{
+  margin-left: 25px;
+}
+
+.location-input{
+  margin-left: 5px;
+}
+
+.phone-input{
+  margin-left: 20px;
 }
 
 /*Create authority*/

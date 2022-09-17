@@ -11,15 +11,15 @@ function CreateInstitution() {
         <Title label="Registrar Institución"></Title>
         <div className="string-input">
           <label>Nombre</label>
-          <input type="text"></input>
+          <input type="text" className="name-input"></input>
         </div>
         <div className="string-input">
           <label>Ubicacion</label>
-          <input type="text"></input>
+          <input type="text" className="location-input"></input>
         </div>
         <div className="string-input">
           <label>Teléfono</label>
-          <input type="text"></input>
+          <input type="text" className="phone-input"></input>
         </div>
         <Card className="add-authority">
           <div>

@@ -11,7 +11,7 @@ function CreateDisease() {
         <div className="title-authority">
           <div className="string-input">
             <label>Nombre</label>
-            <input type="text"></input>
+            <input type="text" className="name-input"></input>
           </div>
         </div>
         <div className="create-button-div">
