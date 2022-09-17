@@ -49,3 +49,10 @@
   justify-content: flex-end;
   padding: 1%;
 }
+
+/*Create authority*/
+.new-authority-card, .new-disease-card{
+  color: white;
+  font-size: x-large;
+  padding: 1%;
+}

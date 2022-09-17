@@ -3,11 +3,13 @@ import Card from "../Card/Card";
 import StringInput from "../Inputs/StringInput";
 import "./InstitutionsStyle.css";
 import Button from "../Buttons/Button";
+import Title from "../Card/Title";
 
 function CreateInstitution() {
   return (
     <Layout>
       <Card className="new-institution-card">
+        <Title label="Registrar Institución"></Title>
         <StringInput label="Nombre: "></StringInput>
         <StringInput label="Ubicacion: "></StringInput>
         <StringInput label="Telefono: "></StringInput>

@@ -1,8 +1,11 @@
+import { useState } from "react";
 import "./StringInput.css";
 function StringInput (props){
 
+    const [EnteredString, setEnteredString]= useState('');
+
     const stringHandler = () =>{
-        console.log("String Change");
+        setEnteredString(event.target.value);
     }
 
     return (
