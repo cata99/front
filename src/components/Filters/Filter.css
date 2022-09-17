@@ -1,19 +1,59 @@
-.filter {
+/*General for forms*/
+form {
   background-color: #4eab9e;
   padding: 20px 27px;
   font-size: x-large;
   color: white;
 }
-
-input{
-  font-size: large;
+input {
+  font-size: x-large;
+  padding-right: 27rem;
 }
 
-.button-div{
-  display:flex;
-  justify-content:flex-end;
+.button-div {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.date-filter{
-  margin-left: 10px;
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+}
+
+/*Movement Filters */
+.space-margin input {
+  margin: 5px;
+}
+
+.dropdown-input {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0px;
+}
+
+.checkbox-inputs {
+  margin: 0 7rem;
+  display: flex;
+  gap: 10rem;
+  line-height: 2rem;
+}
+
+/*Users filters*/
+.checkbox-div {
+  display: flex;
+  gap: 20%;
+  margin-top: 1%;
+  margin-left: 26rem;
+}
+
+@media (max-width: 1250px) {
+  input {
+    padding-right: 7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  input {
+    padding-right: 2rem;
+  }
 }

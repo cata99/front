@@ -6,7 +6,7 @@ function UserFilter() {
   return (
     <Card className="filter">
       <form>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex" , justify: "center", gap: "20px"}}>
           {" "}
           <div className="string-input">
             <label>Nombre</label>
@@ -29,13 +29,7 @@ function UserFilter() {
         </div>
         <div
           className="checkbox-div"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "20%",
-            marginTop: "1%",
-          }}
+        
         >
           <div className="checkbox-input">
             <label>Referente</label>
