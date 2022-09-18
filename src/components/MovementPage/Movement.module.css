@@ -1,0 +1,67 @@
+.add_movement{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5%;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+/*Create movement page*/
+.options_title{
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: xx-large;
+}
+
+.options_div{
+  display: flex;
+  font-size: xx-large;
+  font-weight: 700;
+  justify-content: center;
+  gap: 10rem;
+  padding-bottom: 3rem;
+}
+
+/*Create delivery form*/
+.title{
+  color:white;
+  font-size: x-large;
+  padding: 1% 1.5% 0;
+}
+
+.creation_delivery {
+  color: white;
+  font-size: x-large;
+}
+
+.input_div input{
+  margin: 1%;
+}
+
+.create-delivery-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
+/*Add Products*/
+.title_product{
+  color: black;
+  padding: 0 1%;
+}
+
+/*Add product*/
+.add_type {
+  display: flex;
+}
+
+.add-product {
+  display: block;
+  color: white;
+  font-size: xx-large;
+}
+
+.add_product_button{
+  margin:0.3%
+}

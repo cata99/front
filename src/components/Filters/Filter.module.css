@@ -1,0 +1,71 @@
+/*General for filters*/
+form {
+  background-color: #4eab9e;
+  padding: 20px 27px;
+  font-size: x-large;
+  color: white;
+}
+input {
+  font-size: x-large;
+  padding-right: 27rem;
+}
+
+.checkbox_input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.first_row {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.second_row {
+  display: flex;
+}
+
+.third_row {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  margin-top:1%
+}
+
+.general_checkbox_div {
+  display: flex;
+  gap: 4rem;
+}
+/*Movement Filters */
+
+.space_margin input {
+  margin-right: 4rem;
+  margin-left: 1rem;
+}
+
+.dropdown-input {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0px;
+}
+
+.wrapper_date {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 1250px) {
+  input {
+    padding-right: 7rem;
+  }
+
+  .general_checkbox_div {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  input {
+    padding-right: 2rem;
+  }
+}

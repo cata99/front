@@ -1,26 +1,29 @@
 import Card from "../Card/Card";
-import "./Filter.css";
+import classes from "./Filter.module.css";
 import Button from "../Buttons/Button";
+
+import button from "../Buttons/Button.module.css";
+import style from "../Card/Card.module.css";
 
 function InstitutionFilter() {
   return (
-    <Card className="filter">
+    <Card className={style.filter}>
       <form>
-        <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-        <div className="string-input">
+        <div className={classes.first_row}>
+          <div>
             <label>Comedor</label>
             <input type="text"></input>
           </div>
-          <div className="string-input">
+          <div>
             <label>Ubicación</label>
             <input type="text"></input>
           </div>
         </div>
-        <div className="button-div" style={{padding:'15px 10px 0 0'}}>
-          <Button label="Buscar"></Button>
+        <div className={button.button_div_right}>
+          <Button>Buscar</Button>
         </div>
       </form>
-    </Card> 
+    </Card>
   );
 }
 

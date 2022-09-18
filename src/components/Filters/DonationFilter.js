@@ -1,9 +1,12 @@
-
+import classes from "./Filter.module.css";
 import Card from "../Card/Card";
+import button from "../Buttons/Button.module.css";
+
+import style from "../Card/Card.module.css";
 
 function DeliveryFilter() {
   return (
-    <Card className="filter">
+    <Card className={style.filter}>
       <form>
         <div style={{ display: "flex", justify: "center", gap: "10px" }}>
           <div className="string-input">

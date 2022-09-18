@@ -1,38 +1,40 @@
 import Card from "../Card/Card";
-import "./Filter.css";
+import classes from "./Filter.module.css";
 import Button from "../Buttons/Button";
+import style from "../Card/Card.module.css";
+import button from "../Buttons/Button.module.css";
 
 function MovementFilter() {
   return (
-    <Card className="filter">
+    <Card className={style.filter}>
       <form>
-        <div className="first-row" style={{ display: "flex" }}>
-          <div className="string-input space-margin">
+        <div className={classes.first_row}>
+          <div className={classes.space_margin}>
             <label>Comedor</label>
             <input type="text"></input>
           </div>
-          <div className="checkbox-inputs">
-            <div className="checkbox-input ">
+          <div className={classes.general_checkbox_div}>
+            <div className={classes.unique_checkbox_div}>
               <label>donación</label>
-              <input type="checkbox" className="checkbox-input"></input>
+              <input type="checkbox" className={classes.checkbox_input}></input>
             </div>
-            <div className="checkbox-input">
+            <div className={classes.unique_checkbox_div}>
               <label>entrega</label>
-              <input type="checkbox" className="checkbox-input"></input>
+              <input type="checkbox" className={classes.checkbox_input}></input>
             </div>
           </div>
         </div>
 
-        <div className="wrapper date">
+        <div>
           <p>
             <b>Fecha donación</b>
           </p>
-          <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <div className="date-input space-margin">
+          <div className={classes.wrapper_date}>
+            <div className={classes.space_margin}>
               <label>Desde</label>
               <input type="date"></input>
             </div>
-            <div className="date-input space-margin">
+            <div className={classes.space_margin}>
               <label>Hasta</label>
               <input type="date"></input>
             </div>
@@ -40,32 +42,20 @@ function MovementFilter() {
           <p>
             <b>Fecha entrega</b>
           </p>
-          <div style={{ display: "flex", justify: "center", gap: "10px" }}>
-            <div className="date-input space-margin">
+          <div className={classes.wrapper_date}>
+            <div className={classes.space_margin}>
               <label>Desde</label>
               <input type="date"></input>
             </div>
-            <div className="date-input space-margin">
+            <div className={classes.space_margin}>
               <label>Hasta</label>
               <input type="date"></input>
             </div>
           </div>
         </div>
-        <div className="dropdown-input">
-          <div className="string-input">
-            <label>dropDown</label>
-            <input type="text"></input>
-          </div>
-          <div className="string-input">
-            <label>DropDown</label>
-            <input type="text"></input>
-          </div>
-        </div>
-        <div
-          className="button-div"
-          style={{ display: "flex", justifyContent: "flex-end" }}
-        >
-          <Button label="Buscar"></Button>
+
+        <div className={button.button_div_right}>
+          <Button>Buscar</Button>
         </div>
       </form>
     </Card>

@@ -1,0 +1,17 @@
+.button {
+  background: #f483a4;
+  border: 3px solid;
+  border-radius: 10px;
+  border-color: #fa608e;
+  font-size: inherit;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin: 5px;
+}
+
+
+.button_div_right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}

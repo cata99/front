@@ -1,0 +1,43 @@
+.filter {
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-color: #4eab9e;
+  padding: 0px 15px;
+}
+
+.home_item {
+  border-radius: 12px;
+  background-color: #ffffff;
+  display: block;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 16px 50px;
+}
+
+.general {
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  display: flex;
+  margin: 10px;
+}
+
+.right {
+  font-size: x-large;
+  margin-left: auto;
+  padding: 20px;
+}
+
+.title {
+  padding: 0 1%;
+}
+
+.institution_asociation {
+  border-radius: 12px;
+  background-color: #97cecc;
+  display: flex;
+  margin: 25px 0px;
+  text-align: right;
+  font-size: larger;
+  font-weight: 600;
+}

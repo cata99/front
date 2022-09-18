@@ -3,20 +3,25 @@ import Layout from "../Layout/Layout";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import Title from "../Card/Title";
+import classes from "./Movement.module.css";
+import button from "../Buttons/Button.module.css";
+import style from "../Card/Card.module.css";
 
 function RegisterType() {
   return (
     <Layout>
-      <Card className="new-type">
-        <Title label="Registre nuevo tipo de producto"></Title>
-        <form className="form-new-type">
-          <div className="string-input">
+      <Card className={style.filter}>
+        <div className={classes.title}>
+          <Title>Asociar Producto</Title>
+        </div>
+        <form >
+          <div  className={classes.input_div}>
             <label>Tipo de producto</label>
-            <input type="text" className="product-type-input"></input>
+            <input type="text" ></input>
           </div>
-          <div className="page-button-movement">
+          <div className={button.button_div_right}>
             <Link to="/create_movement">
-              <Button label="Registrar"></Button>
+              <Button >Registrar</Button>
             </Link>
           </div>
         </form>

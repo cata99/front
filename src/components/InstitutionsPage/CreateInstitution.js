@@ -1,45 +1,51 @@
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
-import "./InstitutionsStyle.css";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
 
+import style from "../Card/Card.module.css";
+import classes from "./Institution.module.css";
+import button from "../Buttons/Button.module.css";
 function CreateInstitution() {
   return (
     <Layout>
-      <Card className="new-institution-card">
-        <Title label="Registrar Institución"></Title>
-        <div className="string-input">
-          <label>Nombre</label>
-          <input type="text" className="name-input"></input>
+      <Card className={style.filter}>
+        <div className={classes.title}>
+          <Title>Registrar comedor</Title>
         </div>
-        <div className="string-input">
-          <label>Ubicacion</label>
-          <input type="text" className="location-input"></input>
-        </div>
-        <div className="string-input">
-          <label>Teléfono</label>
-          <input type="text" className="phone-input"></input>
-        </div>
-        <Card className="add-authority">
-          <div>
-            <p>Autoridades</p>
+        <form>
+          <div className={classes.input_div}>
+            <label>Nombre</label>
+            <input type="text"></input>
           </div>
-          <div className="button-wrapper">
-            <Button label="asociar"></Button>
+          <div className={classes.input_div}>
+            <label>Ubicacion</label>
+            <input type="text"></input>
           </div>
-        </Card>
-        <Card className="add-diasease">
-          <div>
-            <p>Enfermedades</p>
+          <div className={classes.input_div}>
+            <label>Teléfono</label>
+            <input type="text"></input>
           </div>
-          <div className="button-wrapper">
-            <Button label="asociar"></Button>
+          <Card className={style.institution_asociation}>
+            <div className={classes.title_asociations}>
+              <Title>Autoridad</Title>
+            </div>
+            <div className={style.right}>
+              <Button>Asociar</Button>
+            </div>
+          </Card>
+          <Card className={style.institution_asociation}>
+            <div className={classes.title_asociations}>
+              <Title>Enfermedad</Title>
+            </div>
+            <div className={style.right}>
+              <Button>Asociar</Button>
+            </div>
+          </Card>
+          <div className={button.button_div_right}>
+            <Button>Registrar</Button>
           </div>
-        </Card>
-        <div className="create-button-div">
-          <Button className="create-button" label="Registrar"></Button>
-        </div>
+        </form>
       </Card>
     </Layout>
   );

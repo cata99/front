@@ -2,33 +2,38 @@ import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import "./MovementStyles.css";
+import classes from "./Movement.module.css";
 import Title from "../Card/Title";
+import button from "../Buttons/Button.module.css";
+
+import style from "../Card/Card.module.css";
 
 function AddProduct() {
   return (
     <Layout>
-      <Card className="add-product">
+      <Card className={style.filter}>
+        <div className={classes.title}>
+          <Title>Asociar Producto</Title>
+        </div>
         <form>
-          <Title label="Asociar Producto"></Title>
-          <div className="string-input">
+          <div className={classes.input_div}>
             <label>Producto</label>
-            <input type="text" className="product-input"></input>
+            <input type="text"></input>
           </div>
-          <div className="add-type">
-          <div className="string-input">
-            <label>Tipo Producto</label>
-            <input type="text" className="type-product-input"></input>
-          </div>
-            <div className="type-button-div">
+          <div className={classes.add_type}>
+            <div>
+              <label>Tipo Producto</label>
+              <input type="text" className="type-product-input"></input>
+            </div>
+            <div className={classes.add_product_button}>
               <Link to="/new_type">
-                <Button label="Agregar Tipo"></Button>
+                <Button>Agregar Tipo</Button>
               </Link>
             </div>
           </div>
-          <div className="container right">
+          <div className={button.button_div_right}>
             <Link to="/add_product_delivery">
-              <Button label="Asociar producto"></Button>
+              <Button>Asociar producto</Button>
             </Link>
           </div>
         </form>

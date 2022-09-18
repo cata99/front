@@ -1,0 +1,42 @@
+.page-button-institution {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
+/*Create Option Page*/
+
+.options_title {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: xx-large;
+}
+
+.options_div {
+  display: flex;
+  font-size: xx-large;
+  font-weight: 700;
+  justify-content: center;
+  gap: 10rem;
+  padding-bottom: 3rem;
+}
+
+/*Create Institution*/
+
+.title {
+  color: white;
+  font-size: x-large;
+  padding: 1% 1.5% 0;
+}
+
+.input_div input {
+  margin: 1%;
+}
+
+.title_asociations {
+  color: black;
+  padding: 0 1%;
+  font-size: medium;
+  padding-top: 0.7%;
+}

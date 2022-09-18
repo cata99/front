@@ -1,6 +1,9 @@
-import Card from "../Card/Card";
 import "./HomeItem.css";
+import Card from "../Card/Card";
+import style from "../Card/Card.module.css"
+
 import axios from "axios";
+
 
 function HomeItem(props) {
 
@@ -9,8 +12,8 @@ function HomeItem(props) {
         console.log(result)
     }
   return (
-    <Card className="home-item">
-      <div className="home-item__description">
+    <Card className={style.home_item}>
+      <div>
         <h2>{props.title}</h2>
       </div>
       <div>
