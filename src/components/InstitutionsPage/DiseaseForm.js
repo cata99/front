@@ -10,19 +10,20 @@ import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
 function DiseaseForm() {
-  const [error, setError] = useState("");
   const [enteredName, setEnteredName] = useState("");
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
   };
-
+  const [error, setError] = useState("");
   const submitHandler = (event) => {
+    event.preventDefault();
     if (enteredName.trim().length === 0) {
       setError({
         title: "Nombre invalido!",
         message: "Por favor ingrese un nombre valido para las enfermedades",
       });
+      return;
     }
     const jsonBody = {
       label: enteredName,
@@ -69,7 +70,7 @@ function DiseaseForm() {
             ></input>
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit" >Registrar</Button>
+            <Button type="submit">Registrar</Button>
           </div>
         </form>
       </Card>
