@@ -2,6 +2,7 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
+import ErrorModal from "../Modal/ErrorModal";
 
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
@@ -28,13 +29,30 @@ function AuthorityForm() {
     setEnteredLocation(event.target.value);
   };
 
+  const [error, setError] = useState("");
+
   const submitHandler = (event) => {
+    event.preventDefault();
+    if (
+      enteredLocation.trim().length === 0 ||
+      enteredName.trim().length === 0 ||
+      enteredPhone.trim().length === 0
+    ) {
+      setError({
+        title: "Error",
+        message:
+          "Los campos no pueden estar vacios para registrar una autoridad",
+      });
+      setEnteredName("");
+      setEnteredLocation("");
+      setEnteredPhone("");
+      return;
+    }
     const jsonBody = {
       label: enteredName,
       phone: enteredPhone,
       location: enteredLocation,
     };
-    event.preventDefault();
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -50,8 +68,19 @@ function AuthorityForm() {
     setEnteredPhone("");
   };
 
+  const errorHandler = () => {
+    setError(null);
+  };
+
   return (
     <Layout>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        ></ErrorModal>
+      )}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar autoridad</Title>
@@ -85,7 +114,7 @@ function AuthorityForm() {
             ></input>
           </div>
           <div className={button.button_div_right}>
-            <Button>Registrar</Button>
+            <Button type="submit">Registrar</Button>
           </div>
         </form>
       </Card>
