@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
 import { useState } from "react";
-import ErrorModal from "../Error/ErrorModal";
+import ErrorModal from "../Modal/ErrorModal";
 
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
@@ -15,9 +15,16 @@ function DiseaseForm() {
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
   };
+
   const [error, setError] = useState("");
+
+  const errorHandler = () => {
+    setError(null);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
+
     if (enteredName.trim().length === 0) {
       setError({
         title: "Nombre invalido!",
@@ -25,10 +32,11 @@ function DiseaseForm() {
       });
       return;
     }
+
     const jsonBody = {
       label: enteredName,
     };
-    event.preventDefault();
+    
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -39,10 +47,6 @@ function DiseaseForm() {
       .then((result) => console.log(result));
 
     setEnteredName("");
-  };
-
-  const errorHandler = () => {
-    setError(null);
   };
 
   return (

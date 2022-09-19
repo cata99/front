@@ -2,7 +2,7 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import ErrorModal from "../Error/ErrorModal";
+import ErrorModal from "../Modal/ErrorModal";
 
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
