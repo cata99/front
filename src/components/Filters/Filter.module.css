@@ -8,6 +8,11 @@ form {
 input {
   font-size: x-large;
   padding-right: 27rem;
+  border-radius: 4px;
+}
+
+.date_input{
+  line-height: 2rem;
 }
 
 .checkbox_input {

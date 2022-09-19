@@ -32,11 +32,11 @@ function MovementFilter() {
           <div className={classes.wrapper_date}>
             <div className={classes.space_margin}>
               <label>Desde</label>
-              <input type="date"></input>
+              <input type="date" className={classes.date_input}></input>
             </div>
             <div className={classes.space_margin}>
               <label>Hasta</label>
-              <input type="date"></input>
+              <input type="date" className={classes.date_input}></input>
             </div>
           </div>
           <p>
@@ -45,11 +45,11 @@ function MovementFilter() {
           <div className={classes.wrapper_date}>
             <div className={classes.space_margin}>
               <label>Desde</label>
-              <input type="date"></input>
+              <input type="date" className={classes.date_input}></input>
             </div>
             <div className={classes.space_margin}>
               <label>Hasta</label>
-              <input type="date"></input>
+              <input type="date" className={classes.date_input}></input>
             </div>
           </div>
         </div>

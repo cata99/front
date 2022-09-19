@@ -12,7 +12,7 @@ function DeliveryForm() {
     <Layout>
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Registrar entrega</Title>
+          <Title>Registrar entrega</Title>o
         </div>
         <form className={classes.creation_delivery}>
           <div className={classes.input_div}>
@@ -21,11 +21,11 @@ function DeliveryForm() {
           </div>
           <div className={classes.input_div}>
             <label>Fecha de entrega:</label>
-            <input type="date" className="delivery-date-input"></input>
+            <input type="date" className={classes.date_input}></input>
           </div>
           <div className={button.button_div_right}>
             <Link to="/add_products_delivery">
-              <Button className="create-delivery">Registrar</Button>
+              <Button>Registrar</Button>
             </Link>
           </div>
         </form>
