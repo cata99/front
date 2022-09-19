@@ -6,7 +6,7 @@ import Title from "../Card/Title";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
-function CreateInstitution() {
+function InstitutionForm() {
   return (
     <Layout>
       <Card className={style.filter}>
@@ -51,4 +51,4 @@ function CreateInstitution() {
   );
 }
 
-export default CreateInstitution;
+export default InstitutionForm;

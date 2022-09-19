@@ -9,7 +9,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
-function CreateDisease() {
+function DiseaseForm() {
   const [error, setError] = useState("");
   const [enteredName, setEnteredName] = useState("");
 
@@ -77,4 +77,4 @@ function CreateDisease() {
   );
 }
 
-export default CreateDisease;
+export default DiseaseForm;

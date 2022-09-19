@@ -8,7 +8,7 @@ import button from "../Buttons/Button.module.css";
 
 import style from "../Card/Card.module.css";
 
-function AddProduct() {
+function ProductForm() {
   return (
     <Layout>
       <Card className={style.filter}>
@@ -26,13 +26,13 @@ function AddProduct() {
               <input type="text" className="type-product-input"></input>
             </div>
             <div className={classes.add_product_button}>
-              <Link to="/new_type">
+              <Link to="/type_form">
                 <Button>Agregar Tipo</Button>
               </Link>
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Link to="/add_product_delivery">
+            <Link to="/add_products_delivery">
               <Button>Asociar producto</Button>
             </Link>
           </div>
@@ -42,4 +42,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default ProductForm;

@@ -15,7 +15,7 @@ function OptionsMovement() {
           <Title>Seleccione el movimiento a ingresar</Title>
         </div>
         <div className={classes.options_div}>
-          <Link to="/create_delivery">
+          <Link to="/delivery_form">
             <Button>Entrega</Button>
           </Link>
           <Button>Donación</Button>

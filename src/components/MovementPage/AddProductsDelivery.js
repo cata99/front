@@ -1,5 +1,4 @@
 import Layout from "../Layout/Layout";
-import Card from "../Card/Card";
 import AddProductCard from "../Card/AddProductCard";
 
 function AddProductsDelivery() {

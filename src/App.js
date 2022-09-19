@@ -1,17 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import MovementPage from "./components/MovementPage/MovementPage";
-import InstitutionPage from "./components/InstitutionsPage/InstitutionsPage";
 import UserPage from "./components/UsersPage/UsersPage";
+
+/*Institutions imports*/
+import InstitutionPage from "./components/InstitutionsPage/InstitutionsPage";
 import OptionInstitution from "./components/InstitutionsPage/OptionInstitution";
-import CreateInstitution from "./components/InstitutionsPage/CreateInstitution";
-import CreateAuthority from "./components/InstitutionsPage/CreateAuthority";
-import CreateDisease from "./components/InstitutionsPage/CreateDisease";
+import InstitutionForm from "./components/InstitutionsPage/InstitutionForm";
+import AuthorityForm from "./components/InstitutionsPage/AuthorityForm";
+import DiseaseForm from "./components/InstitutionsPage/DiseaseForm";
+
+/*Movement imports */
 import OptionsMovement from "./components/MovementPage/OptionsMovement";
-import CreateDelivery from "./components/MovementPage/CreateDelivery";
+import DeliveryForm from "./components/MovementPage/DeliveryForm";
 import AddProductsDelivery from "./components/MovementPage/AddProductsDelivery";
-import AddProduct from "./components/MovementPage/AddProduct";
-import RegisterType from "./components/MovementPage/RegisterType";
+import ProductForm from "./components/MovementPage/ProductForm";
+import TypeForm from "./components/MovementPage/TypeForm";
 
 function App() {
   return (
@@ -22,17 +26,18 @@ function App() {
         <Route path="/institutions" element={<InstitutionPage />} />
         <Route path="/users" element={<UserPage />} />
         <Route path="/movement_option" element={<OptionsMovement />} />
-        <Route path="/create_delivery" element={<CreateDelivery />} />
+        <Route path="/delivery_form" element={<DeliveryForm />} />
         <Route
           path="/add_products_delivery"
           element={<AddProductsDelivery />}
         />
-        <Route path="/add_product_delivery" element={<AddProduct />} />
-        <Route path="/new_type" element={<RegisterType />} />
+        <Route path="/product_form" element={<ProductForm />} />
+        <Route path="/type_form" element={<TypeForm />} />
+        
         <Route path="/institution_option" element={<OptionInstitution />} />
-        <Route path="/create_institution" element={<CreateInstitution />} />
-        <Route path="/create_authority" element={<CreateAuthority />} />
-        <Route path="/create_disease" element={<CreateDisease />} />
+        <Route path="/institution_form" element={<InstitutionForm />} />
+        <Route path="/authority_form" element={<AuthorityForm />} />
+        <Route path="/disease_form" element={<DiseaseForm />} />
       </Routes>
     </Router>
   );

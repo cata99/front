@@ -7,7 +7,7 @@ import classes from "./Movement.module.css";
 import button from "../Buttons/Button.module.css";
 import style from "../Card/Card.module.css";
 
-function RegisterType() {
+function TypeForm() {
   return (
     <Layout>
       <Card className={style.filter}>
@@ -20,7 +20,7 @@ function RegisterType() {
             <input type="text" ></input>
           </div>
           <div className={button.button_div_right}>
-            <Link to="/create_movement">
+            <Link to="/delivery_form">
               <Button >Registrar</Button>
             </Link>
           </div>
@@ -30,4 +30,4 @@ function RegisterType() {
   );
 }
 
-export default RegisterType;
+export default TypeForm;

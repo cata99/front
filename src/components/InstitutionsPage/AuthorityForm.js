@@ -9,7 +9,7 @@ import button from "../Buttons/Button.module.css";
 
 import { useState } from "react";
 
-function CreateAuthority() {
+function AuthorityForm() {
   const [enteredName, setEnteredName] = useState("");
 
   const nameChangeHandler = (event) => {
@@ -93,4 +93,4 @@ function CreateAuthority() {
   );
 }
 
-export default CreateAuthority;
+export default AuthorityForm;

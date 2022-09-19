@@ -7,7 +7,7 @@ import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";
 
-function CreateDelivery() {
+function DeliveryForm() {
   return (
     <Layout>
       <Card className={style.filter}>
@@ -34,4 +34,4 @@ function CreateDelivery() {
   );
 }
 
-export default CreateDelivery;
+export default DeliveryForm;

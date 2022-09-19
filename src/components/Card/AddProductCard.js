@@ -12,7 +12,7 @@ function AddProductCard() {
         <Title>Producto</Title>
       </div>
       <div className={style.right}>
-        <Link to="/add_product_delivery"><Button >Agregar producto</Button></Link>
+        <Link to="/product_form"><Button >Agregar producto</Button></Link>
       </div>
     </Card>
   );

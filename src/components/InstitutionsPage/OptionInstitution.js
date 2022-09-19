@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import Title from "../Card/Title";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
-import button from "../Buttons/Button.module.css";
-
 function OptionInstitution() {
   return (
     <Layout>
@@ -17,13 +15,13 @@ function OptionInstitution() {
         </div>
         <form>
           <div className={classes.options_div}>
-            <Link to="/create_institution">
+            <Link to="/institution_form">
               <Button >Comedor</Button>
             </Link>
-            <Link to="/create_disease">
+            <Link to="/disease_form">
               <Button>Enfermedad</Button>
             </Link>
-            <Link to="/create_authority">
+            <Link to="/authority_form">
               <Button >Autoridad</Button>
             </Link>
           </div>
