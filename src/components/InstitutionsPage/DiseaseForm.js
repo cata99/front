@@ -50,7 +50,7 @@ function DiseaseForm() {
         <ErrorModal
           title={error.title}
           message={error.message}
-          onClick={errorHandler}
+          onConfirm={errorHandler}
         ></ErrorModal>
       )}
       <Card className={style.filter}>

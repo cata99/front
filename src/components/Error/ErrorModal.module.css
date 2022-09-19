@@ -16,6 +16,7 @@
     z-index: 100;
     overflow: hidden;
     background-color: #ebd6d7;
+    border-radius: 12px;
   }
   
   .header {
