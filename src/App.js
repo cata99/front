@@ -20,6 +20,10 @@ import TypeForm from "./components/MovementPage/TypeForm";
 /*User imports */
 import OptionUser from "./components/UsersPage/OptionUser";
 import VolunteerForm from "./components/UsersPage/VolunteerForm";
+import LifeEventForm from "./components/UsersPage/LifeEventForm";
+import RolForm from "./components/UsersPage/RolForm";
+import GroupForm from "./components/UsersPage/GroupForm";
+
 
 function App() {
   return (
@@ -43,6 +47,9 @@ function App() {
 
         <Route path="/user_option" element={<OptionUser />} />
         <Route path="/volunteer_form" element={<VolunteerForm />} />
+        <Route path="/life_event_form" element={<LifeEventForm />} />
+        <Route path="/rol_form" element={<RolForm />} />
+        <Route path="/group_form" element={<GroupForm />} />
       </Routes>
     </Router>
   );

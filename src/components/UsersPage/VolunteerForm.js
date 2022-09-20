@@ -64,6 +64,9 @@ function VolunteerForm() {
               <input type="text"></input>
             </div>
           </div>
+          <div className={button.button_div_right}>
+          <Button>Buscar</Button>
+        </div>
         </form>
       </Card>
     </Layout>

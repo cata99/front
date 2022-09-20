@@ -44,7 +44,7 @@ input {
 
 .space_margin input {
   margin-right: 4rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .dropdown-input {

@@ -18,14 +18,17 @@ function OptionUser() {
           <Link to="/volunteer_form">
             <Button>Voluntario</Button>
           </Link>
-          <Link to="/authority_form">
+          <Link to="/rol_form">
             <Button>Rol</Button>
           </Link>
           <Link to="/disease_form">
             <Button>Donante</Button>
           </Link>
-          <Link to="/authority_form">
+          <Link to="/group_form">
             <Button>Groupo</Button>
+          </Link>
+          <Link to="/life_event_form">
+            <Button>Hito de vida</Button>
           </Link>
         </div>
       </Card>
