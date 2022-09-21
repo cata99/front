@@ -14,11 +14,11 @@ function MovementFilter() {
             <input type="text"></input>
           </div>
           <div className={classes.general_checkbox_div}>
-            <div className={classes.unique_checkbox_div}>
+            <div className={classes.space_margin}>
               <label>donación</label>
               <input type="checkbox" className={classes.checkbox_input}></input>
             </div>
-            <div className={classes.unique_checkbox_div}>
+            <div className={classes.space_margin}>
               <label>entrega</label>
               <input type="checkbox" className={classes.checkbox_input}></input>
             </div>

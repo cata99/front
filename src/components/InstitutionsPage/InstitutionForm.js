@@ -41,7 +41,7 @@ function InstitutionForm() {
       setError({
         title: "Error",
         message:
-          "Los campos no pueden estar vacios para registrar una autoridad",
+          "Los campos no pueden estar vacios para registrar un comedor",
       });
       setEnteredName("");
       setEnteredLocation("");

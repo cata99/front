@@ -51,6 +51,7 @@ label{
 .space_margin input {
   margin-right: 4rem;
   margin-left: 0.5rem;
+  flex: 50%;
 }
 
 .dropdown-input {
