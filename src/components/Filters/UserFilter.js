@@ -30,17 +30,17 @@ function UserFilter() {
           </div>
         </div>
         <div className={classes.third_row}>
-          <div>
+          <div >
             <label>Referente</label>
-            <input type="checkbox"></input>
+            <input type="checkbox" className={classes.checkbox_input}></input>
           </div>
           <div>
             <label>Donante</label>
-            <input type="checkbox"></input>
+            <input type="checkbox" className={classes.checkbox_input}></input>
           </div>
           <div>
             <label>Voluntario</label>
-            <input type="checkbox"></input>
+            <input type="checkbox" className={classes.checkbox_input}></input>
           </div>
         </div>
         <div className={button.button_div_right}>

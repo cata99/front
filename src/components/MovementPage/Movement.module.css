@@ -6,6 +6,10 @@
   font-weight: 600;
 }
 
+.date_input{
+  line-height: 2rem;
+}
+
 /*Create movement page*/
 .options_title{
   color: white;

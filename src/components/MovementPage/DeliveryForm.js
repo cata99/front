@@ -21,11 +21,17 @@ function DeliveryForm() {
           </div>
           <div className={classes.input_div}>
             <label>Fecha de entrega:</label>
-            <input type="date" className="delivery-date-input"></input>
+            <input type="date" className={classes.date_input}></input>
+          </div>
+          <div className={classes.second_row}>
+            <div>
+              <label>Usuario</label>
+              <input type="text"></input>
+            </div>
           </div>
           <div className={button.button_div_right}>
             <Link to="/add_products_delivery">
-              <Button className="create-delivery">Registrar</Button>
+              <Button>Registrar</Button>
             </Link>
           </div>
         </form>

@@ -6,8 +6,19 @@ form {
   color: white;
 }
 input {
+  display: block;
   font-size: x-large;
   padding-right: 27rem;
+  border-radius: 4px;
+  margin-right: 2rem;
+}
+
+label{
+  display: block;
+}
+
+.date_input {
+  line-height: 2rem;
 }
 
 .checkbox_input {
@@ -28,7 +39,7 @@ input {
   display: flex;
   gap: 4rem;
   justify-content: center;
-  margin-top:1%
+  margin-top: 1%;
 }
 
 .general_checkbox_div {
@@ -39,7 +50,7 @@ input {
 
 .space_margin input {
   margin-right: 4rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .dropdown-input {

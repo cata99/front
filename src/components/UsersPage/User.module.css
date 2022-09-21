@@ -1,0 +1,45 @@
+.page-button-users {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
+.options_title {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: xx-large;
+}
+
+.options_div {
+  display: flex;
+  font-size: xx-large;
+  font-weight: 700;
+  justify-content: center;
+  gap: 10rem;
+  padding-bottom: 3rem;
+}
+
+.title {
+  color: white;
+  font-size: x-large;
+  padding: 1% 1.5% 0;
+}
+
+.first_row,
+.second_row,
+.third_row, .forth_row,.fifth_row {
+  display: flex;
+  clear: both;
+  margin-top: 1rem;
+}
+
+
+.checkbox_input{
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.column{
+  flex: 50%;
+}
