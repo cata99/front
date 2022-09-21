@@ -23,6 +23,7 @@ import VolunteerForm from "./components/UsersPage/VolunteerForm";
 import LifeEventForm from "./components/UsersPage/LifeEventForm";
 import RolForm from "./components/UsersPage/RolForm";
 import GroupForm from "./components/UsersPage/GroupForm";
+import DonorForm from "./components/UsersPage/DonorForm";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/life_event_form" element={<LifeEventForm />} />
         <Route path="/rol_form" element={<RolForm />} />
         <Route path="/group_form" element={<GroupForm />} />
+        <Route path="/donor_form" element={<DonorForm />} />
       </Routes>
     </Router>
   );

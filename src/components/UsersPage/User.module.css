@@ -30,15 +30,16 @@
 .second_row,
 .third_row, .forth_row,.fifth_row {
   display: flex;
-  gap: 2rem;
+  clear: both;
   margin-top: 1rem;
 }
 
-.forth_row{
-  gap: 15rem
-}
 
 .checkbox_input{
   width: 1.3rem;
   height: 1.3rem;
+}
+
+.column{
+  flex: 50%;
 }

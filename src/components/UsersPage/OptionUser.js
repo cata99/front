@@ -21,7 +21,7 @@ function OptionUser() {
           <Link to="/rol_form">
             <Button>Rol</Button>
           </Link>
-          <Link to="/disease_form">
+          <Link to="/donor_form">
             <Button>Donante</Button>
           </Link>
           <Link to="/group_form">
