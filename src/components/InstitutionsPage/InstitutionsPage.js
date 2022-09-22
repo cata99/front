@@ -7,6 +7,7 @@ import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import React, { useEffect, useState } from "react";
 import InstitutionCard from "../Card/InstitutionCard";
+import DropDownInput from "../Inputs/DropdownInput";
 
 function InstitutionPage() {
   const [instituciones, setInstituciones] = useState([]);
