@@ -31,7 +31,8 @@ function InstitutionPage() {
       {instituciones.map((institucion) => {
         return (
           <InstitutionCard
-          key={institucion.id}
+            key={institucion.id}
+            id={institucion.id}
             name={institucion.name}
             phone={institucion.phone}
             location={institucion.location}

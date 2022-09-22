@@ -1,6 +1,8 @@
 import React from "react";
 import GeneralCard from "./GeneralCard";
+import Button from "../Buttons/Button";
 import classes from "../Card/Card.module.css";
+import { Link } from "react-router-dom";
 
 function InstitutionCard(props) {
   return (
@@ -10,6 +12,11 @@ function InstitutionCard(props) {
         <h3>
           Telefono: {props.phone} - Ubicación: {props.location}
         </h3>
+      </div>
+      <div className={classes.right}>
+        <Link to={`/institution_form_edit/${props.id}`}><Button>Editar</Button></Link>
+        <Button>Info</Button>
+        <Button>Borrar</Button>
       </div>
     </GeneralCard>
   );

@@ -7,6 +7,7 @@ import UserPage from "./components/UsersPage/UsersPage";
 import InstitutionPage from "./components/InstitutionsPage/InstitutionsPage";
 import OptionInstitution from "./components/InstitutionsPage/OptionInstitution";
 import InstitutionForm from "./components/InstitutionsPage/InstitutionForm";
+import InstitutionFormEdit from "./components/InstitutionsPage/InstitutionFormEdit";
 import AuthorityForm from "./components/InstitutionsPage/AuthorityForm";
 import DiseaseForm from "./components/InstitutionsPage/DiseaseForm";
 
@@ -43,6 +44,7 @@ function App() {
         
         <Route path="/institution_option" element={<OptionInstitution />} />
         <Route path="/institution_form" element={<InstitutionForm />} />
+        <Route path="/institution_form_edit/:id" element={<InstitutionFormEdit />}/>
         <Route path="/authority_form" element={<AuthorityForm />} />
         <Route path="/disease_form" element={<DiseaseForm />} />
 
