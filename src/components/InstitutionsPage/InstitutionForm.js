@@ -8,7 +8,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function InstitutionForm() {
   const [enteredName, setEnteredName] = useState("");
@@ -40,8 +40,7 @@ function InstitutionForm() {
     ) {
       setError({
         title: "Error",
-        message:
-          "Los campos no pueden estar vacios para registrar un comedor",
+        message: "Los campos no pueden estar vacios para registrar un comedor",
       });
       setEnteredName("");
       setEnteredLocation("");
@@ -72,6 +71,7 @@ function InstitutionForm() {
     setError(null);
   };
 
+
   return (
     <Layout>
       {error && (
@@ -88,15 +88,27 @@ function InstitutionForm() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Nombre</label>
-            <input type="text" value={enteredName} onChange={nameChangeHandler}></input>
+            <input
+              type="text"
+              value={enteredName}
+              onChange={nameChangeHandler}
+            ></input>
           </div>
           <div className={classes.input_div}>
             <label>Ubicacion</label>
-            <input type="text" value={enteredLocation} onChange={locationChangeHandler}></input>
+            <input
+              type="text"
+              value={enteredLocation}
+              onChange={locationChangeHandler}
+            ></input>
           </div>
           <div className={classes.input_div}>
             <label>Teléfono</label>
-            <input type="text" value={enteredPhone} onChange={phoneChangeHandler}></input>
+            <input
+              type="text"
+              value={enteredPhone}
+              onChange={phoneChangeHandler}
+            ></input>
           </div>
           <Card className={style.institution_asociation}>
             <div className={classes.title_asociations}>

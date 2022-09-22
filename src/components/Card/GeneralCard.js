@@ -2,11 +2,11 @@ import Card from "./Card";
 import Button from "../Buttons/Button";
 import style from "./Card.module.css";
 
-function GeneralCard() {
+function GeneralCard(props) {
   return (
     <Card className={style.general}>
       <div className={style.title}>
-        <h2>Donacion</h2>
+        {props.children}
       </div>
       <div className={style.right}>
         <Button>Editar</Button>
