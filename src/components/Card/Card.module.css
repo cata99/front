@@ -23,13 +23,18 @@
 }
 
 .right {
+  display: flex;
   font-size: x-large;
-  margin-left: auto;
-  padding: 20px;
+  padding: 2%;
 }
 
 .title {
   padding: 0 1%;
+}
+
+.row{
+  display:flex;
+  width:100%;
 }
 
 .institution_asociation {
@@ -40,4 +45,19 @@
   text-align: right;
   font-size: larger;
   font-weight: 600;
+}
+
+.institution_card{
+  flex:50%;
+  margin-left: 2%;
+}
+
+.institution_card h3{
+font-weight: 100;
+}
+
+
+.institution_card_title{
+  gap: 2rem;
+  margin-top: 3.5% ;
 }

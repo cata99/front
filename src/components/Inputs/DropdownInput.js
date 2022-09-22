@@ -1,24 +1,15 @@
-import React from 'react';
+import * as React from 'react';
+//import TextField from '@mui/material/TextField';
+//import Autocomplete from '@mui/material/Autocomplete';
 
-
-const ExpensesFilter = (props) => {
-  const dropdownChangeHandler = (event) => {
-    props.onChangeFilter(event.target.value);
-  };
-
-  return (
-    <div className='expenses-filter'>
-      <div className='expenses-filter__control'>
-        <label>Filter by year</label>
-        <select value={props.selected} onChange={dropdownChangeHandler}>
-          <option value='2022'>2022</option>
-          <option value='2021'>2021</option>
-          <option value='2020'>2020</option>
-          <option value='2019'>2019</option>
-        </select>
-      </div>
-    </div>
-  );
-};
-
-export default ExpensesFilter;
+//export default function DropDownInput(props) {
+//  return (
+//    <Autocomplete
+//      disablePortal
+//      id="combo-box-demo"
+//      options={props.options}
+//      sx={{ width: 300 }}
+//      renderInput={(params) => <TextField {...params} label="Options" />}
+//    />
+//  );
+//}
