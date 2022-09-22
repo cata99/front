@@ -8,7 +8,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
@@ -72,13 +72,13 @@ function AuthorityFormEdit() {
   };
 
   const labelHandleChange = (value, label) => {
-    setInsObject({ ...insObject, [label]: value });
+    setAuthObject({ ...authObject, [label]: value });
   };
   const phoneHandleChange = (value, phone) => {
-    setInsObject({ ...insObject, [phone]: value });
+    setAuthObject({ ...authObject, [phone]: value });
   };
   const locationHandleChange = (value, location) => {
-    setInsObject({ ...insObject, [location]: value });
+    setAuthObject({ ...authObject, [location]: value });
   };
 
   return (
@@ -101,7 +101,7 @@ function AuthorityFormEdit() {
               type="text"
               className="name-input"
               value={authObject.label}
-              onChange={labelHandleChange}
+              onChange={(e) => labelHandleChange(e.target.value, "label")}
             ></input>
           </div>
           <div className={classes.input_div}>
@@ -110,7 +110,7 @@ function AuthorityFormEdit() {
               type="text"
               className="location-input"
               value={authObject.location}
-              onChange={phoneHandleChange}
+              onChange={(e) => locationHandleChange(e.target.value, "location")}
             ></input>
           </div>
           <div className={classes.input_div}>
@@ -119,7 +119,7 @@ function AuthorityFormEdit() {
               type="text"
               className="phone-input"
               value={authObject.phone}
-              onChange={locationHandleChange}
+              onChange={(e) => phoneHandleChange(e.target.value, "phone")}
             ></input>
           </div>
           <div className={button.button_div_right}>

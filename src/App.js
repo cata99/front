@@ -9,7 +9,11 @@ import OptionInstitution from "./components/InstitutionsPage/OptionInstitution";
 import InstitutionForm from "./components/InstitutionsPage/InstitutionForm";
 import InstitutionFormEdit from "./components/InstitutionsPage/InstitutionFormEdit";
 import AuthorityForm from "./components/InstitutionsPage/AuthorityForm";
-import DiseaseForm from "./components/InstitutionsPage/DiseaseForm";
+import AuthorityPage from "./components/InstitutionsPage/AuthorityPage";
+import AuthorityFormEdit from "./components/InstitutionsPage/AuthorityFormEdit";
+import DiseaseForm from "./components/InstitutionsPage/DiseaseForm"
+import DiseasePage from "./components/InstitutionsPage/DiseasePage";
+import DiseaseFormEdit from "./components/InstitutionsPage/DiseaseFormEdit";
 
 /*Movement imports */
 import OptionsMovement from "./components/MovementPage/OptionsMovement";
@@ -26,7 +30,6 @@ import RolForm from "./components/UsersPage/RolForm";
 import GroupForm from "./components/UsersPage/GroupForm";
 import DonorForm from "./components/UsersPage/DonorForm";
 
-
 function App() {
   return (
     <Router>
@@ -35,16 +38,32 @@ function App() {
         <Route path="/movements" element={<MovementPage />} />
         <Route path="/institutions" element={<InstitutionPage />} />
         <Route path="/users" element={<UserPage />} />
+        <Route path="/authorities" element={<AuthorityPage />} />
+        <Route path="/diseases" element={<DiseasePage />} />
 
         <Route path="/movement_option" element={<OptionsMovement />} />
         <Route path="/delivery_form" element={<DeliveryForm />} />
-        <Route path="/add_products_delivery" element={<AddProductsDelivery />}/>
+        <Route
+          path="/add_products_delivery"
+          element={<AddProductsDelivery />}
+        />
         <Route path="/product_form" element={<ProductForm />} />
         <Route path="/type_form" element={<TypeForm />} />
-        
+
         <Route path="/institution_option" element={<OptionInstitution />} />
         <Route path="/institution_form" element={<InstitutionForm />} />
-        <Route path="/institution_form_edit/:id" element={<InstitutionFormEdit />}/>
+        <Route
+          path="/institution_form_edit/:id"
+          element={<InstitutionFormEdit />}
+        />
+        <Route
+          path="/authority_form_edit/:id"
+          element={<AuthorityFormEdit />}
+        />
+        <Route
+          path="/disease_form_edit/:id"
+          element={<DiseaseFormEdit />}
+        />
         <Route path="/authority_form" element={<AuthorityForm />} />
         <Route path="/disease_form" element={<DiseaseForm />} />
 

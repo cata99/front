@@ -7,7 +7,6 @@ import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import React, { useEffect, useState } from "react";
 import InstitutionCard from "../Card/InstitutionCard";
-import DropDownInput from "../Inputs/DropdownInput";
 
 function InstitutionPage() {
   const [instituciones, setInstituciones] = useState([]);
@@ -25,6 +24,12 @@ function InstitutionPage() {
     <Layout>
       <InstitutionFilter></InstitutionFilter>
       <div className={button.button_div_right}>
+      <Link to="/diseases">
+          <Button>Ver enfermedades</Button>
+        </Link>
+      <Link to="/authorities">
+          <Button>Ver autoridades</Button>
+        </Link>
         <Link to="/institution_option">
           <Button>+</Button>
         </Link>

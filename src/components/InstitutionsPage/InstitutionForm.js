@@ -8,7 +8,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function InstitutionForm() {
   const [enteredName, setEnteredName] = useState("");
