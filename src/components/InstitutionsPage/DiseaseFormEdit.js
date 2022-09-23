@@ -59,6 +59,9 @@ function DiseaseFormEdit() {
       `http://localhost:8080/api/diseases/${id}`,
       requestOptions
     );
+    if(data.status ===200){
+      console.log("vamos los pi")
+    }
     data = await data.json();
     setDiseaseObject(data);
     console.log(data);
