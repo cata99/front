@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #043c34;
+  line-height: 3rem;
+  justify-content: right;
+  padding-right: 180px;
+  color: white;
+  font-size: large;
+}
+
+.row {
+  display: flex;
+}
+.session_button {
+  display: flex;
+  justify-content: right;
+  width: 75%;
+}
+.title {
+  display: flex;
+  justify-content: right;
+  font-size: 2rem;
+  width: 25%;
+}
+.right-li {
+  list-style: none;
+}
+
+/* Change the link color on hover */
+li:hover {
+  color: white;
+  font-size: x-large;
+}

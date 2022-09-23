@@ -73,7 +73,7 @@ function InstitutionForm() {
 
 
   return (
-    <Layout>
+    <Layout title="Comedores">
       {error && (
         <ErrorModal
           title={error.title}

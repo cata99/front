@@ -21,7 +21,7 @@ function InstitutionPage() {
     fetchInts();
   }, []);
   return (
-    <Layout>
+    <Layout title="Comedores">
       <InstitutionFilter></InstitutionFilter>
       <div className={button.button_div_right}>
       <Link to="/diseases">

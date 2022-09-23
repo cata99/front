@@ -21,8 +21,15 @@ function DiseasePage() {
     fetchDiseases();
   }, []);
   return (
-    <Layout>
+    <Layout title="Enfermedades">
+      <h1>Enfermedades</h1>
       <div className={button.button_div_right}>
+        <Link to="/institutions">
+          <Button>Ver comedores</Button>
+        </Link>
+        <Link to="/authorities">
+          <Button>Ver autoridades</Button>
+        </Link>
         <Link to="/disease_form">
           <Button>+</Button>
         </Link>

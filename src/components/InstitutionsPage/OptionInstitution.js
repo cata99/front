@@ -8,7 +8,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 function OptionInstitution() {
   return (
-    <Layout>
+    <Layout title="Comedores">
       <Card className={style.filter}>
         <div className={classes.options_title}>
           <Title>Seleccione elemento a registrar</Title>

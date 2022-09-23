@@ -50,7 +50,7 @@ function DiseaseForm() {
   };
 
   return (
-    <Layout>
+    <Layout title="Enfermedades">
       {error && (
         <ErrorModal
           title={error.title}

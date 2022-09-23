@@ -64,7 +64,7 @@ function DiseaseFormEdit() {
     console.log(data);
   };
   return (
-    <Layout>
+    <Layout title="Enfermedades">
       {error && (
         <ErrorModal
           title={error.title}

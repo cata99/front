@@ -5,7 +5,7 @@ function Layout(props) {
   return (
     <div style={{display:'flex',flexDirection:'column'}}>
       
-        <Header></Header>
+        <Header title={props.title}></Header>
       
       <div style={{display:'flex',gap:'0px',minHeight:'100vh'}}>
         <Menu></Menu>

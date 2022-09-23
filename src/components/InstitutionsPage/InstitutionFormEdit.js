@@ -77,7 +77,7 @@ function InstitutionFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Comedores">
       {error && (
         <ErrorModal
           title={error.title}

@@ -21,8 +21,14 @@ function AuthorityPage() {
     fetchAuthorities();
   }, []);
   return (
-    <Layout>
+    <Layout title="Autoridad">
       <div className={button.button_div_right}>
+        <Link to="/institutions">
+          <Button>Ver Comedores</Button>
+        </Link>
+        <Link to="/diseases">
+          <Button>Ver enfermedades</Button>
+        </Link>
         <Link to="/authority_form">
           <Button>+</Button>
         </Link>

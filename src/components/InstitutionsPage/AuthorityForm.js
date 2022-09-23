@@ -73,7 +73,7 @@ function AuthorityForm() {
   };
 
   return (
-    <Layout>
+    <Layout title="Autoridad">
       {error && (
         <ErrorModal
           title={error.title}

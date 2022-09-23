@@ -59,7 +59,7 @@ function AuthorityFormEdit() {
     };
     console.log(requestOptions);
     let data = await fetch(
-      `http://localhost:8080/api/institutions/${id}`,
+      `http://localhost:8080/api/authorities/${id}`,
       requestOptions
     );
     data = await data.json();
@@ -82,7 +82,7 @@ function AuthorityFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Autoridad">
       {error && (
         <ErrorModal
           title={error.title}
