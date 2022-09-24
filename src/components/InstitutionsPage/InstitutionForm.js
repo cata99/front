@@ -3,10 +3,11 @@ import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
 import ErrorModal from "../Modal/ErrorModal";
-
+import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
+import { Navigate } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -31,7 +32,11 @@ function InstitutionForm() {
 
   const [error, setError] = useState("");
 
-  const submitHandler = (event) => {
+  const [assert, setAssert] = useState("");
+
+  const [redirect, setRedirect] = useState(false);
+
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (
       enteredLocation.trim().length === 0 ||
@@ -57,10 +62,21 @@ function InstitutionForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(jsonBody),
     };
-    console.log(requestOptions);
-    fetch("http://localhost:8080/api/institutions/", requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result));
+    let data = await fetch(
+      "http://localhost:8080/api/institutions/",
+      requestOptions
+    );
+    if (data.status > 400){
+      setError({
+        title: "Algo ha salido mal!",
+        message: "La operación no ha podido completarse, por favor "
+      }); return ;
+    }
+
+    setAssert({
+      title: "Felicitaciones", 
+      message: "La operación se ha completado con exito"
+    })
 
     setEnteredName("");
     setEnteredLocation("");
@@ -71,6 +87,10 @@ function InstitutionForm() {
     setError(null);
   };
 
+  const assertHandler = () => {
+    setAssert(null);
+    setRedirect(true);
+  };
 
   return (
     <Layout title="Comedores">
@@ -81,6 +101,14 @@ function InstitutionForm() {
           onConfirm={errorHandler}
         ></ErrorModal>
       )}
+      {assert && (
+        <ResponseModal
+          title={assert.title}
+          message={assert.message}
+          onConfirm={assertHandler}
+        ></ResponseModal>
+      )}
+      {redirect && <Navigate to="/institutions"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar comedor</Title>

@@ -38,6 +38,17 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .response_modal{
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    width: 80%;
+    z-index: 100;
+    overflow: hidden;
+    background-color: #16d5a5;
+    border-radius: 12px;
+  }
   
   @media (min-width: 768px) {
     .modal {

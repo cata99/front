@@ -3,11 +3,12 @@ import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
 import ErrorModal from "../Modal/ErrorModal";
+import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 
 function InstitutionFormEdit() {
   const { id } = useParams();
@@ -31,6 +32,15 @@ function InstitutionFormEdit() {
 
   const errorHandler = () => {
     setError(null);
+  };
+
+  const [assert, setAssert] = useState("");
+
+  const [redirect, setRediret] = useState(false);
+
+  const assertHandler = () => {
+    setAssert(null);
+    setRediret(true);
   };
 
   const nameHandleChange = (value, name) => {
@@ -71,9 +81,19 @@ function InstitutionFormEdit() {
       `http://localhost:8080/api/institutions/${id}`,
       requestOptions
     );
+    if (data.status > 400) {
+      setError({
+        title: "Error",
+        message:
+          "No se ha podido actualizar la institución, por favor comuniquese con el area de sistemas",
+      });return;
+    }
     data = await data.json();
     setInsObject(data);
-    console.log(data);
+    setAssert({
+      title: "Felicitaciones",
+      message: "Se ha podido crear la autoridad con exito",
+    });
   };
 
   return (
@@ -85,6 +105,14 @@ function InstitutionFormEdit() {
           onConfirm={errorHandler}
         ></ErrorModal>
       )}
+      {assert && (
+        <ResponseModal
+          title={assert.title}
+          message={assert.message}
+          onConfirm={assertHandler}
+        ></ResponseModal>
+      )}
+      {redirect && <Navigate to="/institutions"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Editar comedor</Title>

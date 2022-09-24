@@ -3,12 +3,13 @@ import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
 import ErrorModal from "../Modal/ErrorModal";
-
+import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 function AuthorityForm() {
   const [enteredName, setEnteredName] = useState("");
@@ -31,7 +32,16 @@ function AuthorityForm() {
 
   const [error, setError] = useState("");
 
-  const submitHandler = (event) => {
+  const [assert, setAssert] = useState("");
+
+  const [redirect, setRediret] = useState(false);
+
+  const assertHandler = () => {
+    setAssert(null);
+    setRediret(true);
+  };
+
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (
       enteredLocation.trim().length === 0 ||
@@ -58,10 +68,22 @@ function AuthorityForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(jsonBody),
     };
-    console.log(requestOptions);
-    fetch("http://localhost:8080/api/authorities/", requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result));
+
+    let data = await fetch(
+      "http://localhost:8080/api/authorities/",
+      requestOptions
+    );
+    if (data.status > 400) {
+      setError({
+        title: "Error",
+        message:
+          "No se ha podido crear la autoridad, por favor comuniquese con el area de sistemas",
+      });return;
+    }
+    setAssert({
+      title: "Felicitaciones",
+      message: "Se ha podido crear la autoridad con exito",
+    });
 
     setEnteredName("");
     setEnteredLocation("");
@@ -81,6 +103,14 @@ function AuthorityForm() {
           onConfirm={errorHandler}
         ></ErrorModal>
       )}
+      {assert && (
+        <ResponseModal
+          title={assert.title}
+          message={assert.message}
+          onConfirm={assertHandler}
+        ></ResponseModal>
+      )}
+      {redirect && <Navigate to="/authorities" ></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar autoridad</Title>

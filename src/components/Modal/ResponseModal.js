@@ -10,12 +10,15 @@ const Backdrop = (props) => {
 
 const Overlay = (props) => {
   return (
-    <Card className={classes.modal}>
+    <Card className={classes.response_modal}>
       <div className={classes.header}>
-        <h2>{props.response}</h2>
+        <h2>{props.title}</h2>
+      </div>
+      <div className={classes.content}>
+        <p>{props.message}</p>
       </div>
       <footer className={classes.actions}>
-        <Button label="Cerrar" onClick={props.onConfirm}>
+       <Button label="Cerrar" onClick={props.onConfirm}>
           Cerrar
         </Button>
       </footer>
@@ -30,7 +33,14 @@ const ResponseModal = (props) => {
         <Backdrop onConfirm={props.onConfirm} />,
         document.getElementById("backdrop-root")
       )}
-      {ReactDOM.createPortal( <Overlay response={props.response} onConfirm={props.onConfirm}/>, document.getElementById("overlay-root"))}
+      {ReactDOM.createPortal(
+        <Overlay
+          title={props.title}
+          message={props.message}
+          onConfirm={props.onConfirm}
+        />,
+        document.getElementById("overlay-root")
+      )}
     </React.Fragment>
   );
 };
