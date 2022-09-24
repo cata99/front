@@ -6,11 +6,6 @@ import axios from "axios";
 
 
 function HomeItem(props) {
-
-    function getQuantity(){
-        const result= axios.get("http://localhost:8080/api/attributes/")
-        console.log(result)
-    }
   return (
     <Card className={style.home_item}>
       <div>

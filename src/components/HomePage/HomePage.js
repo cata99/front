@@ -1,55 +1,69 @@
 import HomeItem from "./HomeItem";
 import Layout from "../Layout/Layout";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
-function HomePage(){
-
-  const [institutionTotal, setInstitutionTotal] = useState('');
-  const [donationTotal, setDonationTotal] = useState('');
-  const [deliveryTotal, setDeliveryTotal] = useState('');
-  const [volunteerTotal, setVolunteerTotal] = useState('');
+function HomePage() {
+  const [institutionTotal, setInstitutionTotal] = useState("");
+  const [donationTotal, setDonationTotal] = useState("");
+  const [deliveryTotal, setDeliveryTotal] = useState("");
+  const [volunteerTotal, setVolunteerTotal] = useState("");
 
   useEffect(() => {
-
-
-    const fetchQuantities = async () => {
-      let dataInstitutions = await fetch("http://localhost:8080/api/institutions/all");
-      dataInstitutions = dataInstitutions.json();
-      setInstitutionTotal(dataInstitutions);
-      console.log(institutionTotal);
-      let dataDonations =await fetch("http://localhost:8080/api/donations/all");
-      dataDonations = dataDonations.json();
-      setDonationTotal(dataDonations);
-      console.log(donationTotal)
-      let dataDeliveries =await fetch("http://localhost:8080/api/deliveries/all");
-      dataDeliveries = dataDeliveries.json();
-      setDeliveryTotal(dataDeliveries);
-      console.log(deliveryTotal)
-      let dataVolunteers =await fetch("http://localhost:8080/api/users/all");
-      dataVolunteers = dataVolunteers.json();
-      setVolunteerTotal(dataVolunteers);
-      console.log(volunteerTotal)
-
+    const fetchInstitution = async () => {
+      let dataInstitutions = await fetch(
+        "http://localhost:8080/api/institutions/all"
+      );
+      dataInstitutions = await dataInstitutions.json();
+      console.log(dataInstitutions);
+      setInstitutionTotal(dataInstitutions.count);
     };
-
-    fetchQuantities();
+    fetchInstitution();
   }, []);
 
-    const boxHome=[
-        {title:'Donaciones recibidas hasta la fecha'},
-        {title:'Entregas realizadas hasta la fecha'},
-        {title:'Voluntarios registrados hasta la fecha'},
-        {title:'Instituciones a las que ayudamos'},
-      ]
-    
-      return (
-        <Layout>
-       <HomeItem title={boxHome[0].title} quantity={donationTotal}></HomeItem>
-       <HomeItem title={boxHome[1].title} quantity={deliveryTotal}></HomeItem>
-       <HomeItem title={boxHome[2].title} quantity={volunteerTotal}></HomeItem>
-       <HomeItem title={boxHome[3].title} quantity={institutionTotal}></HomeItem>
-       </Layout>
+  useEffect(() => {
+    const fetchDonations = async () => {
+      let dataDonations = await fetch(
+        "http://localhost:8080/api/donations/all"
       );
+      dataDonations = await dataDonations.json();
+      console.log(dataDonations);
+      setDonationTotal(dataDonations.count);
+    };
+    fetchDonations();
+  }, []);
+
+  useEffect(() => {
+    const fetchDeliveries = async () => {
+      let dataDeliveries = await fetch(
+        "http://localhost:8080/api/deliveries/all"
+      );
+      dataDeliveries = await dataDeliveries.json();
+      console.log(dataDeliveries);
+      setDeliveryTotal(dataDeliveries.count);
+    };
+    fetchDeliveries();
+  }, []);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      let dataUsers = await fetch(
+        "http://localhost:8080/api/users/all"
+      );
+      dataUsers = await dataUsers.json();
+      console.log(dataUsers);
+      setVolunteerTotal(dataUsers.count);
+    };
+    fetchUsers();
+  }, []);
+
+  return (
+    <Layout>
+      <HomeItem title="Donaciones recibidas hasta la fecha"  quantity={donationTotal}></HomeItem>
+      <HomeItem title="Entregas realizadas hasta la fecha" quantity={deliveryTotal}></HomeItem>
+      <HomeItem title="Voluntarios registrados hasta la fecha" quantity={volunteerTotal}></HomeItem>
+      <HomeItem title="Instituciones a las que ayudamos" quantity={institutionTotal}></HomeItem>
+    </Layout>
+  );
 }
 
 export default HomePage;
