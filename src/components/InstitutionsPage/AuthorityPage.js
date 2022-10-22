@@ -1,28 +1,29 @@
-import InstitutionFilter from "../Filters/InstitutionFilter";
+import React from "react";
 import Button from "../Buttons/Button";
 import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
-import style from "../Card/Card.module.css";
-import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import AuthorityCard from "../Card/AuthorityCard";
 
 function AuthorityPage() {
   const [authorities, setAuthorities] = useState([]);
   useEffect(() => {
     const fetchAuthorities = async () => {
-      let data = await fetch("http://localhost:8080/api/authorities/");
-      data = await data.json();
-      setAuthorities(data);
+      axios.get("http://localhost:8080/api/authorities/").then((response) => {
+        setAuthorities(response.data);
+      });
     };
-    console.log(authorities);
 
     fetchAuthorities();
   }, []);
   return (
     <Layout title="Autoridad">
       <div className={button.button_div_right}>
+        <Link to={`/add_authority/`}>
+          <Button>Asociar a institucion</Button>
+        </Link>
         <Link to="/institutions">
           <Button>Ver Comedores</Button>
         </Link>
@@ -33,7 +34,7 @@ function AuthorityPage() {
           <Button>+</Button>
         </Link>
       </div>
-      {authorities.map((authority) => {
+      {authorities.reverse().map((authority) => {
         return (
           <AuthorityCard
             key={authority.id}

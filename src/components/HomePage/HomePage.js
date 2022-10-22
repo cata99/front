@@ -1,6 +1,7 @@
+import React from "react";
 import HomeItem from "./HomeItem";
 import Layout from "../Layout/Layout";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
 function HomePage() {
   const [institutionTotal, setInstitutionTotal] = useState("");
@@ -46,9 +47,7 @@ function HomePage() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      let dataUsers = await fetch(
-        "http://localhost:8080/api/users/all"
-      );
+      let dataUsers = await fetch("http://localhost:8080/api/users/all");
       dataUsers = await dataUsers.json();
       console.log(dataUsers);
       setVolunteerTotal(dataUsers.count);
@@ -57,11 +56,23 @@ function HomePage() {
   }, []);
 
   return (
-    <Layout>
-      <HomeItem title="Donaciones recibidas hasta la fecha"  quantity={donationTotal}></HomeItem>
-      <HomeItem title="Entregas realizadas hasta la fecha" quantity={deliveryTotal}></HomeItem>
-      <HomeItem title="Voluntarios registrados hasta la fecha" quantity={volunteerTotal}></HomeItem>
-      <HomeItem title="Instituciones a las que ayudamos" quantity={institutionTotal}></HomeItem>
+    <Layout title="Home">
+      <HomeItem
+        title="Donaciones recibidas hasta la fecha"
+        quantity={donationTotal}
+      ></HomeItem>
+      <HomeItem
+        title="Entregas realizadas hasta la fecha"
+        quantity={deliveryTotal}
+      ></HomeItem>
+      <HomeItem
+        title="Voluntarios registrados hasta la fecha"
+        quantity={volunteerTotal}
+      ></HomeItem>
+      <HomeItem
+        title="Instituciones a las que ayudamos"
+        quantity={institutionTotal}
+      ></HomeItem>
     </Layout>
   );
 }

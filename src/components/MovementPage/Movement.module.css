@@ -1,4 +1,4 @@
-.add_movement{
+.add_movement {
   display: flex;
   justify-content: flex-end;
   padding: 0.5%;
@@ -6,19 +6,19 @@
   font-weight: 600;
 }
 
-.date_input{
+.date_input {
   line-height: 2rem;
 }
 
 /*Create movement page*/
-.options_title{
+.options_title {
   color: white;
   text-align: center;
   padding: 2rem;
   font-size: xx-large;
 }
 
-.options_div{
+.options_div {
   display: flex;
   font-size: xx-large;
   font-weight: 700;
@@ -28,8 +28,8 @@
 }
 
 /*Create delivery form*/
-.title{
-  color:white;
+.title {
+  color: white;
   font-size: x-large;
   padding: 1% 1.5% 0;
 }
@@ -39,7 +39,7 @@
   font-size: x-large;
 }
 
-.input_div input{
+.input_div {
   margin: 1%;
 }
 
@@ -50,7 +50,7 @@
 }
 
 /*Add Products*/
-.title_product{
+.title_product {
   color: black;
   padding: 0 1%;
 }
@@ -66,6 +66,17 @@
   font-size: xx-large;
 }
 
-.add_product_button{
-  margin:0.3%
+.add_product_button {
+  margin: 2.3%;
+}
+
+.wrapper_date {
+  display: flex;
+  gap: 2rem;
+}
+
+.attribute_div,.new_attribute {
+  display: flex;
+  content: center;
+  gap: 3rem;
 }

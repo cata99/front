@@ -1,16 +1,21 @@
 /*General for filters*/
 form {
   background-color: #4eab9e;
-  padding: 20px 27px;
+  padding: 20px;
   font-size: x-large;
   color: white;
 }
-input {
+input, option, select {
   display: block;
   font-size: x-large;
-  padding-right: 27rem;
+  padding-right: 20rem;
   border-radius: 4px;
   margin-right: 2rem;
+}
+
+select{
+  margin-top: 2.3rem;
+  border: solid black 1px;
 }
 
 label{
@@ -29,10 +34,12 @@ label{
 .first_row {
   display: flex;
   margin-top: 1rem;
+  gap: 2rem;
 }
 
 .second_row {
   display: flex;
+  gap: 2rem;
 }
 
 .third_row {
@@ -40,6 +47,7 @@ label{
   gap: 4rem;
   justify-content: center;
   margin-top: 1%;
+  gap: 2rem;
 }
 
 .general_checkbox_div {

@@ -1,8 +1,8 @@
+import React from "react";
 import "./HomeItem.css";
 import Card from "../Card/Card";
 import style from "../Card/Card.module.css"
 
-import axios from "axios";
 
 
 function HomeItem(props) {

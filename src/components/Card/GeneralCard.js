@@ -1,3 +1,4 @@
+import React  from 'react';
 import Card from "./Card";
 import style from "./Card.module.css";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -7,6 +8,7 @@ import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
+import TextField from "@material-ui/core/TextField";
 import { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
@@ -109,12 +111,18 @@ function DiseaseFormEdit() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Nombre</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
-              className="name-input"
+              placeholder="Ingrese nombre de la enfermedad"
               value={diseaseObject.label}
               onChange={(e) => labelHandleChange(e.target.value, "label")}
-            ></input>
+            />
           </div>
 
           <div className={button.button_div_right}>

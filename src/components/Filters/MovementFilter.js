@@ -1,27 +1,28 @@
+import React from "react";
 import Card from "../Card/Card";
 import classes from "./Filter.module.css";
 import Button from "../Buttons/Button";
 import style from "../Card/Card.module.css";
 import button from "../Buttons/Button.module.css";
+import TextField from "@material-ui/core/TextField";
 
 function MovementFilter() {
   return (
     <Card className={style.filter}>
       <form>
+        <h1>Filtros de donaciones</h1>
         <div className={classes.first_row}>
           <div className={classes.space_margin}>
             <label>Comedor</label>
-            <input type="text"></input>
-          </div>
-          <div className={classes.general_checkbox_div}>
-            <div className={classes.space_margin}>
-              <label>donación</label>
-              <input type="checkbox" className={classes.checkbox_input}></input>
-            </div>
-            <div className={classes.space_margin}>
-              <label>entrega</label>
-              <input type="checkbox" className={classes.checkbox_input}></input>
-            </div>
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
+              type="text"
+            />
           </div>
         </div>
 
@@ -32,11 +33,27 @@ function MovementFilter() {
           <div className={classes.wrapper_date}>
             <div className={classes.space_margin}>
               <label>Desde</label>
-              <input type="date" className={classes.date_input}></input>
+              <TextField
+                id="text-field group"
+                style={{ width: "35rem" }}
+                variant="outlined"
+                inputProps={{
+                  style: { width: "35rem" },
+                }}
+                type="date"
+              />
             </div>
             <div className={classes.space_margin}>
               <label>Hasta</label>
-              <input type="date" className={classes.date_input}></input>
+              <TextField
+                id="text-field group"
+                style={{ width: "35rem" }}
+                variant="outlined"
+                inputProps={{
+                  style: { width: "35rem" },
+                }}
+                type="date"
+              />
             </div>
           </div>
           <p>
@@ -45,11 +62,27 @@ function MovementFilter() {
           <div className={classes.wrapper_date}>
             <div className={classes.space_margin}>
               <label>Desde</label>
-              <input type="date" className={classes.date_input}></input>
+              <TextField
+                id="text-field group"
+                style={{ width: "35rem" }}
+                variant="outlined"
+                inputProps={{
+                  style: { width: "35rem" },
+                }}
+                type="date"
+              />
             </div>
             <div className={classes.space_margin}>
               <label>Hasta</label>
-              <input type="date" className={classes.date_input}></input>
+              <TextField
+                id="text-field group"
+                style={{ width: "35rem" }}
+                variant="outlined"
+                inputProps={{
+                  style: { width: "35rem" },
+                }}
+                type="date"
+              />
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import classes from "./Filter.module.css";
 import Card from "../Card/Card";
 import button from "../Buttons/Button.module.css";

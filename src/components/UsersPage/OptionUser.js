@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -17,9 +18,6 @@ function OptionUser() {
         <div className={classes.options_div}>
           <Link to="/volunteer_form">
             <Button>Voluntario</Button>
-          </Link>
-          <Link to="/rol_form">
-            <Button>Rol</Button>
           </Link>
           <Link to="/donor_form">
             <Button>Donante</Button>

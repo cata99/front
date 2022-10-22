@@ -1,3 +1,4 @@
+import React from "react";
 import Card from "../Card/Card";
 import Layout from "../Layout/Layout";
 import Button from "../Buttons/Button";
@@ -6,8 +7,10 @@ import ErrorModal from "../Modal/ErrorModal";
 import classes from "./Movement.module.css";
 import button from "../Buttons/Button.module.css";
 import style from "../Card/Card.module.css";
+import TextField from "@material-ui/core/TextField";
+import ResponseModal from "../Modal/ResponseModal";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 function TypeForm() {
   const [enteredType, setEnteredType] = useState("");
@@ -17,9 +20,18 @@ function TypeForm() {
   };
 
   const [error, setError] = useState('');
+  
+  const [redirect, setRedirect] = useState(false);
+
+  const [assert, setAssert] = useState("");
 
   const errorHandler = () => {
     setError(null);
+  };
+
+  const assertHandler = () => {
+    setAssert(null);
+    setRedirect(true);
   };
 
   const submitHandler = (event) => {
@@ -28,7 +40,7 @@ function TypeForm() {
     if (enteredType.trim().length === 0) {
       setError({
         title: "Nombre invalido!",
-        message: "Por favor ingrese un nombre valido para las enfermedades",
+        message: "Por favor ingrese un nombre valido para el tipo",
       });
       return;
     }
@@ -46,6 +58,10 @@ function TypeForm() {
     fetch("http://localhost:8080/api/product_types/", requestOptions)
       .then((response) => response.json())
       .then((result) => console.log(result));
+      setAssert({
+        title: "Felicitaciones",
+        message: "La operación se ha completado con exito",
+      });
 
       setEnteredType('');
   };
@@ -59,6 +75,14 @@ function TypeForm() {
           onConfirm={errorHandler}
         ></ErrorModal>
       )}
+      {assert && (
+        <ResponseModal
+          title={assert.title}
+          message={assert.message}
+          onConfirm={assertHandler}
+        ></ResponseModal>
+      )}
+      {redirect && <Navigate to="/product_form"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Asociar Producto</Title>
@@ -66,7 +90,18 @@ function TypeForm() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Tipo de producto</label>
-            <input type="text" value={enteredType} onChange={typeChangeHandler}></input>
+            <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  placeholder="Ejemplo: Perecedero, muebles, entre otros"
+                  type="text"
+                  value={enteredType}
+                  onChange={typeChangeHandler}
+                />
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>

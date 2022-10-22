@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -7,6 +8,8 @@ import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
+
+import TextField from "@material-ui/core/TextField";
 
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -78,7 +81,8 @@ function AuthorityForm() {
         title: "Error",
         message:
           "No se ha podido crear la autoridad, por favor comuniquese con el area de sistemas",
-      });return;
+      });
+      return;
     }
     setAssert({
       title: "Felicitaciones",
@@ -110,7 +114,7 @@ function AuthorityForm() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/authorities" ></Navigate>}
+      {redirect && <Navigate to="/authorities"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar autoridad</Title>
@@ -118,30 +122,48 @@ function AuthorityForm() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Nombre</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
-              className="name-input"
+              placeholder="Ingrese nombre de la autoridad"
               value={enteredName}
               onChange={nameChangeHandler}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Ubicacion</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
-              className="location-input"
+              placeholder="Ingrese ubicación de la autoridad"
               value={enteredLocation}
               onChange={locationChangeHandler}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Teléfono</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
-              className="phone-input"
+              placeholder="Ingrese teléfono de la autoridad"
               value={enteredPhone}
               onChange={phoneChangeHandler}
-            ></input>
+            />
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>

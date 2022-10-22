@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -18,7 +19,12 @@ function OptionsMovement() {
           <Link to="/delivery_form">
             <Button>Entrega</Button>
           </Link>
-          <Button>Donación</Button>
+          <Link to="/donation_form">
+            <Button>Donación</Button>
+          </Link>
+          <Link to="/product_form">
+            <Button>Productos</Button>
+          </Link>
         </div>
       </Card>
     </Layout>

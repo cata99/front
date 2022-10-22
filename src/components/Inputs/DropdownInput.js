@@ -1,15 +1,16 @@
-import * as React from 'react';
-//import TextField from '@mui/material/TextField';
-//import Autocomplete from '@mui/material/Autocomplete';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
-//export default function DropDownInput(props) {
-//  return (
-//    <Autocomplete
-//      disablePortal
-//      id="combo-box-demo"
-//      options={props.options}
-//      sx={{ width: 300 }}
-//      renderInput={(params) => <TextField {...params} label="Options" />}
-//    />
-//  );
-//}
+function DropDownInput(props) {
+  return (
+    <Autocomplete
+      options={props.options}
+      getOptionLabel={(option) => option.value}
+      style={{ width: 300 }}
+      renderInput={(params) => (
+        <TextField {...params} label="Example" variant="outlined" />
+      )}></Autocomplete>
+  );
+}
+export default DropDownInput

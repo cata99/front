@@ -1,29 +1,29 @@
-import InstitutionFilter from "../Filters/InstitutionFilter";
+import React from "react";
 import Button from "../Buttons/Button";
 import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
-import style from "../Card/Card.module.css";
-import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DiseaseCard from "../Card/DiseaseCard";
+import axios from "axios";
 
 function DiseasePage() {
   const [diseases, setDiseases] = useState([]);
   useEffect(() => {
     const fetchDiseases = async () => {
-      let data = await fetch("http://localhost:8080/api/diseases/");
-      data = await data.json();
-      setDiseases(data);
+      axios.get("http://localhost:8080/api/diseases/").then((response) => {
+        setDiseases(response.data);
+      });
     };
-    console.log(diseases);
 
     fetchDiseases();
   }, []);
   return (
     <Layout title="Enfermedades">
-      <h1>Enfermedades</h1>
       <div className={button.button_div_right}>
+        <Link to={`/add_disease/`}>
+          <Button>Asociar a institución</Button>
+        </Link>
         <Link to="/institutions">
           <Button>Ver comedores</Button>
         </Link>
@@ -34,7 +34,7 @@ function DiseasePage() {
           <Button>+</Button>
         </Link>
       </div>
-      {diseases.map((disease) => {
+      {diseases.reverse().map((disease) => {
         return (
           <DiseaseCard
             key={disease.id}

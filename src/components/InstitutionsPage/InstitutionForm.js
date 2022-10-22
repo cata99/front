@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -7,6 +8,7 @@ import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
+import TextField from "@material-ui/core/TextField";
 import { Navigate } from "react-router-dom";
 
 import { useState } from "react";
@@ -66,17 +68,18 @@ function InstitutionForm() {
       "http://localhost:8080/api/institutions/",
       requestOptions
     );
-    if (data.status > 400){
+    if (data.status > 400) {
       setError({
         title: "Algo ha salido mal!",
-        message: "La operación no ha podido completarse, por favor "
-      }); return ;
+        message: "La operación no ha podido completarse, por favor ",
+      });
+      return;
     }
 
     setAssert({
-      title: "Felicitaciones", 
-      message: "La operación se ha completado con exito"
-    })
+      title: "Felicitaciones",
+      message: "La operación se ha completado con exito",
+    });
 
     setEnteredName("");
     setEnteredLocation("");
@@ -116,44 +119,49 @@ function InstitutionForm() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Nombre</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese nombre de la institución"
               value={enteredName}
               onChange={nameChangeHandler}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Ubicacion</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese la ubicación de la institución"
               value={enteredLocation}
               onChange={locationChangeHandler}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Teléfono</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese el teléfono de la institución"
               value={enteredPhone}
               onChange={phoneChangeHandler}
-            ></input>
+            />
           </div>
-          <Card className={style.institution_asociation}>
-            <div className={classes.title_asociations}>
-              <Title>Autoridad</Title>
-            </div>
-            <div className={style.right}>
-              <Button>Asociar</Button>
-            </div>
-          </Card>
-          <Card className={style.institution_asociation}>
-            <div className={classes.title_asociations}>
-              <Title>Enfermedad</Title>
-            </div>
-            <div className={style.right}>
-              <Button>Asociar</Button>
-            </div>
-          </Card>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>
           </div>

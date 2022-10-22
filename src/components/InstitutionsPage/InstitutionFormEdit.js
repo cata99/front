@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
@@ -7,8 +8,9 @@ import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
+import TextField from "@material-ui/core/TextField";
 import { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 
 function InstitutionFormEdit() {
   const { id } = useParams();
@@ -86,7 +88,8 @@ function InstitutionFormEdit() {
         title: "Error",
         message:
           "No se ha podido actualizar la institución, por favor comuniquese con el area de sistemas",
-      });return;
+      });
+      return;
     }
     data = await data.json();
     setInsObject(data);
@@ -120,27 +123,48 @@ function InstitutionFormEdit() {
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Nombre</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese nombre de la institución"
               value={insObject.name}
               onChange={(e) => nameHandleChange(e.target.value, "name")}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Ubicacion</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese la ubicación de la institución"
               value={insObject.location}
               onChange={(e) => locationHandleChange(e.target.value, "location")}
-            ></input>
+            />
           </div>
           <div className={classes.input_div}>
             <label>Teléfono</label>
-            <input
+            <TextField
+              id="text-field group"
+              style={{ width: "35rem" }}
+              variant="outlined"
+              inputProps={{
+                style: { width: "35rem" },
+              }}
               type="text"
+              placeholder="Ingrese la ubicación de la institución"
               value={insObject.phone}
               onChange={(e) => phoneHandleChange(e.target.value, "phone")}
-            ></input>
+            />
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Editar</Button>

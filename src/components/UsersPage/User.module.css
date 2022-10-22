@@ -28,18 +28,30 @@
 
 .first_row,
 .second_row,
-.third_row, .forth_row,.fifth_row {
+.third_row,
+.forth_row,
+.fifth_row {
   display: flex;
   clear: both;
   margin-top: 1rem;
+  gap: 2rem;
 }
 
+.sixth_row{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.5rem 5rem
+}
 
-.checkbox_input{
+.checkbox_input {
   width: 1.3rem;
   height: 1.3rem;
 }
 
-.column{
+.column {
   flex: 50%;
+}
+
+.groupName {
+  width: 35rem;
 }
