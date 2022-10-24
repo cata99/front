@@ -17,6 +17,9 @@ import DiseasePage from "./components/InstitutionsPage/DiseasePage";
 import DiseaseFormEdit from "./components/InstitutionsPage/DiseaseFormEdit";
 import AddAuthority from "./components/InstitutionsPage/AddAuthority";
 import AddDisease from "./components/InstitutionsPage/AddDisease";
+import AuthorityFormInfo from "./components/InstitutionsPage/AuthorityFormInfo";
+import DiseaseFormInfo from "./components/InstitutionsPage/DiseaseFormInfo";
+import InstitutionFormInfo from "./components/InstitutionsPage/InstitutionFormInfo";
 
 /*Movement imports */
 import OptionsMovement from "./components/MovementPage/OptionsMovement";
@@ -38,6 +41,9 @@ import DonorForm from "./components/UsersPage/DonorForm";
 import VolunteerPage from "./components/UsersPage/VolunteerPage";
 import DonorPage from "./components/UsersPage/DonorPage";
 import GroupPage from "./components/UsersPage/GroupPage";
+import VolunteerFormEdit from "./components/UsersPage/VolunteerFormEdit";
+import DonorsFormEdit from "./components/UsersPage/DonorFormEdit";
+import DonorsFormInfo from "./components/UsersPage/DonorFormInfo";
 
 function App() {
   return (
@@ -68,17 +74,38 @@ function App() {
           element={<InstitutionFormEdit />}
         />
         <Route
+          path="/institution_form_info/:id"
+          element={<InstitutionFormInfo />}
+        />
+        <Route
           path="/authority_form_edit/:id"
           element={<AuthorityFormEdit />}
+        />
+         <Route
+          path="/authority_form_info/:id"
+          element={<AuthorityFormInfo />}
         />
         <Route path="/add_authority/" element={<AddAuthority />} />
         <Route path="/add_disease/" element={<AddDisease />} />
         <Route path="/disease_form_edit/:id" element={<DiseaseFormEdit />} />
+        <Route path="/disease_form_info/:id" element={<DiseaseFormInfo />} />
         <Route path="/authority_form" element={<AuthorityForm />} />
         <Route path="/disease_form" element={<DiseaseForm />} />
 
         <Route path="/users_option" element={<OptionUser />} />
         <Route path="/volunteer_form" element={<VolunteerForm />} />
+        <Route
+          path="/users_form_edit/:id"
+          element={<VolunteerFormEdit />}
+        />
+        <Route
+          path="/donors_form_edit/:id"
+          element={<DonorsFormEdit />}
+        />
+        <Route
+          path="/donors_form_info/:id"
+          element={<DonorsFormInfo />}
+        />
         <Route path="/life_event_form" element={<LifeEventForm />} />
         <Route path="/group_form" element={<GroupForm />} />
         <Route path="/donor_form" element={<DonorForm />} />

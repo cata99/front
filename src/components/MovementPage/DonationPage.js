@@ -23,7 +23,7 @@ function DonationPage(props) {
 
   return (
     <Layout title="Donaciones">
-      <MovementFilters></MovementFilters>
+      <MovementFilters filter="donaciones"></MovementFilters>
       <div className={button.button_div_right}>
         <Link to="/products">
           <Button>Ver productos</Button>

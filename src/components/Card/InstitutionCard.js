@@ -18,7 +18,7 @@ function InstitutionCard(props) {
           <Link to={`/institution_form_edit/${props.id}`}>
             <Button>Editar</Button>
           </Link>
-          <Link to="/"><Button>Info</Button></Link>
+          <Link to={`/institution_form_info/${props.id}`}><Button>Info</Button></Link>
           <Link to="/"><Button>Borrar</Button></Link>
         </div>
       </div>

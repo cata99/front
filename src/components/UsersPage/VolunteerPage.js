@@ -4,8 +4,8 @@ import Layout from "../Layout/Layout";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import button from "../Buttons/Button.module.css";
-import UsersCard from "../Card/UsersCard";
 import { useEffect, useState } from "react";
+import VolunteersCard from "../Card/VolunteersCard";
 function VolunteerPage() {
 
   const [volunteers, setVolunteers] = useState([]);
@@ -33,14 +33,14 @@ function VolunteerPage() {
       </div>
       {volunteers.reverse().map((volunteer) => {
         return (
-          <UsersCard
+          <VolunteersCard
             key={volunteer.id}
             id={volunteer.id}
             firstName={volunteer.personalInformation.firstName}
             lastName={volunteer.personalInformation.lastName}
             phone={volunteer.personalInformation.phone}
             email={volunteer.personalInformation.email}
-          ></UsersCard>
+          ></VolunteersCard>
         );
       })}
       

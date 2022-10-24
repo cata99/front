@@ -23,7 +23,7 @@ function DeliveryPage() {
 
   return (
     <Layout title="Entregas">
-      <MovementFilters></MovementFilters>
+      <MovementFilters filter="entrega"></MovementFilters>
       <div className={button.button_div_right}>
         <Link to="/products">
           <Button>Ver productos</Button>

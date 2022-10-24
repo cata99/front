@@ -106,7 +106,7 @@ function DiseaseFormEdit() {
       {redirect && <Navigate to="/diseases"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Editar autoridad</Title>
+          <Title>Editar enfermedad</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.input_div}>

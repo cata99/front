@@ -18,6 +18,9 @@ function AuthorityCard(props) {
           <Link to={`/authority_form_edit/${props.id}`}>
             <Button>Editar</Button>
           </Link>
+          <Link to={`/authority_form_info/${props.id}`}>
+            <Button>Info</Button>
+          </Link>
           <Link to="/">
             <Button>Borrar</Button>
           </Link>
