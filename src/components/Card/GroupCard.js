@@ -12,10 +12,10 @@ function GroupCard(props) {
           <h3>Institucion: {props.institution}</h3>
         </div>
         <div className={classes.right}>
-          <Link to={`/institution_form_edit/${props.id}`}>
+          <Link to={`/group_form_edit/${props.id}`}>
             <Button>Editar</Button>
           </Link>
-          <Link to="/">
+          <Link to={`/group_form_info/${props.id}`}>
             <Button>Info</Button>
           </Link>
           <Link to="/">

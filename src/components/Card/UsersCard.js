@@ -1,8 +1,6 @@
 import React from "react";
 import GeneralCard from "./GeneralCard";
 import classes from "./Card.module.css";
-import Button from "../Buttons/Button";
-import { Link } from "react-router-dom";
 
 function UsersCard(props) {
   const completeName = props.firstName + " " + props.lastName;

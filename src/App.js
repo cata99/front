@@ -31,6 +31,8 @@ import TypeForm from "./components/MovementPage/TypeForm";
 import ProductPage from "./components/MovementPage/ProductPage";
 import AttributeForm from "./components/MovementPage/AttributeForm";
 import NewAttribute from "./components/MovementPage/NewAttribute";
+import ProductFormEdit from "./components/MovementPage/ProductFormEdit";
+import ProductFormInfo from "./components/MovementPage/ProductFormInfo";
 
 /*User imports */
 import OptionUser from "./components/UsersPage/OptionUser";
@@ -44,6 +46,9 @@ import GroupPage from "./components/UsersPage/GroupPage";
 import VolunteerFormEdit from "./components/UsersPage/VolunteerFormEdit";
 import DonorsFormEdit from "./components/UsersPage/DonorFormEdit";
 import DonorsFormInfo from "./components/UsersPage/DonorFormInfo";
+import VolunteerFormInfo from "./components/UsersPage/VolunteerFormInfo";
+import GroupFormEdit from "./components/UsersPage/GroupFormEdit";
+import GroupFormInfo from "./components/UsersPage/GroupFormInfo";
 
 function App() {
   return (
@@ -61,6 +66,14 @@ function App() {
         <Route path="/movement_option" element={<OptionsMovement />} />
         <Route path="/delivery_form" element={<DeliveryForm />} />
         <Route path="/donation_form" element={<DonationForm />} />
+        <Route
+          path="/product_form_edit/:id"
+          element={<ProductFormEdit />}
+        />
+        <Route
+          path="/product_form_info/:id"
+          element={<ProductFormInfo />}
+        />
 
         <Route path="/product_form" element={<ProductForm />} />
         <Route path="/type_form" element={<TypeForm />} />
@@ -99,6 +112,11 @@ function App() {
           element={<VolunteerFormEdit />}
         />
         <Route
+          path="/users_form_info/:id"
+          element={<VolunteerFormInfo
+             />}
+        />
+        <Route
           path="/donors_form_edit/:id"
           element={<DonorsFormEdit />}
         />
@@ -108,6 +126,16 @@ function App() {
         />
         <Route path="/life_event_form" element={<LifeEventForm />} />
         <Route path="/group_form" element={<GroupForm />} />
+        <Route
+          path="/group_form_edit/:id"
+          element={<GroupFormEdit
+             />}
+        />
+        <Route
+          path="/group_form_info/:id"
+          element={<GroupFormInfo
+             />}
+        />
         <Route path="/donor_form" element={<DonorForm />} />
         <Route path="/volunteers" element={<VolunteerPage />} />
         <Route path="/donors" element={<DonorPage />} />

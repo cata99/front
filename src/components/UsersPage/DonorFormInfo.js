@@ -26,7 +26,6 @@ function DonorsFormInfo() {
       .get(`http://localhost:8080/api/personal_information/${id}`)
       .then((response) => {
         const data = response.data;
-        console.log(data);
         setEnteredFirstName(data.firstName);
         setEnteredLastName(data.lastName);
         setEnteredPhone(data.phone);

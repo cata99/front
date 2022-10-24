@@ -10,7 +10,7 @@ import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import TextField from "@material-ui/core/TextField";
 import { useState, useEffect } from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 
 function InstitutionFormEdit() {
   const { id } = useParams();

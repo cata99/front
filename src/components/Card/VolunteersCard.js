@@ -19,6 +19,9 @@ function VolunteersCard(props) {
             <Link to={`/users_form_edit/${props.id}`}>
               <Button>Editar</Button>
             </Link>
+            <Link to={`/users_form_info/${props.id}`}>
+              <Button>Info</Button>
+            </Link>
             <Link to="/">
               <Button>Borrar</Button>
             </Link>

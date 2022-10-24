@@ -3,15 +3,13 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import ErrorModal from "../Modal/ErrorModal";
-import ResponseModal from "../Modal/ResponseModal";
 import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function AuthorityFormInfo() {
   const { id } = useParams();

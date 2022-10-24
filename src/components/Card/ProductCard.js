@@ -13,9 +13,13 @@ function ProductCard(props) {
         </div>
         <div className={classes.right}>
           <Link to={`/add_attributes/${props.id}`}>
-            <Button>Asociar atributos</Button>
+            <Button>Agregar atr</Button>
           </Link>
-          <Link to="/">
+          <Link to={`/product_form_edit/${props.id}`}>
+            <Button>Editar</Button>
+          </Link>
+          
+          <Link to={`/product_form_info/${props.id}`}>
             <Button>Info</Button>
           </Link>
           <Link to="/">

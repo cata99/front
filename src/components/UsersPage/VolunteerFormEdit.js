@@ -124,35 +124,43 @@ function VolunteerFormEdit() {
     });
   }, []);
 
+  const [groupInputValue, setGroupInputValue] = useState([]);
+  const [roleInputValue, setRoleInputValue] = useState("");
+  const [personalInformationId, setPersonalInformationId] = useState("");
+
   useEffect(() => {
     axios.get(`http://localhost:8080/api/users/${id}`).then((response) => {
         const data = response.data;
         console.log(data);
+        setPersonalInformationId(data.personalInformation.id)
         setFirstName(data.personalInformation.firstName);
         setLastName(data.personalInformation.lastName);
         setIdentificationNumber(data.personalInformation.identificationNumber);
         setGender(data.personalInformation.gender);
-        setRole(data.role);
         setUserName(data.username);
         setPhone(data.personalInformation.phone);
         setEmail(data.personalInformation.email);
         setPassword(data.password);
         setReferent(data.referent);
-        setSelectedGroups(data.group.label)
+        setGroupInputValue(data.group.label)
+        if (data.roles[0].name === "ROLE_ADMIN") setRoleInputValue("admin")
+        else if(data.roles[0].name === "ROLE_REFERENTE") setRoleInputValue("referente")
+        else setRoleInputValue("voluntario");
       });
   }, []);
 
   const submitHandler = async (event) => {
     event.preventDefault();
     console.log(role.label);
-    axios
-      .post("http://localhost:8080/api/auth/signup", {
-        firstName: firstName,
-        lastName: lastName,
-        identificationNumber: identificationNumber,
-        gender: gender,
-        phone: phone,
-        email: email,
+    axios.put(`http://localhost:8080/api/personal_information/${personalInformationId}`, {
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+      gender: gender,
+      email: email,
+      identificationNumber: identificationNumber,
+    }).then((response)=> {console.log(response)})
+    axios.put(`http://localhost:8080/api/users/${id}`,{
         username: userName,
         group: {
           id: selectedGroup.id,
@@ -294,7 +302,10 @@ function VolunteerFormEdit() {
                   option: styles.option,
                 }}
                 style={{ width: "35rem" }}
-                inputValue={selectedGroup}
+                inputValue={groupInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setGroupInputValue(newInputValue);
+                }}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -356,6 +367,10 @@ function VolunteerFormEdit() {
                     placeholder="Seleccione rol"
                   />
                 )}
+                inputValue={roleInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setRoleInputValue(newInputValue);
+                }}
                 value={role}
                 onChange={(_event, newRole) => {
                   setRole(newRole);
@@ -373,7 +388,7 @@ function VolunteerFormEdit() {
             />
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit">Registrar</Button>
+            <Button type="submit">Editar</Button>
           </div>
         </form>
       </Card>
