@@ -13,10 +13,10 @@ function Menu() {
          <Link to="/donations">Movimientos</Link>
         </li>
         <li>
-          <Link to="/institutions">Institutiones</Link>
+          <Link to="/institutions">Instituciones</Link>
         </li>
         <li>
-          <Link to="/users">Usuarios</Link>
+          <Link to="/users">Personas</Link>
         </li>
       </ul>
     </nav>
