@@ -3,8 +3,8 @@ import Card from "../Card/Card";
 import Layout from "../Layout/Layout";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import classes from "../InstitutionsPage/Institution.module.css";
 import ErrorModal from "../Modal/ErrorModal";
+import classes from "./Movement.module.css";
 import button from "../Buttons/Button.module.css";
 import style from "../Card/Card.module.css";
 import TextField from "@material-ui/core/TextField";
@@ -23,23 +23,25 @@ const useStyles = makeStyles({
   },
 });
 
-function AddDisease() {
-  const { id } = useParams(id);
+function AddProductFormDeliveries() {
   const styles = useStyles();
+  const [products, setProducts] = useState([]);
 
-  const [institutions, setIntitution] = useState([]);
+  const [enteredProduct, setEnteredProduct] = useState("");
 
-  const [enteredInstitution, setEnteredInstitution] = useState("");
+  const quantityChangeValue = (event) => {
+    setQuantity(event.target.value);
+  };
 
-  const [diseases, setDiseases] = useState([]);
-
-  const [enteredDisease, setEnteredDisease] = useState([]);
+  const [quantity, setQuantity] = useState([]);
 
   const [error, setError] = useState("");
 
   const [redirect, setRedirect] = useState(false);
 
   const [assert, setAssert] = useState("");
+
+  const { id } = useParams(id);
 
   const errorHandler = () => {
     setError(null);
@@ -51,36 +53,42 @@ function AddDisease() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/institutions/").then((response) => {
-      const autocompleteInstitutions = response.data.map((institution) => {
-        console.log(institution);
+    axios.get("http://localhost:8080/api/products/").then((response) => {
+      const autocompleteProducts = response.data.map((product) => {
+        console.log(product);
         return {
-          label: institution.name,
-          id: institution.id,
+          label: product.label,
+          id: product.id,
         };
       });
-      setIntitution(autocompleteInstitutions);
+      setProducts(autocompleteProducts);
     });
   }, []);
-  
+
   const submitHandler = (event) => {
     event.preventDefault();
-
-    console.log(enteredInstitution);
-    console.log(enteredDisease);
-    axios.post("http://localhost:8080/api/institutions_disease/", {
-      institution: {
-        id: enteredInstitution.id,
+    debugger;
+    axios.post("http://localhost:8080/api/deliveries_quantities/", {
+      product: {
+        id: enteredProduct.id,
       },
-      disease: {
+      delivery: {
         id: id,
       },
-    });
-
-    setAssert({
+      quantity: quantity,
+    }).then((response) => {
+        setAssert({
       title: "Felicitaciones",
       message: "La operación se ha completado con exito",
     });
+    }).catch(function (error){
+        setError({
+            title: "Esta operación es incorrecta",
+            message:"No se pudo asociar el producto ya que la cantidad ya que exceede la cantidad en stock"
+        })
+    })
+    setEnteredProduct("");
+    setQuantity("");
   };
 
   return (
@@ -99,17 +107,17 @@ function AddDisease() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/diseases"></Navigate>}
+      {redirect && <Navigate to="/deliveries"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar enfermedad al comedor</Title>
+          <Title>Asociar producto a la entrega</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>
             <div>
-              <label>Instituciones</label>
+              <label>Producto</label>
               <Autocomplete
-                options={institutions}
+                options={products}
                 getOptionLabel={(option) => option.label}
                 style={{ width: "33rem" }}
                 classes={{
@@ -119,16 +127,31 @@ function AddDisease() {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione institución"
+                    placeholder="Ejemplo: latas de tomates"
                   />
                 )}
-                value={enteredInstitution}
-                onChange={(_event, institution) => {
-                  setEnteredInstitution(institution);
+                value={enteredProduct}
+                onChange={(_event, product) => {
+                  setEnteredProduct(product);
                 }}
               ></Autocomplete>
             </div>
-           
+            <div>
+              <label>Cantidad</label>
+              <TextField
+                id="text-field group"
+                style={{ width: "33rem" }}
+                variant="outlined"
+                placeholder="Cinco"
+
+                inputProps={{
+                  style: { width: "33rem" },
+                }}
+                type="number"
+                value={quantity}
+                onChange={quantityChangeValue}
+              />
+            </div>
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>
@@ -139,4 +162,4 @@ function AddDisease() {
   );
 }
 
-export default AddDisease;
+export default AddProductFormDeliveries;

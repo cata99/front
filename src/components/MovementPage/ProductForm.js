@@ -14,9 +14,20 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import style from "../Card/Card.module.css";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  option: {
+    "&:hover": {
+      backgroundColor: "grey",
+    },
+  },
+});
 
 function ProductForm() {
   const [product, setProduct] = useState("");
+
+  const styles = useStyles();
 
   const [types, setTypes] = useState([]);
 
@@ -114,6 +125,9 @@ function ProductForm() {
                 options={types}
                 getOptionLabel={(option) => option.label}
                 style={{ width: "35rem" }}
+                classes={{
+                  option: styles.option,
+                }}
                 renderInput={(params) => (
                   <TextField
                     {...params}

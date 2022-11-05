@@ -22,6 +22,20 @@ function UserPage() {
     fetchUsers();
   }, []);
 
+  const [donors, setDonors] = useState();
+  useEffect(() => {
+    const fetchDonors = async () => {
+      axios.get("http://localhost:8080/api/personal_information/donors_id").then((response)=>{
+        setDonors(response.data);
+      console.log(donors);
+      });
+      
+    };
+
+    fetchDonors();
+  }, []);
+
+
   return (
     <Layout title="Usuarios">
       <UserFilter></UserFilter>
@@ -48,6 +62,7 @@ function UserPage() {
             lastName={user.lastName}
             phone={user.phone}
             email={user.email}
+            donors={donors}
           ></UsersCard>
         );
       })}

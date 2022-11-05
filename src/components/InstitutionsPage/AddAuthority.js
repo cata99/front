@@ -23,7 +23,8 @@ const useStyles = makeStyles({
   },
 });
 
-function AddDisease() {
+function AddAuthority() {
+  const { id } = useParams(id);
 
   const styles = useStyles();
 
@@ -62,18 +63,6 @@ function AddDisease() {
       setIntitution(autocompleteInstitutions);
     });
   }, []);
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/authorities/").then((response) => {
-      const autocompleteAuthorities = response.data.map((authority) => {
-        console.log(authority);
-        return {
-          label: authority.label,
-          id: authority.id,
-        };
-      });
-      setAuthorities(autocompleteAuthorities);
-    });
-  }, []);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -81,8 +70,8 @@ function AddDisease() {
       institution: {
         id: enteredInstitution.id,
       },
-      disease: {
-        id: enteredAuthority.id,
+      authority: {
+        id: id,
       },
     });
 
@@ -111,7 +100,7 @@ function AddDisease() {
       {redirect && <Navigate to="/authorities"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar enfermedad al comedor</Title>
+          <Title>Asociar autoridad al comedor</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>
@@ -137,28 +126,6 @@ function AddDisease() {
                 }}
               ></Autocomplete>
             </div>
-            <div>
-              <label>Autoridades</label>
-              <Autocomplete
-                options={authorities}
-                getOptionLabel={(option) => option.label}
-                style={{ width: "33rem" }}
-                classes={{
-                  option: styles.option,
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    placeholder="Seleccione institución"
-                  />
-                )}
-                value={enteredAuthority}
-                onChange={(_event, authority) => {
-                  setEnteredAuthority(authority);
-                }}
-              ></Autocomplete>
-            </div>
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>
@@ -169,4 +136,4 @@ function AddDisease() {
   );
 }
 
-export default AddDisease;
+export default AddAuthority;

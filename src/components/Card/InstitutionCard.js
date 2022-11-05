@@ -19,7 +19,6 @@ function InstitutionCard(props) {
             <Button>Editar</Button>
           </Link>
           <Link to={`/institution_form_info/${props.id}`}><Button>Info</Button></Link>
-          <Link to="/"><Button>Borrar</Button></Link>
         </div>
       </div>
     </GeneralCard>

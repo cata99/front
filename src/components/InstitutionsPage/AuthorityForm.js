@@ -125,6 +125,7 @@ function AuthorityForm() {
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
+              required
               variant="outlined"
               inputProps={{
                 style: { width: "35rem" },

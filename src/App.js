@@ -33,6 +33,9 @@ import AttributeForm from "./components/MovementPage/AttributeForm";
 import NewAttribute from "./components/MovementPage/NewAttribute";
 import ProductFormEdit from "./components/MovementPage/ProductFormEdit";
 import ProductFormInfo from "./components/MovementPage/ProductFormInfo";
+import AddProductFormDonations from "./components/MovementPage/AddProductDonations";
+import DeliveryFormEdit from "./components/MovementPage/DeliveryFormEdit";
+import DeliveryFormInfo from "./components/MovementPage/DeliveryFormInfo";
 
 /*User imports */
 import OptionUser from "./components/UsersPage/OptionUser";
@@ -49,6 +52,9 @@ import DonorsFormInfo from "./components/UsersPage/DonorFormInfo";
 import VolunteerFormInfo from "./components/UsersPage/VolunteerFormInfo";
 import GroupFormEdit from "./components/UsersPage/GroupFormEdit";
 import GroupFormInfo from "./components/UsersPage/GroupFormInfo";
+import AddProductFormDeliveries from "./components/MovementPage/AddProductDelivery";
+import DonationFormEdit from "./components/MovementPage/DonationFormEdit";
+import DonationFormInfo from "./components/MovementPage/DonationFormInfo";
 
 function App() {
   return (
@@ -78,7 +84,16 @@ function App() {
         <Route path="/product_form" element={<ProductForm />} />
         <Route path="/type_form" element={<TypeForm />} />
         <Route path="/add_attributes/:id" element={<AttributeForm />} />
-        <Route path="/new_attribute" element={<NewAttribute />} />
+        <Route path="/add_product_donations/:id" element={<AddProductFormDonations />} />
+        <Route path="/add_product_deliveries/:id" element={<AddProductFormDeliveries />} />
+        <Route path="/deliveries_form_edit/:id" element={<DeliveryFormEdit />} />
+        <Route path="/deliveries_form_info/:id" element={<DeliveryFormInfo />} />
+        <Route path="/add_product_deliveries/:id" element={<AddProductFormDeliveries />} />
+        
+        <Route path="/donations_form_edit/:id" element={<DonationFormEdit />} />
+        
+        <Route path="/donations_form_info/:id" element={<DonationFormInfo />} />
+        <Route path="/new_attribute/:id" element={<NewAttribute />} />
 
         <Route path="/institution_option" element={<OptionInstitution />} />
         <Route path="/institution_form" element={<InstitutionForm />} />
@@ -98,8 +113,8 @@ function App() {
           path="/authority_form_info/:id"
           element={<AuthorityFormInfo />}
         />
-        <Route path="/add_authority/" element={<AddAuthority />} />
-        <Route path="/add_disease/" element={<AddDisease />} />
+        <Route path="/add_authority/:id" element={<AddAuthority />} />
+        <Route path="/add_disease/:id" element={<AddDisease />} />
         <Route path="/disease_form_edit/:id" element={<DiseaseFormEdit />} />
         <Route path="/disease_form_info/:id" element={<DiseaseFormInfo />} />
         <Route path="/authority_form" element={<AuthorityForm />} />

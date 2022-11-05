@@ -1,7 +1,8 @@
 import React from "react";
 import HomeItem from "./HomeItem";
 import Layout from "../Layout/Layout";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [institutionTotal, setInstitutionTotal] = useState("");
@@ -57,22 +58,28 @@ function HomePage() {
 
   return (
     <Layout title="Home">
-      <HomeItem
-        title="Donaciones recibidas hasta la fecha"
-        quantity={donationTotal}
-      ></HomeItem>
+      <Link to="/donations" style={{ textDecoration: "none", color: "black" }}>
+        <HomeItem
+          title="Donaciones recibidas hasta la fecha"
+          quantity={donationTotal}
+        ></HomeItem>
+      </Link>
+      <Link to="/deliveries" style={{ textDecoration: "none", color: "black" }}>
       <HomeItem
         title="Entregas realizadas hasta la fecha"
         quantity={deliveryTotal}
       ></HomeItem>
+      </Link>
+      <Link to="/volunteers" style={{ textDecoration: "none", color: "black" }}>
       <HomeItem
         title="Voluntarios registrados hasta la fecha"
         quantity={volunteerTotal}
-      ></HomeItem>
+      ></HomeItem></Link>
+      <Link to="/institutions" style={{ textDecoration: "none", color: "black" }}>
       <HomeItem
         title="Instituciones a las que ayudamos"
         quantity={institutionTotal}
-      ></HomeItem>
+      ></HomeItem></Link>
     </Layout>
   );
 }

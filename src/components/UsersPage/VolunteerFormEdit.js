@@ -25,7 +25,6 @@ const useStyles = makeStyles({
 });
 
 function VolunteerFormEdit() {
-
   const { id } = useParams();
 
   const styles = useStyles();
@@ -114,7 +113,6 @@ function VolunteerFormEdit() {
   useEffect(() => {
     axios.get("http://localhost:8080/api/groups/").then((response) => {
       const autocompleteGroup = response.data.map((group) => {
-       
         return {
           label: group.label,
           id: group.id,
@@ -130,47 +128,55 @@ function VolunteerFormEdit() {
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/users/${id}`).then((response) => {
-        const data = response.data;
-        console.log(data);
-        setPersonalInformationId(data.personalInformation.id)
-        setFirstName(data.personalInformation.firstName);
-        setLastName(data.personalInformation.lastName);
-        setIdentificationNumber(data.personalInformation.identificationNumber);
-        setGender(data.personalInformation.gender);
-        setUserName(data.username);
-        setPhone(data.personalInformation.phone);
-        setEmail(data.personalInformation.email);
-        setPassword(data.password);
-        setReferent(data.referent);
-        setGroupInputValue(data.group.label)
-        if (data.roles[0].name === "ROLE_ADMIN") setRoleInputValue("admin")
-        else if(data.roles[0].name === "ROLE_REFERENTE") setRoleInputValue("referente")
-        else setRoleInputValue("voluntario");
-      });
+      const data = response.data;
+      console.log(data);
+      setPersonalInformationId(data.personalInformation.id);
+      setFirstName(data.personalInformation.firstName);
+      setLastName(data.personalInformation.lastName);
+      setIdentificationNumber(data.personalInformation.identificationNumber);
+      setGender(data.personalInformation.gender);
+      setUserName(data.username);
+      setPhone(data.personalInformation.phone);
+      setEmail(data.personalInformation.email);
+      setPassword(data.password);
+      setReferent(data.referent);
+      setGroupInputValue(data.group.label);
+      if (data.roles[0].name === "ROLE_ADMIN") setRoleInputValue("admin");
+      else if (data.roles[0].name === "ROLE_REFERENTE")
+        setRoleInputValue("referente");
+      else setRoleInputValue("voluntario");
+    });
   }, []);
 
   const submitHandler = async (event) => {
     event.preventDefault();
     console.log(role.label);
-    axios.put(`http://localhost:8080/api/personal_information/${personalInformationId}`, {
-      firstName: firstName,
-      lastName: lastName,
-      phone: phone,
-      gender: gender,
-      email: email,
-      identificationNumber: identificationNumber,
-    }).then((response)=> {console.log(response)})
-    axios.put(`http://localhost:8080/api/users/${id}`,{
-        username: userName,
-        group: {
-          id: selectedGroup.id,
-        },
-        referent: referent,
-        password: password,
-        role: [`${role.label}`],
-      })
+    axios
+      .put(
+        `http://localhost:8080/api/personal_information/${personalInformationId}`,
+        {
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+          gender: gender,
+          email: email,
+          identificationNumber: identificationNumber,
+        }
+      )
       .then((response) => {
-        console.log(response);
+        axios
+          .put(`http://localhost:8080/api/users/${id}`, {
+            username: userName,
+            group: {
+              id: selectedGroup.id,
+            },
+            referent: referent,
+            password: password,
+            role: [`${role.label}`],
+          })
+          .then((response) => {
+            //sET ASSERT
+          });
       });
   };
 

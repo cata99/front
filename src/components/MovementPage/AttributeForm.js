@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-function AttributeForm() {
+function AttributeForm(props) {
   const styles = useStyles();
   const [attributes, setAttributes] = useState([]);
 
@@ -43,6 +43,8 @@ function AttributeForm() {
 
   const { id } = useParams();
 
+  const [productName, setProductName]= useState("");
+
   const errorHandler = () => {
     setError(null);
   };
@@ -55,13 +57,19 @@ function AttributeForm() {
   useEffect(() => {
     axios.get("http://localhost:8080/api/attributes/").then((response) => {
       const autocompleteAttributes = response.data.map((attribute) => {
-        console.log(attributes);
+
         return {
           label: attribute.field + " - " + attribute.unit,
           id: attribute.id,
         };
       });
       setAttributes(autocompleteAttributes);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/products/${id}`).then((response) => {
+    setProductName(response.data.label);
     });
   }, []);
 
@@ -105,7 +113,7 @@ function AttributeForm() {
       {redirect && <Navigate to="/products"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar atributo al producto</Title>
+          <Title>Asociar atributo al producto: {productName}</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>
@@ -132,11 +140,12 @@ function AttributeForm() {
               ></Autocomplete>
             </div>
             <div>
-              <label>Cantidad</label>
+              <label>Valor del atributo</label>
               <TextField
                 id="text-field group"
                 style={{ width: "33rem" }}
                 variant="outlined"
+                placeholder="Ejemplo: El peso de la lata es de 100"
                 inputProps={{
                   style: { width: "33rem" },
                 }}
@@ -147,7 +156,7 @@ function AttributeForm() {
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Link to="/new_attribute">
+            <Link to={`/new_attribute/${id}`} >
               <Button>Nuevo atributo</Button>
             </Link>
             <Button type="submit">Registrar</Button>

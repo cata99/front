@@ -13,7 +13,7 @@ import ErrorModal from "../Modal/ErrorModal";
 import ResponseModal from "../Modal/ResponseModal";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -24,16 +24,14 @@ const useStyles = makeStyles({
   },
 });
 
-
-function DonationForm() {
+function DonationFormEdit() {
+  const { id } = useParams();
 
   const styles = useStyles();
 
   const [institutions, setInstitutions] = useState([]);
 
   const [donors, setDonors] = useState([]);
-
-  const [selectedInstitution, setSelectedInstitution] = useState(null);
 
   const [donationDate, setDonationDate] = useState("");
 
@@ -51,6 +49,14 @@ function DonationForm() {
 
   const [selectedDonor, setSelectedDonor] = useState([]);
 
+  const [selectedInstitution, setSelectedInstitution] = useState([]);
+
+  const [institutionInputValue, setInstitutionInputValue] = useState([]);
+
+  const [userInputValue, setUserInputValue] = useState([]);
+
+  const [donorInputValue, setDonorInputValue] = useState([]);
+
   const errorHandler = () => {
     setError(null);
   };
@@ -59,6 +65,24 @@ function DonationForm() {
     setAssert(null);
     setRedirect(true);
   };
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/donations/${id}`).then((response) => {
+      setInstitutionInputValue(response.data.institution.name);
+      const fullName =
+        response.data.user.personalInformation.firstName +
+        " , " +
+        response.data.user.personalInformation.lastName;
+      const donorFullName =
+        response.data.personalInformation.firstName +
+        " , " +
+        response.data.personalInformation.lastName;
+      setUserInputValue(fullName);
+      setDonorInputValue(donorFullName);
+
+      console.log(response.data);
+    });
+  }, []);
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/users/").then((response) => {
@@ -117,14 +141,13 @@ function DonationForm() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(selectedInstitution.id);
     axios
-      .post("http://localhost:8080/api/donations/", {
-        institution:{ id: selectedInstitution.id},
-        user: {id:selectedUser.id},
-        personalInformation: {id:selectedDonor.id},
+      .put(`http://localhost:8080/api/deliveries/${id}`, {
+        institution: { id: selectedInstitution.id },
+        user: { id: selectedUser.id },
+        personalInformation: { id: selectedDonor.id },
         creationDate: donationDate,
-        updateDate: receivedDate
+        updateDate: receivedDate,
       })
       .then((response) => {
         console.log(response);
@@ -154,17 +177,21 @@ function DonationForm() {
       {redirect && <Navigate to="/donations"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Registrar donación</Title>
+          <Title>Editar donación</Title>
         </div>
         <form className={classes.creation_delivery} onSubmit={submitHandler}>
           <div>
-            <label>Destinatario</label>
+            <label>Comedor</label>
             <Autocomplete
               options={institutions}
+              inputValue={institutionInputValue}
+              onInputChange={(_event, newInputValue) => {
+                setInstitutionInputValue(newInputValue);
+              }}
               getOptionLabel={(option) => option.label}
               style={{ width: "37rem" }}
               classes={{
-                option: styles.option
+                option: styles.option,
               }}
               renderInput={(params) => (
                 <TextField
@@ -222,10 +249,14 @@ function DonationForm() {
                 <label>Donante</label>
                 <Autocomplete
                   options={donors}
+                  inputValue={donorInputValue}
+                  onInputChange={(_event, newInputValue) => {
+                    setDonorInputValue(newInputValue);
+                  }}
                   getOptionLabel={(option) => option.label}
                   style={{ width: "35rem" }}
                   classes={{
-                    option: styles.option
+                    option: styles.option,
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -242,13 +273,17 @@ function DonationForm() {
                 ></Autocomplete>
               </div>
               <div className={classes.space_margin}>
-                <label>Voluntario que retiro</label>
+                <label>Usuario</label>
                 <Autocomplete
                   options={users}
+                  inputValue={userInputValue}
+                  onInputChange={(_event, newInputValue) => {
+                    setUserInputValue(newInputValue);
+                  }}
                   getOptionLabel={(option) => option.label}
                   style={{ width: "35rem" }}
                   classes={{
-                    option: styles.option
+                    option: styles.option,
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -267,11 +302,11 @@ function DonationForm() {
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit">Registrar</Button>
+            <Button type="submit">Editar</Button>
           </div>
         </form>
       </Card>
     </Layout>
   );
 }
-export default DonationForm;
+export default DonationFormEdit;

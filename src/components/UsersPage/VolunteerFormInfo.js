@@ -50,7 +50,7 @@ function VolunteerFormInfo() {
     <Layout>
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Editar voluntario</Title>
+          <Title>Información voluntario</Title>
         </div>
         <form>
           <div className={classes.first_row}>
@@ -59,6 +59,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -73,6 +74,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -89,6 +91,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -103,6 +106,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -119,6 +123,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -133,6 +138,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -149,6 +155,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -163,6 +170,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -179,6 +187,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -193,6 +202,7 @@ function VolunteerFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -202,14 +212,6 @@ function VolunteerFormInfo() {
                 value={role}
               />
             </div>
-          </div>
-          <div className={classes.sixth_row}>
-            <label>Referente</label>
-            <Switch
-              checked={referent}
-              inputProps={{ "aria-label": "controlled" }}
-              color="default"
-            />
           </div>
           <div className={button.button_div_right}>
             <Link to="/volunteers">

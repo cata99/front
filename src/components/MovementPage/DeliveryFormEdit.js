@@ -3,7 +3,6 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import { Link } from "react-router-dom";
 import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";
@@ -15,6 +14,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 
 const useStyles = makeStyles({
   option: {
@@ -24,15 +25,18 @@ const useStyles = makeStyles({
   },
 });
 
-function DeliveryForm() {
+function DeliveryFormEdit() {
+  const { id } = useParams();
 
   const styles = useStyles();
 
   const [institutions, setInstitutions] = useState([]);
 
-  const [selectedInstitution, setSelectedInstitution] = useState(null);
+  const [selectedInstitution, setSelectedInstitution] = useState([]);
 
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(
+    moment(new Date()).format("YYYY-MM-DD")
+  );
 
   const [error, setError] = useState("");
 
@@ -43,6 +47,23 @@ function DeliveryForm() {
   const [users, setUsers] = useState([]);
 
   const [selectedUser, setSelectedUser] = useState([]);
+
+  const [institutionInputValue, setInstitutionInputValue] = useState([]);
+
+  const [userInputValue, setUserInputValue] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/deliveries/${id}`).then((response) => {
+      setInstitutionInputValue(response.data.institution.name);
+      setSelectedDate(response.data.date);
+      const fullName =
+        response.data.user.personalInformation.firstName +
+        " , " +
+        response.data.user.personalInformation.lastName;
+
+      setUserInputValue(fullName);
+    });
+  }, []);
 
   const errorHandler = () => {
     setError(null);
@@ -56,7 +77,6 @@ function DeliveryForm() {
   useEffect(() => {
     axios.get("http://localhost:8080/api/users/").then((response) => {
       const autocompleteUsers = response.data.map((user) => {
-        console.log(user);
         const fullName =
           user.personalInformation.firstName +
           " , " +
@@ -66,7 +86,6 @@ function DeliveryForm() {
           id: user.id,
         };
       });
-      console.log(autocompleteUsers);
       setUsers(autocompleteUsers);
     });
   }, []);
@@ -90,13 +109,12 @@ function DeliveryForm() {
   const submitHandler = async (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/api/deliveries/", {
-        user: {id:selectedUser.id},
-        date: selectedDate ,  
+      .put(`http://localhost:8080/api/deliveries/${id}`, {
+        user: { id: selectedUser.id },
+       // date: selectedDate,
         institution: { id: selectedInstitution.id },
       })
       .then((response) => {
-        console.log(response);
         setAssert({
           title: "Felicitaciones",
           message: "La operación se ha completado con exito",
@@ -105,7 +123,7 @@ function DeliveryForm() {
   };
 
   return (
-    <Layout title="Entregas">
+    <Layout>
       {error && (
         <ErrorModal
           title={error.title}
@@ -123,17 +141,21 @@ function DeliveryForm() {
       {redirect && <Navigate to="/deliveries"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Registrar entrega</Title>
+          <Title>Editar entrega</Title>
         </div>
         <form className={classes.creation_delivery} onSubmit={submitHandler}>
           <div className={classes.input_div}>
             <label>Comedor</label>
             <Autocomplete
               options={institutions}
+              inputValue={institutionInputValue}
+              onInputChange={(_event, newInputValue) => {
+                setInstitutionInputValue(newInputValue);
+              }}
               getOptionLabel={(option) => option.label}
               style={{ width: "37rem" }}
               classes={{
-                option: styles.option
+                option: styles.option,
               }}
               renderInput={(params) => (
                 <TextField
@@ -154,9 +176,7 @@ function DeliveryForm() {
               id="text-field group"
               style={{ width: "35rem" }}
               variant="outlined"
-              format="dd/MM/yyyy"
               type="date"
-              placeholder="Ingrese nombre del evento"
               value={selectedDate}
               onChange={dateChangeHandler}
             />
@@ -166,10 +186,14 @@ function DeliveryForm() {
               <label>Usuario</label>
               <Autocomplete
                 options={users}
+                inputValue={userInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setUserInputValue(newInputValue);
+                }}
                 getOptionLabel={(option) => option.label}
                 style={{ width: "37rem" }}
                 classes={{
-                  option: styles.option
+                  option: styles.option,
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -186,7 +210,7 @@ function DeliveryForm() {
             </div>
           </div>
           <div className={button.button_div_right}>
-              <Button type="submit">Registrar</Button>
+            <Button type="submit">Registrar</Button>
           </div>
         </form>
       </Card>
@@ -194,4 +218,4 @@ function DeliveryForm() {
   );
 }
 
-export default DeliveryForm;
+export default DeliveryFormEdit;

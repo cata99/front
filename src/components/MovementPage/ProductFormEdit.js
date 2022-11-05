@@ -14,8 +14,21 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import style from "../Card/Card.module.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { useParams } from "react-router-dom";
+
+const useStyles = makeStyles({
+  option: {
+    "&:hover": {
+      backgroundColor: "grey",
+    },
+  },
+});
 
 function ProductFormEdit() {
+  const { id } = useParams();
+
+  const styles = useStyles();
   const [product, setProduct] = useState("");
 
   const [types, setTypes] = useState([]);
@@ -40,13 +53,21 @@ function ProductFormEdit() {
   useEffect(() => {
     axios.get("http://localhost:8080/api/product_types/").then((response) => {
       const autocompleteTypes = response.data.map((type) => {
-        console.log(type);
         return {
           label: type.label,
           id: type.id,
         };
       });
       setTypes(autocompleteTypes);
+    });
+  }, []);
+
+  const [typeInputValue, setTypeInputValue] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/products/${id}`).then((response) => {
+      setProduct(response.data.label);
+      setTypeInputValue(response.data.productType.label);
     });
   }, []);
 
@@ -58,12 +79,11 @@ function ProductFormEdit() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/products/", {
+      .put(`http://localhost:8080/api/products/${id}`, {
         label: product,
         productType: { id: selectedType.id },
       })
       .then((response) => {
-        console.log(response);
         setAssert({
           title: "Felicitaciones",
           message: "La operación se ha completado con exito",
@@ -90,7 +110,7 @@ function ProductFormEdit() {
       {redirect && <Navigate to="/products"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar Producto</Title>
+          <Title>Editar producto</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div>
@@ -111,9 +131,16 @@ function ProductFormEdit() {
             <div>
               <label>Tipo Producto</label>
               <Autocomplete
+                inputValue={typeInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setTypeInputValue(newInputValue);
+                }}
                 options={types}
                 getOptionLabel={(option) => option.label}
                 style={{ width: "35rem" }}
+                classes={{
+                  option: styles.option,
+                }}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -134,7 +161,7 @@ function ProductFormEdit() {
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit">Crear producto</Button>
+            <Button type="submit">Editar</Button>
           </div>
         </form>
       </Card>

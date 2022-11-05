@@ -21,9 +21,6 @@ function AuthorityPage() {
   return (
     <Layout title="Autoridad">
       <div className={button.button_div_right}>
-        <Link to={`/add_authority/`}>
-          <Button>Asociar a institucion</Button>
-        </Link>
         <Link to="/institutions">
           <Button>Ver Comedores</Button>
         </Link>

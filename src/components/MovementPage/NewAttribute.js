@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 function NewAttribute() {
   const [field, setField] = useState("");
@@ -31,6 +31,7 @@ function NewAttribute() {
   const [redirect, setRedirect] = useState(false);
 
   const [assert, setAssert] = useState("");
+  const { id } = useParams();
 
   const errorHandler = () => {
     setError(null);
@@ -57,7 +58,6 @@ function NewAttribute() {
         unit: unit,
       })
       .then((response) => {
-        console.log(response);
         setAssert({
           title: "Felicitaciones",
           message: "La operación se ha completado con exito",
@@ -84,7 +84,7 @@ function NewAttribute() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/products"></Navigate>}
+      {redirect && <Navigate to={`/add_attributes/${id}`}></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Nuevo atributo</Title>

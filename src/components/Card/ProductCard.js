@@ -18,12 +18,8 @@ function ProductCard(props) {
           <Link to={`/product_form_edit/${props.id}`}>
             <Button>Editar</Button>
           </Link>
-          
           <Link to={`/product_form_info/${props.id}`}>
             <Button>Info</Button>
-          </Link>
-          <Link to="/">
-            <Button>Borrar</Button>
           </Link>
         </div>
       </div>

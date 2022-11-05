@@ -21,9 +21,6 @@ function DiseasePage() {
   return (
     <Layout title="Enfermedades">
       <div className={button.button_div_right}>
-        <Link to={`/add_disease/`}>
-          <Button>Asociar a institución</Button>
-        </Link>
         <Link to="/institutions">
           <Button>Ver comedores</Button>
         </Link>

@@ -8,13 +8,12 @@ import axios from "axios";
 import button from "../Buttons/Button.module.css";
 import DonationCard from "../Card/DonationCard";
 
-function DonationPage(props) {
+function DonationPage() {
   const [movements, setMovements] = useState([]);
   useEffect(() => {
     const fetchMovement = async () => {
       axios.get("http://localhost:8080/api/donations/").then((response) => {
         setMovements(response.data);
-        console.log(response.data);
       });
     };
 

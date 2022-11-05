@@ -128,6 +128,7 @@ function LifeEventForm() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                  required
                     {...params}
                     variant="outlined"
                     placeholder="Seleccione institución"

@@ -37,6 +37,7 @@ function GroupFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -51,6 +52,7 @@ function GroupFormInfo() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                disabled
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },

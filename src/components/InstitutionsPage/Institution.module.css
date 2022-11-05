@@ -41,7 +41,17 @@
   padding-top: 0.7%;
 }
 
-.attribute_div{
+.attribute_div {
   display: flex;
   gap: 2rem;
+}
+
+/*Information Institution*/
+
+.first_row {
+  display: flex;
+  gap: 1rem;
+}
+ul {
+  list-style-type:disc;
 }

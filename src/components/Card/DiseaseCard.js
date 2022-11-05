@@ -12,14 +12,14 @@ function DiaseaseCard(props) {
             <h2>{props.label}</h2>
           </div>
           <div className={classes.right}>
+          <Link  to={`/add_disease/${props.id}`}>
+            <Button style={{ fontSize: "small" }}>Asociar inst</Button>
+          </Link>
             <Link to={`/disease_form_edit/${props.id}`}>
               <Button>Editar</Button>
             </Link>
             <Link to={`/disease_form_info/${props.id}`}>
               <Button>Info</Button>
-            </Link>
-            <Link to="/">
-              <Button>Borrar</Button>
             </Link>
           </div>
         </div>

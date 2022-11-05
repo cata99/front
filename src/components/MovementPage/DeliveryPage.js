@@ -12,13 +12,11 @@ function DeliveryPage() {
   const [movements, setMovements] = useState([]);
 
   useEffect(() => {
-    const fetchMovement = async () => {
+   
       axios.get("http://localhost:8080/api/deliveries/").then((response) => {
         setMovements(response.data);
       });
-    };
-
-    fetchMovement();
+  
   }, []);
 
   return (
@@ -37,7 +35,7 @@ function DeliveryPage() {
       </div>
       {movements.reverse().map((movement) => {
         return (
-          <DeliveryCard
+          <DeliveryCard 
             key={movement.id}
             id={movement.id}
             institution={movement.institution.name}
