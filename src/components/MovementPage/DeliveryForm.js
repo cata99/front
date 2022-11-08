@@ -131,7 +131,7 @@ function DeliveryForm() {
             <Autocomplete
               options={institutions}
               getOptionLabel={(option) => option.label}
-              style={{ width: "37rem" }}
+              style={{ width: "35rem" }}
               classes={{
                 option: styles.option
               }}
@@ -167,7 +167,7 @@ function DeliveryForm() {
               <Autocomplete
                 options={users}
                 getOptionLabel={(option) => option.label}
-                style={{ width: "37rem" }}
+                style={{ width: "35rem" }}
                 classes={{
                   option: styles.option
                 }}

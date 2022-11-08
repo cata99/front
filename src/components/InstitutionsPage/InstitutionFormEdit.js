@@ -95,7 +95,7 @@ function InstitutionFormEdit() {
     setInsObject(data);
     setAssert({
       title: "Felicitaciones",
-      message: "Se ha podido crear la autoridad con exito",
+      message: "Se ha podido actualizar la institución con exito",
     });
   };
 

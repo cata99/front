@@ -25,6 +25,7 @@ function VolunteerFormInfo() {
   const [password, setPassword] = useState("");
   const [groups, setGroups] = useState("");
   const [role, setRole] = useState("");
+  const [personalInformationId, setPersonalInformationId] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/users/${id}`).then((response) => {
@@ -44,6 +45,27 @@ function VolunteerFormInfo() {
       else if (data.roles[0].name === "ROLE_REFERENTE") setRole("referente");
       else setRole("voluntario");
     });
+  }, []);
+
+  const [associatedLifeEvents, setAssociatedLifeEvents] = useState(true);
+  const [donorsLifeEvents, setDonorsLifeEvents] = useState([]);
+  useEffect(() => {
+    const fetchLifeEvents = async () => {
+      axios
+        .get(`http://localhost:8080/api/life_events/user/${id}`)
+        .then((response) => {
+          setDonorsLifeEvents(response.data);
+          console.log(response.data);
+
+          if (response.data.length > 0) {
+            setAssociatedLifeEvents(true);
+          } else {
+            setAssociatedLifeEvents(false);
+          }
+        });
+    };
+
+    fetchLifeEvents();
   }, []);
 
   return (
@@ -213,6 +235,17 @@ function VolunteerFormInfo() {
               />
             </div>
           </div>
+          {associatedLifeEvents && (
+            <div>
+              <h4>Fechas asociadas al donante:</h4>
+              <ul>
+                {donorsLifeEvents.map((donorLifeEvent) => {
+                  return <li>{donorLifeEvent.label} - Fecha: {donorLifeEvent.date}</li>;
+                })}
+              </ul>
+            </div>
+          )}
+          {!associatedLifeEvents && <h3>No tiene eventos asociados</h3>}
           <div className={button.button_div_right}>
             <Link to="/volunteers">
               <Button>Volver</Button>

@@ -130,7 +130,7 @@ function AttributeForm(props) {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione institución"
+                    placeholder="Seleccione atributo"
                   />
                 )}
                 value={enteredAttribute}

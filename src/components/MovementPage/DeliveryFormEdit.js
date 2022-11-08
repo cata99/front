@@ -34,9 +34,7 @@ function DeliveryFormEdit() {
 
   const [selectedInstitution, setSelectedInstitution] = useState([]);
 
-  const [selectedDate, setSelectedDate] = useState(
-    moment(new Date()).format("YYYY-MM-DD")
-  );
+  const [selectedDate, setSelectedDate] = useState("");
 
   const [error, setError] = useState("");
 
@@ -111,7 +109,7 @@ function DeliveryFormEdit() {
     axios
       .put(`http://localhost:8080/api/deliveries/${id}`, {
         user: { id: selectedUser.id },
-       // date: selectedDate,
+        date: selectedDate,
         institution: { id: selectedInstitution.id },
       })
       .then((response) => {
@@ -153,7 +151,7 @@ function DeliveryFormEdit() {
                 setInstitutionInputValue(newInputValue);
               }}
               getOptionLabel={(option) => option.label}
-              style={{ width: "37rem" }}
+              style={{ width: "35rem" }}
               classes={{
                 option: styles.option,
               }}
@@ -191,7 +189,7 @@ function DeliveryFormEdit() {
                   setUserInputValue(newInputValue);
                 }}
                 getOptionLabel={(option) => option.label}
-                style={{ width: "37rem" }}
+                style={{ width: "35rem" }}
                 classes={{
                   option: styles.option,
                 }}
@@ -210,7 +208,7 @@ function DeliveryFormEdit() {
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit">Registrar</Button>
+            <Button type="submit">Editar</Button>
           </div>
         </form>
       </Card>

@@ -80,7 +80,7 @@ function DonationForm() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/personal_information/")
+      .get("http://localhost:8080/api/personal_information/donors")
       .then((response) => {
         const autocompleteDonors = response.data.map((donor) => {
           console.log(donor);

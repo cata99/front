@@ -93,7 +93,7 @@ function ProductFormInfo() {
                   {productsAttributes.map((productAttribute) => {
                     return (
                       <li>{console.log(productAttribute)}
-                        <form ><div className={classes.row}><div className={classes.institution_card}>Atributo: {productAttribute.attribute.field} - Cantidad: {productAttribute.value} - Unidad: {productAttribute.attribute.unit}</div><div className={classes.right}> <Button type="button" onClick={(event) => {
+                        <form ><div className={classes.row}><div className={classes.institution_card}>Atributo: {productAttribute.attribute.field} - {productAttribute.value} -  {productAttribute.attribute.unit}</div><div className={classes.right}> <Button type="button" onClick={(event) => {
                           axios
                           .delete(`http://localhost:8080/api/product_attribute/${productAttribute.id}`).then((response)=> {console.log(response.data)})
                         }} >Borrar atributo</Button></div></div></form>

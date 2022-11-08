@@ -65,11 +65,7 @@ function VolunteerFormEdit() {
     setEmail(event.target.value);
   };
 
-  const [referent, setReferent] = useState(false);
-
-  const referentChangeHandler = (event) => {
-    setReferent(!referent);
-  };
+ 
 
   const [userName, setUserName] = useState("");
 
@@ -93,7 +89,7 @@ function VolunteerFormEdit() {
 
   const [role, setRole] = useState("");
 
-  const [selectedGroup, setSelectedGroups] = useState("");
+  const [selectedGroup, setSelectedGroups] = useState([]);
 
   const [error, setError] = useState("");
 
@@ -125,6 +121,8 @@ function VolunteerFormEdit() {
   const [groupInputValue, setGroupInputValue] = useState([]);
   const [roleInputValue, setRoleInputValue] = useState("");
   const [personalInformationId, setPersonalInformationId] = useState("");
+  const [roleNotUpdate, setRoleNotUpdate] = useState({});
+  const [groupNotUpdate, setGroupNotUpdate] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/users/${id}`).then((response) => {
@@ -135,22 +133,31 @@ function VolunteerFormEdit() {
       setLastName(data.personalInformation.lastName);
       setIdentificationNumber(data.personalInformation.identificationNumber);
       setGender(data.personalInformation.gender);
+      setGroupNotUpdate(data.group);
       setUserName(data.username);
       setPhone(data.personalInformation.phone);
       setEmail(data.personalInformation.email);
       setPassword(data.password);
-      setReferent(data.referent);
       setGroupInputValue(data.group.label);
-      if (data.roles[0].name === "ROLE_ADMIN") setRoleInputValue("admin");
-      else if (data.roles[0].name === "ROLE_REFERENTE")
+      if (data.roles[0].name === "ROLE_ADMIN") {
+        setRoleInputValue("admin");
+        setRoleNotUpdate("admin");
+      } else if (data.roles[0].name === "ROLE_REFERENTE") {
         setRoleInputValue("referente");
-      else setRoleInputValue("voluntario");
+        setRoleNotUpdate("referente");
+      } else {
+        setRoleInputValue("voluntario");
+        setRoleNotUpdate("voluntario");
+      }
     });
   }, []);
 
+  const [groupNotSet, setGroupNotSet] = useState(false);
+  const [roleNotSet, setRoleNotSet] = useState(false);
+
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(role.label);
+
     axios
       .put(
         `http://localhost:8080/api/personal_information/${personalInformationId}`,
@@ -164,19 +171,84 @@ function VolunteerFormEdit() {
         }
       )
       .then((response) => {
-        axios
-          .put(`http://localhost:8080/api/users/${id}`, {
-            username: userName,
-            group: {
-              id: selectedGroup.id,
-            },
-            referent: referent,
-            password: password,
-            role: [`${role.label}`],
-          })
-          .then((response) => {
-            //sET ASSERT
-          });
+        debugger
+        if (!groupNotSet && !roleNotSet) {
+          axios
+            .put(`http://localhost:8080/api/users/${id}`, {
+              username: userName,
+              group: {
+                id: groupNotUpdate.id,
+              },
+              password: password,
+              role: [`${roleNotUpdate}`],
+              personalInformation: {
+                id: personalInformationId,
+              },
+            })
+            .then((response) => {
+              setAssert({
+                title: "Felicitaciones",
+                message: "La operación se ha completado con exito",
+              });
+            });
+        } else if (!roleNotSet) {
+          axios
+            .put(`http://localhost:8080/api/users/${id}`, {
+              username: userName,
+              group: {
+                id: selectedGroup.id,
+              },
+              password: password,
+              role: [`${roleNotUpdate}`],
+              personalInformation: {
+                id: personalInformationId,
+              },
+            })
+            .then((response) => {
+              setAssert({
+                title: "Felicitaciones",
+                message: "La operación se ha completado con exito",
+              });
+            });
+        } else if (!groupNotSet) {
+          axios
+            .put(`http://localhost:8080/api/users/${id}`, {
+              username: userName,
+              group: {
+                id: groupNotUpdate.id,
+              },
+              password: password,
+              role: [`${role.label}`],
+              personalInformation: {
+                id: personalInformationId,
+              },
+            })
+            .then((response) => {
+              setAssert({
+                title: "Felicitaciones",
+                message: "La operación se ha completado con exito",
+              });
+            });
+        } else {
+          axios
+            .put(`http://localhost:8080/api/users/${id}`, {
+              username: userName,
+              group: {
+                id: selectedGroup.id,
+              },
+              password: password,
+              role: [`${role.label}`],
+              personalInformation: {
+                id: personalInformationId,
+              },
+            })
+            .then((response) => {
+              setAssert({
+                title: "Felicitaciones",
+                message: "La operación se ha completado con exito",
+              });
+            });
+        }
       });
   };
 
@@ -322,6 +394,7 @@ function VolunteerFormEdit() {
                 value={selectedGroup}
                 onChange={(_event, newGroup) => {
                   setSelectedGroups(newGroup);
+                  setGroupNotSet(true);
                 }}
               ></Autocomplete>
             </div>
@@ -380,19 +453,12 @@ function VolunteerFormEdit() {
                 value={role}
                 onChange={(_event, newRole) => {
                   setRole(newRole);
+                  setRoleNotSet(true);
                 }}
               ></Autocomplete>
             </div>
           </div>
-          <div className={classes.sixth_row}>
-            <label>Referente</label>
-            <Switch
-              checked={referent}
-              onChange={referentChangeHandler}
-              inputProps={{ "aria-label": "controlled" }}
-              color="default"
-            />
-          </div>
+
           <div className={button.button_div_right}>
             <Button type="submit">Editar</Button>
           </div>
