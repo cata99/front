@@ -44,14 +44,14 @@ function LifeEventForm() {
   useEffect(() => {
     axios.get("http://localhost:8080/api/users/").then((response) => {
       const autocompleteUsers = response.data.map((user) => {
-        console.log(user);
+
         const fullName =
           user.personalInformation.firstName +
           " , " +
           user.personalInformation.lastName;
         return {
           label: fullName,
-          id: user.id,
+          id: user.personalInformation.id,
         };
       });
       console.log(autocompleteUsers);
@@ -110,11 +110,12 @@ function LifeEventForm() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/groups"></Navigate>}
+      {redirect && <Navigate to="/volunteers"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar evento</Title>
         </div>
+        <>{selectedDate}</>
         <form onSubmit={submitHandler}>
           <div className={classes.first_row}>
             <div className={classes.column}>

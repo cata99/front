@@ -79,15 +79,16 @@ function DonationFormEdit() {
         response.data.personalInformation.lastName;
       setUserInputValue(fullName);
       setDonorInputValue(donorFullName);
+      setDonationDate(response.data.creationDate);
+      setReceivedDate(response.data.updateDate);
 
-      console.log(response.data);
     });
   }, []);
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/users/").then((response) => {
       const autocompleteUsers = response.data.map((user) => {
-        console.log(user);
+       
         const fullName =
           user.personalInformation.firstName +
           " , " +
@@ -97,24 +98,21 @@ function DonationFormEdit() {
           id: user.id,
         };
       });
-      console.log(autocompleteUsers);
       setUsers(autocompleteUsers);
     });
   }, []);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/personal_information/")
+      .get("http://localhost:8080/api/personal_information/donors")
       .then((response) => {
         const autocompleteDonors = response.data.map((donor) => {
-          console.log(donor);
           const fullName = donor.firstName + " , " + donor.lastName;
           return {
             label: fullName,
             id: donor.id,
           };
         });
-        console.log(autocompleteDonors);
         setDonors(autocompleteDonors);
       });
   }, []);
@@ -142,7 +140,7 @@ function DonationFormEdit() {
   const submitHandler = async (event) => {
     event.preventDefault();
     axios
-      .put(`http://localhost:8080/api/deliveries/${id}`, {
+      .put(`http://localhost:8080/api/donations/${id}`, {
         institution: { id: selectedInstitution.id },
         user: { id: selectedUser.id },
         personalInformation: { id: selectedDonor.id },
@@ -150,7 +148,6 @@ function DonationFormEdit() {
         updateDate: receivedDate,
       })
       .then((response) => {
-        console.log(response);
         setAssert({
           title: "Felicitaciones",
           message: "La operación se ha completado con exito",
@@ -189,7 +186,7 @@ function DonationFormEdit() {
                 setInstitutionInputValue(newInputValue);
               }}
               getOptionLabel={(option) => option.label}
-              style={{ width: "37rem" }}
+              style={{ width: "35rem" }}
               classes={{
                 option: styles.option,
               }}

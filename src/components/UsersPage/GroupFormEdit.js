@@ -55,6 +55,7 @@ function GroupFormEdit() {
       console.log(response);
       setEnteredName(response.data.label);
       setInstitutionsInputValue(response.data.institution.name);
+      setInstitutionNotUpdate(response.data.institution);
     });
   }, []);
 
@@ -64,19 +65,35 @@ function GroupFormEdit() {
 
   const [redirect, setRedirect] = useState(false);
 
+  const [institutionNotUpdate,setInstitutionNotUpdate] = useState([]);
+
   const submitHandler = async (event) => {
     event.preventDefault();
-    axios
-      .post(`http://localhost:8080/api/groups/${id}`, {
+    debugger
+    if(selectedInstitution === null){
+      axios
+      .put(`http://localhost:8080/api/groups/${id}`, {
         label: enteredName,
-        institution: { id: selectedInstitution.id },
+        institution: { id: institutionNotUpdate.id },
       })
       .then((response) => {
         setAssert({
           title: "Felicitaciones",
           message: "La operación se ha completado con exito",
         });
-      });
+      }); 
+    } else {
+    axios
+      .put(`http://localhost:8080/api/groups/${id}`, {
+        label: enteredName,
+        institution: { id:selectedInstitution.id },
+      })
+      .then((response) => {
+        setAssert({
+          title: "Felicitaciones",
+          message: "La operación se ha completado con exito",
+        });
+      });}
   };
 
   const errorHandler = () => {

@@ -61,13 +61,6 @@ function VolunteerForm() {
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
   };
-
-  const [referent, setReferent] = useState(false);
-
-  const referentChangeHandler = (event) => {
-    setReferent(!referent);
-  };
-
   const [userName, setUserName] = useState("");
 
   const userNameChangeHandler = (event) => {
@@ -120,28 +113,40 @@ function VolunteerForm() {
       setGroups(autocompleteGroup);
     });
   }, []);
+  
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(role.label);
+    debugger;
     axios
-      .post("http://localhost:8080/api/auth/signup", {
+      .post(`http://localhost:8080/api/personal_information/`, {
         firstName: firstName,
         lastName: lastName,
-        identificationNumber: identificationNumber,
-        gender: gender,
         phone: phone,
+        gender: gender,
         email: email,
-        username: userName,
-        group: {
-          id: selectedGroup.id,
-        },
-        referent: referent,
-        password: password,
-        role: [`${role.label}`],
+        identificationNumber: identificationNumber,
       })
       .then((response) => {
         console.log(response);
+        axios
+          .post(`http://localhost:8080/api/auth/signup`, {
+            username: userName,
+            group: {
+              id: selectedGroup.id,
+            },
+            password: password,
+            role: [`${role.label}`],
+            personalInformation: {
+              id: response.data.id,
+            }
+          })
+          .then((response) => {
+            setAssert({
+              title: "Felicitaciones",
+              message: "La operación se ha completado con exito",
+            });
+          });
       });
   };
 
@@ -270,7 +275,7 @@ function VolunteerForm() {
                 options={groups}
                 getOptionLabel={(option) => option.label}
                 classes={{
-                  option: styles.option
+                  option: styles.option,
                 }}
                 style={{ width: "35rem" }}
                 renderInput={(params) => (
@@ -325,7 +330,7 @@ function VolunteerForm() {
                 getOptionLabel={(option) => option.label}
                 style={{ width: "35rem" }}
                 classes={{
-                  option: styles.option
+                  option: styles.option,
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -340,15 +345,6 @@ function VolunteerForm() {
                 }}
               ></Autocomplete>
             </div>
-          </div>
-          <div className={classes.sixth_row}>
-            <label>Referente</label>
-            <Switch
-              checked={referent}
-              onChange={referentChangeHandler}
-              inputProps={{ "aria-label": "controlled" }}
-              color="default"
-            />
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>

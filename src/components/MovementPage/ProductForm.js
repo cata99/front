@@ -132,7 +132,7 @@ function ProductForm() {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione institución"
+                    placeholder="Seleccione tipo  de producto"
                   />
                 )}
                 value={selectedType}
