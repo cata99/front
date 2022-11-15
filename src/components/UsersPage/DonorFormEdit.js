@@ -115,7 +115,7 @@ function DonorsFormEdit() {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Donantes">
       {error && (
         <ErrorModal
           title={error.title}

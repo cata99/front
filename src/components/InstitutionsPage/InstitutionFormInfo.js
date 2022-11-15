@@ -7,7 +7,6 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import TextField from "@material-ui/core/TextField";
-import InfoCard from "../Card/InfoCard";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
@@ -108,7 +107,7 @@ function InstitutionFormInfo() {
               />
             </div>
           </div>
-          <div className={classes.input_div}>
+          <div className={classes.second_row}>
             <label>Teléfono</label>
             <TextField
               id="text-field group"

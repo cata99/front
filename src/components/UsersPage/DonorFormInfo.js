@@ -38,7 +38,7 @@ function DonorsFormInfo() {
   
 
   return (
-    <Layout>
+    <Layout title="Donantes">
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Información donante</Title>

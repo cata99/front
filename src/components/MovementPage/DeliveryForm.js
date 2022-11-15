@@ -3,7 +3,6 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import { Link } from "react-router-dom";
 import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";

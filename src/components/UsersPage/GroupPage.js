@@ -65,7 +65,7 @@ function GroupPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre</label>
+              <label><b>Nombre</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -79,7 +79,7 @@ function GroupPage() {
               />
             </div>
             <div>
-              <label>Institución</label>
+              <label><b>Institución</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}

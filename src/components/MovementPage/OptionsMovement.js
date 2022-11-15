@@ -10,7 +10,7 @@ import Title from "../Card/Title";
 
 function OptionsMovement() {
   return (
-    <Layout>
+    <Layout title="Movimientos">
       <Card className={style.filter}>
         <div className={classes.options_title}>
           <Title>Seleccione el movimiento a ingresar</Title>

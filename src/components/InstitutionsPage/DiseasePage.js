@@ -60,7 +60,7 @@ function DiseasePage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre</label>
+              <label><b>Nombre</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}

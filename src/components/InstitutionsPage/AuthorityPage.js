@@ -67,7 +67,7 @@ function AuthorityPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre</label>
+              <label><b>Nombre</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -81,7 +81,7 @@ function AuthorityPage() {
               />
             </div>
             <div>
-              <label>Ubicación</label>
+              <label><b>Ubicación</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}

@@ -66,7 +66,7 @@ function ProductPage(props) {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre</label>
+              <label><b>Nombre</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -80,7 +80,7 @@ function ProductPage(props) {
               />
             </div>
             <div>
-              <label>Tipo de producto</label>
+              <label><b>Tipo de producto</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}

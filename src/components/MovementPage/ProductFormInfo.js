@@ -50,7 +50,7 @@ function ProductFormInfo() {
  
 
   return (
-    <Layout>
+    <Layout title="Producto">
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Informacion producto</Title>

@@ -92,7 +92,7 @@ function ProductFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Producto">
       {error && (
         <ErrorModal
           title={error.title}

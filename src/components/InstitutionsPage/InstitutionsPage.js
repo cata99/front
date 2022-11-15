@@ -62,7 +62,7 @@ function InstitutionPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Comedor</label>
+              <label><b>Comedor</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -76,7 +76,7 @@ function InstitutionPage() {
               />
             </div>
             <div>
-              <label>Ubicación</label>
+              <label><b>Ubicación</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}

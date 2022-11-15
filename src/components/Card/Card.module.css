@@ -1,10 +1,20 @@
 .filter {
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-  background-color: #4eab9e;
+  background-color: azure;
   padding: 0px 15px;
 }
 
+.newAttribute {
+  position: fixed;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  padding: 0px 15px;
+  top: 13.5vh;
+  left: 13%;
+  width: 82%;
+}
 .home_item {
   border-radius: 12px;
   background-color: #ffffff;
@@ -30,11 +40,12 @@
 
 .title {
   padding: 0 1%;
+  color: black;
 }
 
-.row{
-  display:flex;
-  width:100%;
+.row {
+  display: flex;
+  width: 100%;
 }
 
 .institution_asociation {
@@ -47,17 +58,26 @@
   font-weight: 600;
 }
 
-.institution_card{
-  flex:50%;
+.institution_card {
+  flex: 50%;
   margin-left: 2%;
 }
 
-.institution_card h3{
-font-weight: 100;
+.institution_card h3 {
+  font-weight: 100;
 }
 
-
-.institution_card_title{
+.institution_card_title {
   gap: 2rem;
-  margin-top: 3.5% ;
+  margin-top: 3.5%;
+}
+
+.login{
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-color: azure;
+  padding: 0px 15px;
+  width: 40rem;
+  margin: auto;
+  margin-top: 10rem;
 }

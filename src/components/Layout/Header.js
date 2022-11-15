@@ -1,20 +1,23 @@
 import React from "react";
 import classes from "./Header.module.css";
-
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
 const Header = (props) => {
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.row}>
-        <div className={classes.title}>
-          <h1>{props.title}</h1>
-        </div>
-        <div className={classes.session_button}>
-          <ul className="navbar-nav">
-            <li className="right-li">Cerrar Sesion</li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Box>
+      <AppBar  style={{
+      "background-color": "#2F665F",
+      "line-height": "3rem",
+     " padding-right": "180px",
+      "color": "white",
+      "font-size": "large", "boxShadow":"none"}} >
+          <div className={classes.title}>
+            <h1>{props.title}</h1>
+          </div>
+          <div className={classes.session_button}></div>
+      
+      </AppBar>
+    </Box>
   );
 };
 

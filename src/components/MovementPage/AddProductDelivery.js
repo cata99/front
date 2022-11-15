@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -92,7 +92,7 @@ function AddProductFormDeliveries() {
   };
 
   return (
-    <Layout>
+    <Layout title="Entregas">
       {error && (
         <ErrorModal
           title={error.title}

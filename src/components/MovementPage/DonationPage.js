@@ -83,7 +83,7 @@ function DonationPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre usuario</label>
+              <label><b>Nombre usuario</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -97,7 +97,7 @@ function DonationPage() {
               />
             </div>
             <div>
-              <label>Apellido usuario</label>
+              <label><b>Apellido usuario</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -113,7 +113,7 @@ function DonationPage() {
           </div>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre donante</label>
+              <label><b>Nombre donante</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -127,7 +127,7 @@ function DonationPage() {
               />
             </div>
             <div>
-              <label>Apellido donante</label>
+              <label><b>Apellido donante</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -142,7 +142,7 @@ function DonationPage() {
             </div>
           </div>
           <div>
-            <label>Comedor</label>
+            <label><b>Comedor</b></label>
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}

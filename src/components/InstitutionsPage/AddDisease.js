@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import {  Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -30,10 +30,6 @@ function AddDisease() {
   const [institutions, setIntitution] = useState([]);
 
   const [enteredInstitution, setEnteredInstitution] = useState("");
-
-  const [diseases, setDiseases] = useState([]);
-
-  const [enteredDisease, setEnteredDisease] = useState([]);
 
   const [error, setError] = useState("");
 
@@ -65,9 +61,6 @@ function AddDisease() {
   
   const submitHandler = (event) => {
     event.preventDefault();
-
-    console.log(enteredInstitution);
-    console.log(enteredDisease);
     axios.post("http://localhost:8080/api/institutions_disease/", {
       institution: {
         id: enteredInstitution.id,

@@ -1,5 +1,4 @@
 import React from "react";
-import MovementFilters from "../Filters/MovementFilter";
 import Button from "../Buttons/Button";
 import DeliveryCard from "../Card/DeliveryCard";
 import Layout from "../Layout/Layout";
@@ -70,7 +69,7 @@ function DeliveryPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre usuario</label>
+              <label><b>Nombre usuario</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -84,7 +83,7 @@ function DeliveryPage() {
               />
             </div>
             <div>
-              <label>Apellido usuario</label>
+              <label><b>Apellido usuario</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -100,7 +99,7 @@ function DeliveryPage() {
           </div>
           <div className={classes.first_row}>
             <div>
-              <label>Comedor</label>
+              <label><b>Comedor</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -139,7 +138,7 @@ function DeliveryPage() {
           <Button>+</Button>
         </Link>
       </div>
-      {filteredMovements.map((movement) => {
+      {filteredMovements.reverse().map((movement) => {
         return (
           <DeliveryCard
             key={movement.id}

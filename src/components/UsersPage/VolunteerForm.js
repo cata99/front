@@ -11,7 +11,6 @@ import ResponseModal from "../Modal/ResponseModal";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-import { Switch } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -52,10 +51,6 @@ function VolunteerForm() {
 
   const [gender, setGender] = useState("");
 
-  const genderChangeHandler = (event) => {
-    setGender(event.target.value);
-  };
-
   const [email, setEmail] = useState("");
 
   const emailChangeHandler = (event) => {
@@ -79,6 +74,13 @@ function VolunteerForm() {
     { label: "admin" },
     { label: "voluntario" },
     { label: "referente" },
+  ];
+
+  const genders = [
+    { label: "Femenino" },
+    { label: "Masculino" },
+    { label: "No binario" },
+    { label: "Otro" },
   ];
 
   const [role, setRole] = useState("");
@@ -113,7 +115,6 @@ function VolunteerForm() {
       setGroups(autocompleteGroup);
     });
   }, []);
-  
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -123,7 +124,7 @@ function VolunteerForm() {
         firstName: firstName,
         lastName: lastName,
         phone: phone,
-        gender: gender,
+        gender: gender.label,
         email: email,
         identificationNumber: identificationNumber,
       })
@@ -139,7 +140,7 @@ function VolunteerForm() {
             role: [`${role.label}`],
             personalInformation: {
               id: response.data.id,
-            }
+            },
           })
           .then((response) => {
             setAssert({
@@ -151,7 +152,7 @@ function VolunteerForm() {
   };
 
   return (
-    <Layout>
+    <Layout title="Voluntarios">
       {error && (
         <ErrorModal
           title={error.title}
@@ -310,18 +311,25 @@ function VolunteerForm() {
           <div className={classes.fifth_row}>
             <div className={classes.column}>
               <label>Genero</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
+              <Autocomplete
+                options={genders}
+                getOptionLabel={(option) => option.label}
+                classes={{
+                  option: styles.option,
                 }}
-                type="text"
-                placeholder="Ingrese genero del voluntario"
+                style={{ width: "35rem" }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Seleccione grupo"
+                  />
+                )}
                 value={gender}
-                onChange={genderChangeHandler}
-              />
+                onChange={(_event, newGender) => {
+                  setGender(newGender);
+                }}
+              ></Autocomplete>
             </div>
             <div className={classes.column}>
               <label>Rol</label>

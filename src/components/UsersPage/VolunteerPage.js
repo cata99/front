@@ -77,7 +77,7 @@ function VolunteerPage() {
         <form>
           <div className={classes.first_row}>
             <div>
-              <label>Nombre</label>
+              <label><b>Nombre</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -91,7 +91,7 @@ function VolunteerPage() {
               />
             </div>
             <div>
-              <label>Apellido</label>
+              <label><b>Apellido</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -107,7 +107,7 @@ function VolunteerPage() {
           </div>
           <div className={classes.second_row}>
             <div>
-              <label>Usuario</label>
+              <label><b>Usuario</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -121,7 +121,7 @@ function VolunteerPage() {
               />
             </div>
             <div>
-              <label>Grupo</label>
+              <label><b>Grupo</b></label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -160,7 +160,7 @@ function VolunteerPage() {
           <Button>+</Button>
         </Link>
       </div>
-      {filteredVolunteers.map((volunteer) => {
+      {filteredVolunteers.reverse().map((volunteer) => {
         return (
           <VolunteersCard
             key={volunteer.id}

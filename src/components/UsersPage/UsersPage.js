@@ -83,7 +83,7 @@ function UserPage() {
       <form>
         <div className={classes.first_row}>
           <div>
-            <label>Nombre</label>
+            <label><b>Nombre</b></label>
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
@@ -97,7 +97,7 @@ function UserPage() {
             />
           </div>
           <div>
-            <label>Apellido</label>
+            <label><b>Apellido</b></label>
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}

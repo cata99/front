@@ -9,9 +9,9 @@ import button from "../Buttons/Button.module.css";
 import style from "../Card/Card.module.css";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 function NewAttribute() {
   const [field, setField] = useState("");
