@@ -23,9 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-
 function DonationForm() {
-
   const styles = useStyles();
 
   const [institutions, setInstitutions] = useState([]);
@@ -119,11 +117,11 @@ function DonationForm() {
     console.log(selectedInstitution.id);
     axios
       .post("http://localhost:8080/api/donations/", {
-        institution:{ id: selectedInstitution.id},
-        user: {id:selectedUser.id},
-        personalInformation: {id:selectedDonor.id},
+        institution: { id: selectedInstitution.id },
+        user: { id: selectedUser.id },
+        personalInformation: { id: selectedDonor.id },
         creationDate: donationDate,
-        updateDate: receivedDate
+        updateDate: receivedDate,
       })
       .then((response) => {
         console.log(response);
@@ -163,10 +161,11 @@ function DonationForm() {
               getOptionLabel={(option) => option.label}
               style={{ width: "37rem" }}
               classes={{
-                option: styles.option
+                option: styles.option,
               }}
               renderInput={(params) => (
                 <TextField
+                  required={true}
                   {...params}
                   variant="outlined"
                   placeholder="Seleccione institución"
@@ -188,6 +187,7 @@ function DonationForm() {
                 <TextField
                   id="text-field group"
                   style={{ width: "35rem" }}
+                  required={true}
                   variant="outlined"
                   inputProps={{
                     style: { width: "35rem" },
@@ -203,6 +203,7 @@ function DonationForm() {
                   id="text-field group"
                   style={{ width: "35rem" }}
                   variant="outlined"
+                  required={true}
                   inputProps={{
                     style: { width: "35rem" },
                   }}
@@ -214,7 +215,7 @@ function DonationForm() {
             </div>
 
             <p>
-              <b>Informacion personal</b>
+              <b>Informacion sobre las personas</b>
             </p>
             <div className={classes.wrapper_date}>
               <div className={classes.space_margin}>
@@ -224,11 +225,12 @@ function DonationForm() {
                   getOptionLabel={(option) => option.label}
                   style={{ width: "35rem" }}
                   classes={{
-                    option: styles.option
+                    option: styles.option,
                   }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
+                      required={true}
                       variant="outlined"
                       placeholder="Seleccione usuario que realizo la entrega"
                     />
@@ -247,11 +249,12 @@ function DonationForm() {
                   getOptionLabel={(option) => option.label}
                   style={{ width: "35rem" }}
                   classes={{
-                    option: styles.option
+                    option: styles.option,
                   }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
+                      required={true}
                       variant="outlined"
                       placeholder="Seleccione usuario que realizo la entrega"
                     />

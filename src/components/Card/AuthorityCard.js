@@ -3,6 +3,7 @@ import GeneralCard from "./GeneralCard";
 import classes from "./Card.module.css";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
+import SecondaryButton from "../Buttons/SecondaryButton";
 
 function AuthorityCard(props) {
   return (
@@ -16,10 +17,10 @@ function AuthorityCard(props) {
         </div>
         <div className={classes.right}>
           <Link to={`/add_authority/${props.id}`}>
-            <Button>Asociar inst</Button>
+            <SecondaryButton>Asociar inst</SecondaryButton>
           </Link>
           <Link to={`/authority_form_edit/${props.id}`}>
-            <Button>Editar</Button>
+            <SecondaryButton>Editar</SecondaryButton>
           </Link>
           <Link to={`/authority_form_info/${props.id}`}>
             <Button>Info</Button>

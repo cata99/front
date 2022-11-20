@@ -6,10 +6,13 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import button from "../Buttons/Button.module.css";
 import DonationCard from "../Card/DonationCard";
-import Card from "../Card/Card";
 import TextField from "@material-ui/core/TextField";
-import style from "../Card/Card.module.css";
 import classes from "../Filters/Filter.module.css";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SecondaryButton from "../Buttons/SecondaryButton";
 
 function DonationPage() {
   const [movements, setMovements] = useState([]);
@@ -79,11 +82,92 @@ function DonationPage() {
 
   return (
     <Layout title="Donaciones">
-      <Card className={style.filter}>
-        <form>
-          <div className={classes.first_row}>
+      <Accordion style={{ borderRadius: "10px", background: "azure" }}>
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          expandIcon={<ExpandMoreIcon />}
+          style={{
+            fontSize: "1.5rem",
+            background: "azure",
+            borderRadius: "10px",
+          }}
+        >
+          <b>Buscar donación</b>
+        </AccordionSummary>
+        <AccordionDetails>
+          <form>
+            <div className={classes.first_row}>
+              <div>
+                <label>
+                  <b>Nombre voluntario</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  inputRef={searchUserFirstNameRef}
+                  placeholder="Filtre por nombre del voluntario"
+                />
+              </div>
+              <div>
+                <label>
+                  <b>Apellido voluntario</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por apellido del usuario"
+                  inputRef={searchUserLastNameRef}
+                />
+              </div>
+            </div>
+            <div className={classes.first_row}>
+              <div>
+                <label>
+                  <b>Nombre donante</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  inputRef={searchDonorFirstNameRef}
+                  placeholder="Filtre por nombre del donante"
+                />
+              </div>
+              <div>
+                <label>
+                  <b>Apellido donante</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por apellido del donante"
+                  inputRef={searchDonorLastNameRef}
+                />
+              </div>
+            </div>
             <div>
-              <label><b>Nombre usuario</b></label>
+              <label>
+                <b>Comedor</b>
+              </label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -92,89 +176,36 @@ function DonationPage() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                inputRef={searchUserFirstNameRef}
-                placeholder="Filtre por nombre del usuario"
+                inputRef={searchInstitutionRef}
+                placeholder="Filtre por institución"
               />
             </div>
-            <div>
-              <label><b>Apellido usuario</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por apellido del usuario"
-                inputRef={searchUserLastNameRef}
-              />
+            <div className={button.button_div_right}>
+              {appliedFilters && (
+                <div>
+                  <SecondaryButton type="button" onClick={handleSearchReset}>
+                    Resetear Filtros
+                  </SecondaryButton>
+                  <Button type="button" onClick={handleApplyFilters}>
+                    Buscar
+                  </Button>
+                </div>
+              )}
+              {!appliedFilters && (
+                <Button type="button" onClick={handleApplyFilters}>
+                  Buscar
+                </Button>
+              )}
             </div>
-          </div>
-          <div className={classes.first_row}>
-            <div>
-              <label><b>Nombre donante</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                inputRef={searchDonorFirstNameRef}
-                placeholder="Filtre por nombre del donante"
-              />
-            </div>
-            <div>
-              <label><b>Apellido donante</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por apellido del donante"
-                inputRef={searchDonorLastNameRef}
-              />
-            </div>
-          </div>
-          <div>
-            <label><b>Comedor</b></label>
-            <TextField
-              id="text-field group"
-              style={{ width: "35rem" }}
-              variant="outlined"
-              inputProps={{
-                style: { width: "35rem" },
-              }}
-              type="text"
-              inputRef={searchInstitutionRef}
-              placeholder="Filtre por institución"
-            />
-          </div>
-          <div className={button.button_div_right}>
-            {appliedFilters && (
-              <Button type="button" onClick={handleSearchReset}>
-                Resetear Filtros
-              </Button>
-            )}
-            {!appliedFilters && (
-              <Button type="button" onClick={handleApplyFilters}>
-                Aplicar Filtros
-              </Button>
-            )}
-          </div>
-        </form>
-      </Card>
+          </form>
+        </AccordionDetails>
+      </Accordion>
       <div className={button.button_div_right}>
         <Link to="/products">
-          <Button>Ver productos</Button>
+          <SecondaryButton>Ver productos</SecondaryButton>
         </Link>
         <Link to="/deliveries">
-          <Button>Ver entregas</Button>
+          <SecondaryButton>Ver entregas</SecondaryButton>
         </Link>
         <Link to="/movement_option">
           <Button>+</Button>

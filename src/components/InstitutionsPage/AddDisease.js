@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import {  Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ function AddDisease() {
       setIntitution(autocompleteInstitutions);
     });
   }, []);
-  
+
   const submitHandler = (event) => {
     event.preventDefault();
     axios.post("http://localhost:8080/api/institutions_disease/", {
@@ -110,6 +110,7 @@ function AddDisease() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                    required={true}
                     {...params}
                     variant="outlined"
                     placeholder="Seleccione institución"
@@ -121,7 +122,6 @@ function AddDisease() {
                 }}
               ></Autocomplete>
             </div>
-           
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>

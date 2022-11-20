@@ -10,7 +10,7 @@ import ErrorModal from "../Modal/ErrorModal";
 import ResponseModal from "../Modal/ResponseModal";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
-import TextField from "@material-ui/core/TextField"
+import TextField from "@material-ui/core/TextField";
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams, Navigate } from "react-router-dom";
@@ -86,7 +86,6 @@ function VolunteerFormEdit() {
     { label: "No binario" },
     { label: "Otro" },
   ];
-
 
   const [role, setRole] = useState("");
 
@@ -173,7 +172,7 @@ function VolunteerFormEdit() {
         }
       )
       .then((response) => {
-        debugger
+        debugger;
         if (!groupNotSet && !roleNotSet) {
           axios
             .put(`http://localhost:8080/api/users/${id}`, {
@@ -282,6 +281,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -297,6 +297,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -314,6 +315,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -329,6 +331,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -346,6 +349,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -361,6 +365,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -378,6 +383,7 @@ function VolunteerFormEdit() {
               <Autocomplete
                 options={groups}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}
@@ -406,6 +412,7 @@ function VolunteerFormEdit() {
                 id="text-field group"
                 style={{ width: "35rem" }}
                 variant="outlined"
+                required={true}
                 inputProps={{
                   style: { width: "35rem" },
                 }}
@@ -422,6 +429,7 @@ function VolunteerFormEdit() {
               <Autocomplete
                 options={genders}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}
@@ -448,6 +456,7 @@ function VolunteerFormEdit() {
               <Autocomplete
                 options={roles}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 style={{ width: "35rem" }}
                 classes={{
                   option: styles.option,

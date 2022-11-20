@@ -37,13 +37,6 @@ function TypeForm() {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (enteredType.trim().length === 0) {
-      setError({
-        title: "Nombre invalido!",
-        message: "Por favor ingrese un nombre valido para el tipo",
-      });
-      return;
-    }
 
     const jsonBody = {
       label: enteredType,
@@ -93,6 +86,7 @@ function TypeForm() {
             <TextField
                   id="text-field group"
                   style={{ width: "35rem" }}
+                  required={true}
                   variant="outlined"
                   inputProps={{
                     style: { width: "35rem" },

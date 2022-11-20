@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import {  Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -57,7 +57,7 @@ function AddProductFormDonations() {
       const autocompleteProducts = response.data.map((product) => {
         console.log(product);
         return {
-          label: product.label, 
+          label: product.label,
           id: product.id,
         };
       });
@@ -121,13 +121,15 @@ function AddProductFormDonations() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Ejemplo: Latas de tomate"
                   />
                 )}
                 value={enteredProduct}
                 onChange={(_event, product) => {
-                  setEnteredProduct(product)}}
+                  setEnteredProduct(product);
+                }}
               ></Autocomplete>
             </div>
             <div>
@@ -135,6 +137,7 @@ function AddProductFormDonations() {
               <TextField
                 id="text-field group"
                 style={{ width: "33rem" }}
+                required={true}
                 variant="outlined"
                 placeholder="Cinco"
                 inputProps={{

@@ -154,11 +154,6 @@ function ProductFormEdit() {
                 }}
               ></Autocomplete>
             </div>
-            <div className={classes.add_product_button}>
-              <Link to="/type_form">
-                <Button>Agregar Tipo</Button>
-              </Link>
-            </div>
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Editar</Button>

@@ -142,6 +142,7 @@ function DonorsFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -157,6 +158,7 @@ function DonorsFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -174,6 +176,7 @@ function DonorsFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -189,6 +192,7 @@ function DonorsFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -207,6 +211,7 @@ function DonorsFormEdit() {
                 id="text-field group"
                 style={{ width: "35rem" }}
                 variant="outlined"
+                required={true}
                 inputProps={{
                   style: { width: "35rem" },
                 }}
@@ -221,6 +226,7 @@ function DonorsFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },

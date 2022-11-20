@@ -58,28 +58,52 @@ function HomePage() {
 
   return (
     <Layout title="Home">
-      <Link to="/donations" style={{ textDecoration: "none", color: "black" }}>
-        <HomeItem
-          title="Donaciones recibidas hasta la fecha"
-          quantity={donationTotal}
-        ></HomeItem>
-      </Link>
-      <Link to="/deliveries" style={{ textDecoration: "none", color: "black" }}>
-      <HomeItem
-        title="Entregas realizadas hasta la fecha"
-        quantity={deliveryTotal}
-      ></HomeItem>
-      </Link>
-      <Link to="/volunteers" style={{ textDecoration: "none", color: "black" }}>
-      <HomeItem
-        title="Voluntarios registrados hasta la fecha"
-        quantity={volunteerTotal}
-      ></HomeItem></Link>
-      <Link to="/institutions" style={{ textDecoration: "none", color: "black" }}>
-      <HomeItem
-        title="Instituciones a las que ayudamos"
-        quantity={institutionTotal}
-      ></HomeItem></Link>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "25rem" }}>
+          <Link
+            to="/donations"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <HomeItem
+              title="Donaciones recibidas hasta la fecha"
+              quantity={donationTotal}
+            ></HomeItem>
+          </Link>
+        </div>
+        <div style={{ width: "25rem" }}>
+          <Link
+            to="/deliveries"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <HomeItem
+              title="Entregas realizadas hasta la fecha"
+              quantity={deliveryTotal}
+            ></HomeItem>
+          </Link>
+        </div>
+        <div style={{ width: "25rem" }}>
+          <Link
+            to="/volunteers"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <HomeItem
+              title="Voluntarios registrados hasta la fecha"
+              quantity={volunteerTotal}
+            ></HomeItem>
+          </Link>
+        </div>
+        <div style={{ width: "25rem" }}>
+        <Link
+          to="/institutions"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <HomeItem
+            title="Comedores a las que ayudamos hasta la fecha"
+            quantity={institutionTotal}
+          ></HomeItem>
+        </Link>
+        </div>
+      </div>
     </Layout>
   );
 }

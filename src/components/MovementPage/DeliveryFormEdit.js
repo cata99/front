@@ -157,6 +157,7 @@ function DeliveryFormEdit() {
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required={true}
                   variant="outlined"
                   placeholder="Seleccione institución"
                 />
@@ -172,6 +173,7 @@ function DeliveryFormEdit() {
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
+              required={true}
               variant="outlined"
               type="date"
               value={selectedDate}
@@ -195,6 +197,7 @@ function DeliveryFormEdit() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione usuario que realizo la entrega"
                   />

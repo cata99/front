@@ -181,6 +181,7 @@ function DonationFormEdit() {
             <Autocomplete
               options={institutions}
               inputValue={institutionInputValue}
+              required={true}
               onInputChange={(_event, newInputValue) => {
                 setInstitutionInputValue(newInputValue);
               }}
@@ -213,6 +214,7 @@ function DonationFormEdit() {
                   id="text-field group"
                   style={{ width: "35rem" }}
                   variant="outlined"
+                  required={true}
                   inputProps={{
                     style: { width: "35rem" },
                   }}
@@ -227,6 +229,7 @@ function DonationFormEdit() {
                   id="text-field group"
                   style={{ width: "35rem" }}
                   variant="outlined"
+                  required={true}
                   inputProps={{
                     style: { width: "35rem" },
                   }}
@@ -246,6 +249,7 @@ function DonationFormEdit() {
                 <Autocomplete
                   options={donors}
                   inputValue={donorInputValue}
+                  required={true}
                   onInputChange={(_event, newInputValue) => {
                     setDonorInputValue(newInputValue);
                   }}
@@ -273,6 +277,7 @@ function DonationFormEdit() {
                 <Autocomplete
                   options={users}
                   inputValue={userInputValue}
+                  required={true}
                   onInputChange={(_event, newInputValue) => {
                     setUserInputValue(newInputValue);
                   }}

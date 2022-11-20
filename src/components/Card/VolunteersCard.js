@@ -3,6 +3,7 @@ import GeneralCard from "./GeneralCard";
 import classes from "./Card.module.css";
 import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
+import SecondaryButton from "../Buttons/SecondaryButton";
 
 function VolunteersCard(props) {
 
@@ -17,7 +18,7 @@ function VolunteersCard(props) {
           </div>
           <div className={classes.right}>
             <Link to={`/users_form_edit/${props.id}`}>
-              <Button>Editar</Button>
+              <SecondaryButton>Editar</SecondaryButton>
             </Link>
             <Link to={`/users_form_info/${props.id}`}>
               <Button>Info</Button>

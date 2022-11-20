@@ -6,11 +6,13 @@ import axios from "axios";
 import button from "../Buttons/Button.module.css";
 import { useEffect, useState, useRef } from "react";
 import VolunteersCard from "../Card/VolunteersCard";
-
-import Card from "../Card/Card";
 import classes from "../Filters/Filter.module.css";
 import TextField from "@material-ui/core/TextField";
-import style from "../Card/Card.module.css";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SecondaryButton from "../Buttons/SecondaryButton";
 function VolunteerPage() {
   const [volunteers, setVolunteers] = useState([]);
   useEffect(() => {
@@ -53,7 +55,7 @@ function VolunteerPage() {
             .includes(searchUserUserName.current.value.toLowerCase()) &&
           volunteer.group.label
             .toLowerCase()
-            .includes(searchUserGroup.current.value.toLowerCase()) 
+            .includes(searchUserGroup.current.value.toLowerCase())
       );
       setFilteredVolunteers(filter);
       setAppliedFilters(true);
@@ -73,88 +75,114 @@ function VolunteerPage() {
 
   return (
     <Layout title="Voluntarios">
-      <Card className={style.filter}>
-        <form>
-          <div className={classes.first_row}>
-            <div>
-              <label><b>Nombre</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por nombre"
-                inputRef={searchUserFirstNameRef}
-              />
+      <Accordion style={{ borderRadius: "10px", background: "azure" }}>
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          expandIcon={<ExpandMoreIcon />}
+          style={{
+            fontSize: "1.5rem",
+            background: "azure",
+            borderRadius: "10px",
+          }}
+        >
+          <b>Buscar voluntario</b>
+        </AccordionSummary>
+        <AccordionDetails>
+          <form>
+            <div className={classes.first_row}>
+              <div>
+                <label>
+                  <b>Nombre</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por nombre"
+                  inputRef={searchUserFirstNameRef}
+                />
+              </div>
+              <div>
+                <label>
+                  <b>Apellido</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por apellido"
+                  inputRef={searchUserLastNameRef}
+                />
+              </div>
             </div>
-            <div>
-              <label><b>Apellido</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por apellido"
-                inputRef={searchUserLastNameRef}
-              />
+            <div className={classes.second_row}>
+              <div>
+                <label>
+                  <b>Usuario</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por usuario"
+                  inputRef={searchUserUserName}
+                />
+              </div>
+              <div>
+                <label>
+                  <b>Grupo</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por grupo"
+                  inputRef={searchUserGroup}
+                />
+              </div>
             </div>
-          </div>
-          <div className={classes.second_row}>
-            <div>
-              <label><b>Usuario</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por usuario"
-                inputRef={searchUserUserName}
-              />
-            </div>
-            <div>
-              <label><b>Grupo</b></label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por grupo"
-                inputRef={searchUserGroup}
-              />
-            </div>
-          </div>
-          <div className={button.button_div_right}>
+            <div className={button.button_div_right}>
             {appliedFilters && (
-              <Button type="button" onClick={handleSearchReset}>
-                Resetear Filtros
-              </Button>
-            )}
-            {!appliedFilters && (
-              <Button type="button" onClick={handleApplyFilters}>
-                Aplicar Filtros
-              </Button>
-            )}
-          </div>
-        </form>
-      </Card>
+                <div>
+                  <SecondaryButton type="button" onClick={handleSearchReset}>
+                    Resetear Filtros
+                  </SecondaryButton>
+                  <Button type="button" onClick={handleApplyFilters}>
+                    Buscar
+                  </Button>
+                </div>
+              )}
+              {!appliedFilters && (
+                <Button type="button" onClick={handleApplyFilters}>
+                  Buscar
+                </Button>
+              )}
+            </div>
+          </form>
+        </AccordionDetails>
+      </Accordion>
       <div className={button.button_div_right}>
         <Link to="/donors">
-          <Button>Ver donantes</Button>
+          <SecondaryButton>Ver donantes</SecondaryButton>
         </Link>
         <Link to="/groups">
-          <Button>Ver grupos</Button>
+          <SecondaryButton>Ver grupos</SecondaryButton>
         </Link>
         <Link to="/volunteer_form">
           <Button>+</Button>

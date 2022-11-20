@@ -8,6 +8,16 @@
   padding: 0.5rem 1.5rem;
   margin: 5px;
 }
+.secondary_button {
+  background: white;
+  border: 3px solid;
+  border-radius: 10px;
+  border-color: #f483a4;
+  font-size: inherit;
+  color: #f483a4;
+  padding: 0.5rem 1.5rem;
+  margin: 5px;
+} 
 
 
 .button_div_right {

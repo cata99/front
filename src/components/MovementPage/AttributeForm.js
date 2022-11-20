@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 
 function AttributeForm(props) {
   const styles = useStyles();
+  
   const [attributes, setAttributes] = useState([]);
 
   const [enteredAttribute, setEnteredAttribute] = useState("");
@@ -69,11 +70,10 @@ function AttributeForm(props) {
         if (checked) {
           setField("");
           setUnit("");
-          return
+          return;
         } else {
           handleClose();
         }
-        
       });
   };
 
@@ -175,6 +175,7 @@ function AttributeForm(props) {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione atributo"
                   />
@@ -192,6 +193,7 @@ function AttributeForm(props) {
                 style={{ width: "33rem" }}
                 variant="outlined"
                 placeholder="Ejemplo: El peso de la lata es de 100"
+                required={true}
                 inputProps={{
                   style: { width: "33rem" },
                 }}

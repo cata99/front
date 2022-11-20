@@ -112,6 +112,7 @@ function AddAuthority() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione institución"
                   />

@@ -5,6 +5,7 @@ import Button from "../Buttons/Button";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SecondaryButton from "../Buttons/SecondaryButton";
 function DonationCard(props) {
   const [associatedProducts, setAssociatesProducts] = useState(true);
   const [donationProducts, setDonationProducts] = useState();
@@ -46,10 +47,10 @@ function DonationCard(props) {
         </div>
         <div className={classes.right} style={{padding:"5%"}}>
           <Link to={`/add_product_donations/${props.id}`}>
-            <Button style={{ fontSize: "small" }}>Agregar prod</Button>
+            <SecondaryButton style={{ fontSize: "small" }}>Agregar prod</SecondaryButton>
           </Link>
           <Link to={`/donations_form_edit/${props.id}`}>
-            <Button>Editar</Button>
+            <SecondaryButton>Editar</SecondaryButton>
           </Link>
           <Link to={`/donations_form_info/${props.id}`}>
             <Button>Info</Button>

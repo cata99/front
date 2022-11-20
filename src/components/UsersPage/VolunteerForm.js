@@ -179,6 +179,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -194,6 +195,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -211,6 +213,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -226,6 +229,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -243,6 +247,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -258,6 +263,7 @@ function VolunteerForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -275,6 +281,7 @@ function VolunteerForm() {
               <Autocomplete
                 options={groups}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}
@@ -298,6 +305,7 @@ function VolunteerForm() {
                 id="text-field group"
                 style={{ width: "35rem" }}
                 variant="outlined"
+                required={true}
                 inputProps={{
                   style: { width: "35rem" },
                 }}
@@ -317,6 +325,7 @@ function VolunteerForm() {
                 classes={{
                   option: styles.option,
                 }}
+                required={true}
                 style={{ width: "35rem" }}
                 renderInput={(params) => (
                   <TextField
@@ -337,6 +346,7 @@ function VolunteerForm() {
                 options={roles}
                 getOptionLabel={(option) => option.label}
                 style={{ width: "35rem" }}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}

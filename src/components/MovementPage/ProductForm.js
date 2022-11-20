@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
-import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import classes from "./Movement.module.css";
 import Title from "../Card/Title";
@@ -15,6 +14,7 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import style from "../Card/Card.module.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@mui/material/Modal";
 
 const useStyles = makeStyles({
   option: {
@@ -59,10 +59,43 @@ function ProductForm() {
       });
       setTypes(autocompleteTypes);
     });
-  }, []);
+  }, [types]);
 
   const productChangeHandler = (event) => {
     setProduct(event.target.value);
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [enteredType, setEnteredType] = useState("");
+
+  const typeChangeHandler = (event) => {
+    setEnteredType(event.target.value);
+  };
+
+  const submitTypeHandler = (event) => {
+    event.preventDefault();
+
+    const jsonBody = {
+      label: enteredType,
+    };
+    console.log(jsonBody);
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(jsonBody),
+    };
+    fetch("http://localhost:8080/api/product_types/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result));
+    setEnteredType("");
+    handleClose();
   };
 
   const submitHandler = async (event) => {
@@ -101,7 +134,7 @@ function ProductForm() {
       {redirect && <Navigate to="/products"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar Producto</Title>
+          <Title>Nuevo producto</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div>
@@ -109,11 +142,13 @@ function ProductForm() {
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
+              required={true}
               variant="outlined"
               inputProps={{
                 style: { width: "35rem" },
               }}
               type="text"
+              placeholder="Ingrese nombre del producto"
               value={product}
               onChange={productChangeHandler}
             />
@@ -131,6 +166,7 @@ function ProductForm() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione tipo  de producto"
                   />
@@ -142,9 +178,37 @@ function ProductForm() {
               ></Autocomplete>
             </div>
             <div className={classes.add_product_button}>
-              <Link to="/type_form">
-                <Button>Agregar Tipo</Button>
-              </Link>
+              <div>
+                <Button onClick={handleOpen}>Nuevo tipo</Button>
+                <Modal open={open} onClose={handleClose}>
+                  <Card className={style.newAttribute} style={{backgroundColor: "azure"}}>
+                    <div className={classes.title}>
+                      <Title>Nuevo tipo de producto</Title>
+                    </div>
+                    <form onSubmit={submitTypeHandler}>
+                      <div className={classes.input_div}>
+                        <label>Tipo de producto</label>
+                        <TextField
+                          id="text-field group"
+                          style={{ width: "35rem" }}
+                          required={true}
+                          variant="outlined"
+                          inputProps={{
+                            style: { width: "35rem" },
+                          }}
+                          placeholder="Ejemplo: Perecedero, muebles, entre otros"
+                          type="text"
+                          value={enteredType}
+                          onChange={typeChangeHandler}
+                        />
+                      </div>
+                      <div className={button.button_div_right}>
+                        <Button type="submit">Registrar</Button>
+                      </div>
+                    </form>
+                  </Card>
+                </Modal>
+              </div>
             </div>
           </div>
           <div className={button.button_div_right}>
