@@ -207,7 +207,7 @@ function DonationPage() {
         <Link to="/deliveries">
           <SecondaryButton>Ver entregas</SecondaryButton>
         </Link>
-        <Link to="/movement_option">
+        <Link to="/donation_form">
           <Button>+</Button>
         </Link>
       </div>

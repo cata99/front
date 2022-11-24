@@ -19,12 +19,6 @@ function OptionUser() {
           <Link to="/volunteer_form">
             <Button>Voluntario</Button>
           </Link>
-          <Link to="/donor_form">
-            <Button>Donante</Button>
-          </Link>
-          <Link to="/group_form">
-            <Button>Groupo</Button>
-          </Link>
           <Link to="/life_event_form">
             <Button>Hito de vida</Button>
           </Link>

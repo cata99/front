@@ -56,7 +56,7 @@ function ProductFormInfo() {
       axios
         .get(`http://localhost:8080/api/product_attribute/attributes/${id}`)
         .then((response) => {
-          setProductsAttributes(response.data);
+          setProductsAttributes(response.data)
           if (response.data.length > 0) {
             setAssociatesProducts(true);
           } else {

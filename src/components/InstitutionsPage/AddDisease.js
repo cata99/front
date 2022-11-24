@@ -59,6 +59,19 @@ function AddDisease() {
     });
   }, []);
 
+  const [diseaseObject, setDiseaseObject] = useState({
+    label: "",
+  });
+  useEffect(() => {
+    const fecthDisease = async () => {
+      let data = await fetch(`http://localhost:8080/api/diseases/${id}`);
+      data = await data.json();
+      setDiseaseObject(data);
+    };
+
+    fecthDisease();
+  }, []);
+
   const submitHandler = (event) => {
     event.preventDefault();
     axios.post("http://localhost:8080/api/institutions_disease/", {
@@ -77,7 +90,7 @@ function AddDisease() {
   };
 
   return (
-    <Layout>
+    <Layout title="Enfermedades">
       {error && (
         <ErrorModal
           title={error.title}
@@ -95,7 +108,7 @@ function AddDisease() {
       {redirect && <Navigate to="/diseases"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar enfermedad al comedor</Title>
+          <Title>Asociar enfermedad "{diseaseObject.label}" al comedor</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>

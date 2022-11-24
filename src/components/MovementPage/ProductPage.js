@@ -140,7 +140,7 @@ function ProductPage(props) {
         <Link to="/deliveries">
           <SecondaryButton>Ver entregas</SecondaryButton>
         </Link>
-        <Link to="/movement_option">
+        <Link to="/product_form">
           <Button>+</Button>
         </Link>
       </div>

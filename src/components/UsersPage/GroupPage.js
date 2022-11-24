@@ -62,7 +62,7 @@ function GroupPage() {
   };
 
   return (
-    <Layout title="Groupos">
+    <Layout title="Grupos">
       <Accordion style={{ borderRadius: "10px", background: "azure" }}>
         <AccordionSummary
           aria-controls="panel1a-content"

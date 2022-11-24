@@ -184,7 +184,7 @@ function VolunteerPage() {
         <Link to="/groups">
           <SecondaryButton>Ver grupos</SecondaryButton>
         </Link>
-        <Link to="/volunteer_form">
+        <Link to="/users_option">
           <Button>+</Button>
         </Link>
       </div>

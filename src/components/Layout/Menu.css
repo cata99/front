@@ -15,14 +15,10 @@ li a {
   text-decoration: none;
 }
 
-/* Change the link color on hover */
-li a:hover {
- /* background-color: rgba(167, 137, 137, 0.449);*/
-  padding: 1.3rem 0.5rem;
-  color: white;
-  font-size: medium;
-}
-
 .general_menu {
   padding-top: 5.7rem;
+}
+
+.MuiButtonBase-root{
+  padding: 0px 16px;
 }

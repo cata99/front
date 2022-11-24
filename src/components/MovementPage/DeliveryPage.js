@@ -161,7 +161,7 @@ function DeliveryPage() {
         <Link to="/donations">
           <SecondaryButton>Ver donaciones</SecondaryButton>
         </Link>
-        <Link to="/movement_option">
+        <Link to="/delivery_form">
           <Button>+</Button>
         </Link>
       </div>

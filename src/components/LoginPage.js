@@ -1,15 +1,18 @@
-import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "./Buttons/Button";
 import Card from "./Card/Card";
 import style from "./Card/Card.module.css";
-
+import AuthContext from "./Store/auth-context";
+import ErrorModal from "./Modal/ErrorModal";
 
 function Login() {
+  const authCtx = useContext(AuthContext);
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
 
   const userHandler = (event) => {
     setUser(event.target.value);
@@ -20,23 +23,31 @@ function Login() {
 
   const LoginHandler = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:8080/api/auth/signin", {
-        username: user,
-        password: password,
-      })
-      .then(function(response) {
-        console.log(response);
-        debugger;
-      })
-      .catch(function(error) {
-        console.log(error);
-        debugger;
-      });
+    authCtx.onLogin(user, password).then(
+      (response) => {
+        if(!response){
+        setError({
+          title: "Error",
+          message:
+            "No se ha podido crear la autoridad, por favor comuniquese con el area de sistemas",
+        });}
+      }
+    );
+  };
+
+  const errorHandler = () => {
+    setError(null);
   };
 
   return (
     <Card className={style.login}>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
+        ></ErrorModal>
+      )}
       <form onSubmit={LoginHandler}>
         <label>
           <b>Usuario</b>
@@ -69,7 +80,8 @@ function Login() {
           onChange={passwordHandler}
         />
         <div>
-        <Button type="submit">Iniciar sesion</Button></div>
+          <Button type="submit">Iniciar sesion</Button>
+        </div>
       </form>
     </Card>
   );
