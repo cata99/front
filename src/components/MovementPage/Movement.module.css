@@ -12,7 +12,7 @@
 
 /*Create movement page*/
 .options_title {
-  color: white;
+  color: black;
   text-align: center;
   padding: 2rem;
   font-size: xx-large;
@@ -29,13 +29,13 @@
 
 /*Create delivery form*/
 .title {
-  color: white;
+  color: black;
   font-size: x-large;
   padding: 1% 1.5% 0;
 }
 
 .creation_delivery {
-  color: white;
+  color: black;
   font-size: x-large;
 }
 
@@ -62,7 +62,7 @@
 
 .add-product {
   display: block;
-  color: white;
+  color: black;
   font-size: xx-large;
 }
 
@@ -79,5 +79,9 @@
   display: flex;
   content: center;
   gap: 3rem;
+}
+
+.div_products li a {
+  color: black;
 }
 

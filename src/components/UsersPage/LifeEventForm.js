@@ -123,6 +123,7 @@ function LifeEventForm() {
               <Autocomplete
                 options={users}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 style={{ width: "37rem" }}
                 classes={{
                   option: styles.option
@@ -146,6 +147,7 @@ function LifeEventForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 type="date"
                 placeholder="Ingrese nombre del evento"
@@ -160,6 +162,7 @@ function LifeEventForm() {
               <TextField
                 id="text-field group"
                 style={{ width: "37rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "40rem" },

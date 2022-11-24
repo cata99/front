@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import button from "../Buttons/Button.module.css";
-
-import Card from "../Card/Card";
 import classes from "../Filters/Filter.module.css";
 import TextField from "@material-ui/core/TextField";
-import style from "../Card/Card.module.css";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SecondaryButton from "../Buttons/SecondaryButton";
 
 function ProductPage(props) {
   const [products, setProduct] = useState([]);
@@ -62,61 +64,83 @@ function ProductPage(props) {
 
   return (
     <Layout title="Productos">
-      <Card className={style.filter}>
-        <form>
-          <div className={classes.first_row}>
-            <div>
-              <label>Nombre</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por nombre del product"
-                inputRef={searchProductLabelRef}
-              />
+      <Accordion style={{ borderRadius: "10px", background: "azure" }}>
+        <AccordionSummary
+          aria-controls="panel1a-content"
+          expandIcon={<ExpandMoreIcon />}
+          style={{
+            fontSize: "1.5rem",
+            background: "azure",
+            borderRadius: "10px",
+          }}
+        >
+          <b>Buscar producto</b>
+        </AccordionSummary>
+        <AccordionDetails>
+          <form>
+            <div className={classes.first_row}>
+              <div>
+                <label>
+                  <b>Nombre</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por nombre del product"
+                  inputRef={searchProductLabelRef}
+                />
+              </div>
+              <div>
+                <label>
+                  <b>Tipo de producto</b>
+                </label>
+                <TextField
+                  id="text-field group"
+                  style={{ width: "35rem" }}
+                  variant="outlined"
+                  inputProps={{
+                    style: { width: "35rem" },
+                  }}
+                  type="text"
+                  placeholder="Filtre por tipo de producto"
+                  inputRef={searchProductTypeLabelRef}
+                />
+              </div>
             </div>
-            <div>
-              <label>Tipo de producto</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
-                }}
-                type="text"
-                placeholder="Filtre por tipo de producto"
-                inputRef={searchProductTypeLabelRef}
-              />
-            </div>
-          </div>
 
-          <div className={button.button_div_right}>
-            {appliedFilters && (
-              <Button type="button" onClick={handleSearchReset}>
-                Resetear Filtros
-              </Button>
-            )}
-            {!appliedFilters && (
-              <Button type="button" onClick={handleApplyFilters}>
-                Aplicar Filtros
-              </Button>
-            )}
-          </div>
-        </form>
-      </Card>
+            <div className={button.button_div_right}>
+              {appliedFilters && (
+                <div>
+                  <SecondaryButton type="button" onClick={handleSearchReset}>
+                    Resetear Filtros
+                  </SecondaryButton>
+                  <Button type="button" onClick={handleApplyFilters}>
+                    Buscar
+                  </Button>
+                </div>
+              )}
+              {!appliedFilters && (
+                <Button type="button" onClick={handleApplyFilters}>
+                  Buscar
+                </Button>
+              )}
+            </div>
+          </form>
+        </AccordionDetails>
+      </Accordion>
       <div className={button.button_div_right}>
         <Link to="/donations">
-          <Button>Ver donaciones</Button>
+          <SecondaryButton>Ver donaciones</SecondaryButton>
         </Link>
         <Link to="/deliveries">
-          <Button>Ver entregas</Button>
+          <SecondaryButton>Ver entregas</SecondaryButton>
         </Link>
-        <Link to="/movement_option">
+        <Link to="/product_form">
           <Button>+</Button>
         </Link>
       </div>

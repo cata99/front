@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -32,15 +32,16 @@ function AddAuthority() {
 
   const [enteredInstitution, setEnteredInstitution] = useState("");
 
-  const [authorities, setAuthorities] = useState([]);
-
-  const [enteredAuthority, setEnteredAuthority] = useState([]);
-
   const [error, setError] = useState("");
 
   const [redirect, setRedirect] = useState(false);
 
   const [assert, setAssert] = useState("");
+  const [authObject, setAuthObject] = useState({
+    phone: "",
+    label: "",
+    location: "",
+  });
 
   const errorHandler = () => {
     setError(null);
@@ -50,11 +51,19 @@ function AddAuthority() {
     setAssert(null);
     setRedirect(true);
   };
+  useEffect(() => {
+    const fetchAuthority = async () => {
+      let data = await fetch(`http://localhost:8080/api/authorities/${id}`);
+      data = await data.json();
+      setAuthObject(data);
+    };
+
+    fetchAuthority();
+  }, []);
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/institutions/").then((response) => {
       const autocompleteInstitutions = response.data.map((institution) => {
-        console.log(institution);
         return {
           label: institution.name,
           id: institution.id,
@@ -82,7 +91,7 @@ function AddAuthority() {
   };
 
   return (
-    <Layout>
+    <Layout title="Autoridad">
       {error && (
         <ErrorModal
           title={error.title}
@@ -100,7 +109,7 @@ function AddAuthority() {
       {redirect && <Navigate to="/authorities"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar autoridad al comedor</Title>
+          <Title>Asociar a "{authObject.label}" - ubicada en {authObject.location}- a un comedor</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>
@@ -116,6 +125,7 @@ function AddAuthority() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione institución"
                   />

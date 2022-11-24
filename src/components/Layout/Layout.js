@@ -10,7 +10,7 @@ function Layout(props) {
       
       <div style={{display:'flex',gap:'0px',minHeight:'100vh'}}>
         <Menu></Menu>
-        <div style={{width:'90vw',padding:'20px',background:'#97CECC'}}>{props.children}</div>
+        <div style={{width:'90vw',padding:'7rem 20px',background:'#4EAB9E'}}>{props.children}</div>
       </div>
     </div>
   );

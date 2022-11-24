@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import DonationPage from "./components/MovementPage/DonationPage";
@@ -56,108 +56,31 @@ import AddProductFormDeliveries from "./components/MovementPage/AddProductDelive
 import DonationFormEdit from "./components/MovementPage/DonationFormEdit";
 import DonationFormInfo from "./components/MovementPage/DonationFormInfo";
 
+import Login from "./components/LoginPage";
+import { AuthContextProvider } from "./components/Store/auth-context";
+import AuthContext from "./components/Store/auth-context";
+import LoginRoute from "./components/Routes/LoginRoute";
+import AdminRoute from "./components/Routes/AdminRoute";
+import ReferentRoute from "./components/Routes/ReferentRoute";
+import VolunteerRoute from "./components/Routes/VolunteerRoute";
+
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/donations" element={<DonationPage />} />
-        <Route path="/institutions" element={<InstitutionPage />} />
-        <Route path="/users" element={<UserPage />} />
-        <Route path="/authorities" element={<AuthorityPage />} />
-        <Route path="/diseases" element={<DiseasePage />} />
-        <Route path="/deliveries" element={<DeliveryPage />} />
-        <Route path="/products" element={<ProductPage />} />
+  const authCtx = useContext(AuthContext);
 
-        <Route path="/movement_option" element={<OptionsMovement />} />
-        <Route path="/delivery_form" element={<DeliveryForm />} />
-        <Route path="/donation_form" element={<DonationForm />} />
-        <Route
-          path="/product_form_edit/:id"
-          element={<ProductFormEdit />}
-        />
-        <Route
-          path="/product_form_info/:id"
-          element={<ProductFormInfo />}
-        />
-
-        <Route path="/product_form" element={<ProductForm />} />
-        <Route path="/type_form" element={<TypeForm />} />
-        <Route path="/add_attributes/:id" element={<AttributeForm />} />
-        <Route path="/add_product_donations/:id" element={<AddProductFormDonations />} />
-        <Route path="/add_product_deliveries/:id" element={<AddProductFormDeliveries />} />
-        <Route path="/deliveries_form_edit/:id" element={<DeliveryFormEdit />} />
-        <Route path="/deliveries_form_info/:id" element={<DeliveryFormInfo />} />
-        <Route path="/add_product_deliveries/:id" element={<AddProductFormDeliveries />} />
-        
-        <Route path="/donations_form_edit/:id" element={<DonationFormEdit />} />
-        
-        <Route path="/donations_form_info/:id" element={<DonationFormInfo />} />
-        <Route path="/new_attribute/:id" element={<NewAttribute />} />
-
-        <Route path="/institution_option" element={<OptionInstitution />} />
-        <Route path="/institution_form" element={<InstitutionForm />} />
-        <Route
-          path="/institution_form_edit/:id"
-          element={<InstitutionFormEdit />}
-        />
-        <Route
-          path="/institution_form_info/:id"
-          element={<InstitutionFormInfo />}
-        />
-        <Route
-          path="/authority_form_edit/:id"
-          element={<AuthorityFormEdit />}
-        />
-         <Route
-          path="/authority_form_info/:id"
-          element={<AuthorityFormInfo />}
-        />
-        <Route path="/add_authority/:id" element={<AddAuthority />} />
-        <Route path="/add_disease/:id" element={<AddDisease />} />
-        <Route path="/disease_form_edit/:id" element={<DiseaseFormEdit />} />
-        <Route path="/disease_form_info/:id" element={<DiseaseFormInfo />} />
-        <Route path="/authority_form" element={<AuthorityForm />} />
-        <Route path="/disease_form" element={<DiseaseForm />} />
-
-        <Route path="/users_option" element={<OptionUser />} />
-        <Route path="/volunteer_form" element={<VolunteerForm />} />
-        <Route
-          path="/users_form_edit/:id"
-          element={<VolunteerFormEdit />}
-        />
-        <Route
-          path="/users_form_info/:id"
-          element={<VolunteerFormInfo
-             />}
-        />
-        <Route
-          path="/donors_form_edit/:id"
-          element={<DonorsFormEdit />}
-        />
-        <Route
-          path="/donors_form_info/:id"
-          element={<DonorsFormInfo />}
-        />
-        <Route path="/life_event_form" element={<LifeEventForm />} />
-        <Route path="/group_form" element={<GroupForm />} />
-        <Route
-          path="/group_form_edit/:id"
-          element={<GroupFormEdit
-             />}
-        />
-        <Route
-          path="/group_form_info/:id"
-          element={<GroupFormInfo
-             />}
-        />
-        <Route path="/donor_form" element={<DonorForm />} />
-        <Route path="/volunteers" element={<VolunteerPage />} />
-        <Route path="/donors" element={<DonorPage />} />
-        <Route path="/groups" element={<GroupPage />} />
-      </Routes>
-    </Router>
-  );
+  const isUserLogged = () => {
+    console.log(authCtx);
+    if (authCtx.isLoggedIn) {
+      const role = sessionStorage.getItem("roles")
+      if (role == "ROLE_ADMIN") {
+        return <AdminRoute />;
+      } else if (role == "ROLE_REFERENTE") {
+        return <ReferentRoute />;
+      } else {
+        return <VolunteerRoute />;
+      }
+    } else return <LoginRoute />;
+  };
+  return <>{isUserLogged()}</>;
 }
 
 export default App;

@@ -15,7 +15,6 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
-import moment from "moment";
 
 const useStyles = makeStyles({
   option: {
@@ -158,6 +157,7 @@ function DeliveryFormEdit() {
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required={true}
                   variant="outlined"
                   placeholder="Seleccione institución"
                 />
@@ -173,6 +173,7 @@ function DeliveryFormEdit() {
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
+              required={true}
               variant="outlined"
               type="date"
               value={selectedDate}
@@ -196,6 +197,7 @@ function DeliveryFormEdit() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione usuario que realizo la entrega"
                   />

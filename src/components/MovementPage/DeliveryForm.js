@@ -3,7 +3,6 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import { Link } from "react-router-dom";
 import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";
@@ -25,7 +24,6 @@ const useStyles = makeStyles({
 });
 
 function DeliveryForm() {
-
   const styles = useStyles();
 
   const [institutions, setInstitutions] = useState([]);
@@ -91,8 +89,8 @@ function DeliveryForm() {
     event.preventDefault();
     axios
       .post("http://localhost:8080/api/deliveries/", {
-        user: {id:selectedUser.id},
-        date: selectedDate ,  
+        user: { id: selectedUser.id },
+        date: selectedDate,
         institution: { id: selectedInstitution.id },
       })
       .then((response) => {
@@ -133,11 +131,12 @@ function DeliveryForm() {
               getOptionLabel={(option) => option.label}
               style={{ width: "35rem" }}
               classes={{
-                option: styles.option
+                option: styles.option,
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required={true}
                   variant="outlined"
                   placeholder="Seleccione institución"
                 />
@@ -153,6 +152,7 @@ function DeliveryForm() {
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}
+              required={true}
               variant="outlined"
               format="dd/MM/yyyy"
               type="date"
@@ -169,11 +169,12 @@ function DeliveryForm() {
                 getOptionLabel={(option) => option.label}
                 style={{ width: "35rem" }}
                 classes={{
-                  option: styles.option
+                  option: styles.option,
                 }}
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Seleccione usuario que realizo la entrega"
                   />
@@ -186,7 +187,7 @@ function DeliveryForm() {
             </div>
           </div>
           <div className={button.button_div_right}>
-              <Button type="submit">Registrar</Button>
+            <Button type="submit">Registrar</Button>
           </div>
         </form>
       </Card>

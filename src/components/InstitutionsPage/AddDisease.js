@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -30,10 +30,6 @@ function AddDisease() {
   const [institutions, setIntitution] = useState([]);
 
   const [enteredInstitution, setEnteredInstitution] = useState("");
-
-  const [diseases, setDiseases] = useState([]);
-
-  const [enteredDisease, setEnteredDisease] = useState([]);
 
   const [error, setError] = useState("");
 
@@ -62,12 +58,22 @@ function AddDisease() {
       setIntitution(autocompleteInstitutions);
     });
   }, []);
-  
+
+  const [diseaseObject, setDiseaseObject] = useState({
+    label: "",
+  });
+  useEffect(() => {
+    const fecthDisease = async () => {
+      let data = await fetch(`http://localhost:8080/api/diseases/${id}`);
+      data = await data.json();
+      setDiseaseObject(data);
+    };
+
+    fecthDisease();
+  }, []);
+
   const submitHandler = (event) => {
     event.preventDefault();
-
-    console.log(enteredInstitution);
-    console.log(enteredDisease);
     axios.post("http://localhost:8080/api/institutions_disease/", {
       institution: {
         id: enteredInstitution.id,
@@ -84,7 +90,7 @@ function AddDisease() {
   };
 
   return (
-    <Layout>
+    <Layout title="Enfermedades">
       {error && (
         <ErrorModal
           title={error.title}
@@ -102,7 +108,7 @@ function AddDisease() {
       {redirect && <Navigate to="/diseases"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar enfermedad al comedor</Title>
+          <Title>Asociar enfermedad "{diseaseObject.label}" al comedor</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>
@@ -117,6 +123,7 @@ function AddDisease() {
                 }}
                 renderInput={(params) => (
                   <TextField
+                    required={true}
                     {...params}
                     variant="outlined"
                     placeholder="Seleccione institución"
@@ -128,7 +135,6 @@ function AddDisease() {
                 }}
               ></Autocomplete>
             </div>
-           
           </div>
           <div className={button.button_div_right}>
             <Button type="submit">Registrar</Button>

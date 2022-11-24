@@ -18,13 +18,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   option: {
     "&:hover": {
-      backgroundColor: "grey"
-    }
-  }
+      backgroundColor: "grey",
+    },
+  },
 });
 
 function GroupForm() {
-
   const styles = useStyles();
   const [enteredName, setEnteredName] = useState("");
   const [institutions, setInstitutions] = useState([]);
@@ -103,9 +102,11 @@ function GroupForm() {
               <label>Nombre</label>
               <TextField
                 id="text-field group"
-                style={{width:'35rem'}}
-                variant="outlined"   inputProps={{
-                  style: { width: '35rem' },
+                style={{ width: "35rem" }}
+                variant="outlined"
+                required={true}
+                inputProps={{
+                  style: { width: "35rem" },
                 }}
                 type="text"
                 placeholder="Ingrese nombre del grupo"
@@ -118,11 +119,16 @@ function GroupForm() {
               <Autocomplete
                 options={institutions}
                 classes={{
-                  option: styles.option
+                  option: styles.option,
                 }}
+                required={true}
                 getOptionLabel={(option) => option.label}
                 renderInput={(params) => (
-                  <TextField {...params} variant="outlined" placeholder="Seleccione institución"/>
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Seleccione institución"
+                  />
                 )}
                 value={selectedInstitution}
                 onChange={(_event, newInstitution) => {

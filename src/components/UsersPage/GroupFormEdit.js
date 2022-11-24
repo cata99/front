@@ -133,6 +133,7 @@ function GroupFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -151,6 +152,7 @@ function GroupFormEdit() {
                     setInstitutionsInputValue(newInputValue);
                   }}
                 options={institutions}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}

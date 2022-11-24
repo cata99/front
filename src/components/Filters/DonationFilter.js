@@ -11,7 +11,7 @@ function DeliveryFilter() {
       <form>
         <div style={{ display: "flex", justify: "center", gap: "10px" }}>
           <div className="string-input">
-            <label>Comedor</label>
+            <label><b>Comedor</b></label>
             <input type="text"></input>
           </div>
           <div className="string-input">

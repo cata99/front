@@ -8,26 +8,14 @@ import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import ErrorModal from "../Modal/ErrorModal";
-import ResponseModal from "../Modal/ResponseModal";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { useParams } from "react-router-dom";
 
-const useStyles = makeStyles({
-  option: {
-    "&:hover": {
-      backgroundColor: "grey",
-    },
-  },
-});
 
 function DonationFormInfo() {
   const { id } = useParams();
 
-  const styles = useStyles();
 
   const [donationDate, setDonationDate] = useState("");
 
@@ -77,7 +65,7 @@ function DonationFormInfo() {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Donaciones">
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Informacion donación</Title>

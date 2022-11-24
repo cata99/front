@@ -8,7 +8,6 @@ import classes from "./User.module.css";
 import style from "../Card/Card.module.css";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-import { Switch } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
@@ -20,12 +19,10 @@ function VolunteerFormInfo() {
   const [phone, setPhone] = useState("");
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
-  const [referent, setReferent] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [groups, setGroups] = useState("");
   const [role, setRole] = useState("");
-  const [personalInformationId, setPersonalInformationId] = useState("");
 
   useEffect(() => {
     axios.get(`http://localhost:8080/api/users/${id}`).then((response) => {
@@ -39,7 +36,6 @@ function VolunteerFormInfo() {
       setPhone(data.personalInformation.phone);
       setEmail(data.personalInformation.email);
       setPassword(data.password);
-      setReferent(data.referent);
       setGroups(data.group.label);
       if (data.roles[0].name === "ROLE_ADMIN") setRole("admin");
       else if (data.roles[0].name === "ROLE_REFERENTE") setRole("referente");
@@ -69,7 +65,7 @@ function VolunteerFormInfo() {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Voluntarios">
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Información voluntario</Title>

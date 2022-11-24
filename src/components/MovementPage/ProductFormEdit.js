@@ -92,7 +92,7 @@ function ProductFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Producto">
       {error && (
         <ErrorModal
           title={error.title}
@@ -153,11 +153,6 @@ function ProductFormEdit() {
                   setSelectedType(type);
                 }}
               ></Autocomplete>
-            </div>
-            <div className={classes.add_product_button}>
-              <Link to="/type_form">
-                <Button>Agregar Tipo</Button>
-              </Link>
             </div>
           </div>
           <div className={button.button_div_right}>

@@ -3,7 +3,6 @@ import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
 import Title from "../Card/Title";
-import { Link } from "react-router-dom";
 import button from "../Buttons/Button.module.css";
 import classes from "./Movement.module.css";
 import style from "../Card/Card.module.css";
@@ -156,7 +155,7 @@ function DonationFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Donaciones">
       {error && (
         <ErrorModal
           title={error.title}
@@ -182,6 +181,7 @@ function DonationFormEdit() {
             <Autocomplete
               options={institutions}
               inputValue={institutionInputValue}
+              required={true}
               onInputChange={(_event, newInputValue) => {
                 setInstitutionInputValue(newInputValue);
               }}
@@ -214,6 +214,7 @@ function DonationFormEdit() {
                   id="text-field group"
                   style={{ width: "35rem" }}
                   variant="outlined"
+                  required={true}
                   inputProps={{
                     style: { width: "35rem" },
                   }}
@@ -228,6 +229,7 @@ function DonationFormEdit() {
                   id="text-field group"
                   style={{ width: "35rem" }}
                   variant="outlined"
+                  required={true}
                   inputProps={{
                     style: { width: "35rem" },
                   }}
@@ -247,6 +249,7 @@ function DonationFormEdit() {
                 <Autocomplete
                   options={donors}
                   inputValue={donorInputValue}
+                  required={true}
                   onInputChange={(_event, newInputValue) => {
                     setDonorInputValue(newInputValue);
                   }}
@@ -274,6 +277,7 @@ function DonationFormEdit() {
                 <Autocomplete
                   options={users}
                   inputValue={userInputValue}
+                  required={true}
                   onInputChange={(_event, newInputValue) => {
                     setUserInputValue(newInputValue);
                   }}

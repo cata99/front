@@ -11,7 +11,6 @@ import ResponseModal from "../Modal/ResponseModal";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
-import { Switch } from "@mui/material";
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams, Navigate } from "react-router-dom";
@@ -55,17 +54,11 @@ function VolunteerFormEdit() {
 
   const [gender, setGender] = useState("");
 
-  const genderChangeHandler = (event) => {
-    setGender(event.target.value);
-  };
-
   const [email, setEmail] = useState("");
 
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
   };
-
- 
 
   const [userName, setUserName] = useState("");
 
@@ -85,6 +78,13 @@ function VolunteerFormEdit() {
     { label: "admin" },
     { label: "voluntario" },
     { label: "referente" },
+  ];
+
+  const genders = [
+    { label: "Femenino" },
+    { label: "Masculino" },
+    { label: "No binario" },
+    { label: "Otro" },
   ];
 
   const [role, setRole] = useState("");
@@ -120,6 +120,7 @@ function VolunteerFormEdit() {
 
   const [groupInputValue, setGroupInputValue] = useState([]);
   const [roleInputValue, setRoleInputValue] = useState("");
+  const [genderInputValue, setGenderInputValue] = useState("");
   const [personalInformationId, setPersonalInformationId] = useState("");
   const [roleNotUpdate, setRoleNotUpdate] = useState({});
   const [groupNotUpdate, setGroupNotUpdate] = useState([]);
@@ -132,7 +133,7 @@ function VolunteerFormEdit() {
       setFirstName(data.personalInformation.firstName);
       setLastName(data.personalInformation.lastName);
       setIdentificationNumber(data.personalInformation.identificationNumber);
-      setGender(data.personalInformation.gender);
+      setGenderInputValue(data.personalInformation.gender);
       setGroupNotUpdate(data.group);
       setUserName(data.username);
       setPhone(data.personalInformation.phone);
@@ -165,13 +166,13 @@ function VolunteerFormEdit() {
           firstName: firstName,
           lastName: lastName,
           phone: phone,
-          gender: gender,
+          gender: gender.label,
           email: email,
           identificationNumber: identificationNumber,
         }
       )
       .then((response) => {
-        debugger
+        debugger;
         if (!groupNotSet && !roleNotSet) {
           axios
             .put(`http://localhost:8080/api/users/${id}`, {
@@ -253,7 +254,7 @@ function VolunteerFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Voluntarios">
       {error && (
         <ErrorModal
           title={error.title}
@@ -280,6 +281,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -295,6 +297,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -312,6 +315,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -327,6 +331,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -344,6 +349,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -359,6 +365,7 @@ function VolunteerFormEdit() {
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
+                required={true}
                 variant="outlined"
                 inputProps={{
                   style: { width: "35rem" },
@@ -376,6 +383,7 @@ function VolunteerFormEdit() {
               <Autocomplete
                 options={groups}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 classes={{
                   option: styles.option,
                 }}
@@ -404,6 +412,7 @@ function VolunteerFormEdit() {
                 id="text-field group"
                 style={{ width: "35rem" }}
                 variant="outlined"
+                required={true}
                 inputProps={{
                   style: { width: "35rem" },
                 }}
@@ -417,24 +426,37 @@ function VolunteerFormEdit() {
           <div className={classes.fifth_row}>
             <div className={classes.column}>
               <label>Genero</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
+              <Autocomplete
+                options={genders}
+                getOptionLabel={(option) => option.label}
+                required={true}
+                classes={{
+                  option: styles.option,
                 }}
-                type="text"
-                placeholder="Ingrese genero del voluntario"
+                inputValue={genderInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setGenderInputValue(newInputValue);
+                }}
+                style={{ width: "35rem" }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Seleccione genero"
+                  />
+                )}
                 value={gender}
-                onChange={genderChangeHandler}
-              />
+                onChange={(_event, newGender) => {
+                  setGender(newGender);
+                }}
+              ></Autocomplete>
             </div>
             <div className={classes.column}>
               <label>Rol</label>
               <Autocomplete
                 options={roles}
                 getOptionLabel={(option) => option.label}
+                required={true}
                 style={{ width: "35rem" }}
                 classes={{
                   option: styles.option,

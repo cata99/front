@@ -108,7 +108,7 @@ function DeliveryFormEdit() {
                   return (
                     <li>
                       <Link
-                        to={`/product_form_info/${deliveryProduct.product.id}`}
+                        to={`/product_form_info/${deliveryProduct.product.id}`} style={{color:"black"}}
                       >
                         {deliveryProduct.product.label} - Tipo:{" "}
                         {deliveryProduct.product.productType.label} - Cantidad :{" "}

@@ -1,9 +1,9 @@
 /*General for filters*/
 form {
-  background-color: #4eab9e;
+  background-color: azure;
   padding: 20px;
   font-size: x-large;
-  color: white;
+  color: black;
 }
 input, option, select {
   display: block;

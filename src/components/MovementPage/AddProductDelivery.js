@@ -12,7 +12,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ResponseModal from "../Modal/ResponseModal";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -68,31 +68,35 @@ function AddProductFormDeliveries() {
   const submitHandler = (event) => {
     event.preventDefault();
     debugger;
-    axios.post("http://localhost:8080/api/deliveries_quantities/", {
-      product: {
-        id: enteredProduct.id,
-      },
-      delivery: {
-        id: id,
-      },
-      quantity: quantity,
-    }).then((response) => {
+    axios
+      .post("http://localhost:8080/api/deliveries_quantities/", {
+        product: {
+          id: enteredProduct.id,
+        },
+        delivery: {
+          id: id,
+        },
+        quantity: quantity,
+      })
+      .then((response) => {
         setAssert({
-      title: "Felicitaciones",
-      message: "La operación se ha completado con exito",
-    });
-    }).catch(function (error){
+          title: "Felicitaciones",
+          message: "La operación se ha completado con exito",
+        });
+      })
+      .catch(function(error) {
         setError({
-            title: "Esta operación es incorrecta",
-            message:"No se pudo asociar el producto ya que la cantidad ya que exceede la cantidad en stock"
-        })
-    })
+          title: "Esta operación es incorrecta",
+          message:
+            "No se pudo asociar el producto ya que la cantidad ya que exceede la cantidad en stock",
+        });
+      });
     setEnteredProduct("");
     setQuantity("");
   };
 
   return (
-    <Layout>
+    <Layout title="Entregas">
       {error && (
         <ErrorModal
           title={error.title}
@@ -126,6 +130,7 @@ function AddProductFormDeliveries() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    required={true}
                     variant="outlined"
                     placeholder="Ejemplo: latas de tomates"
                   />
@@ -143,7 +148,7 @@ function AddProductFormDeliveries() {
                 style={{ width: "33rem" }}
                 variant="outlined"
                 placeholder="Cinco"
-
+                required={true}
                 inputProps={{
                   style: { width: "33rem" },
                 }}
