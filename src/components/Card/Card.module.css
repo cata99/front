@@ -29,7 +29,7 @@
 }
 .home_item {
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #d6d3d3;
   display: block;
   text-align: center;
   padding: 0.5rem;
@@ -93,3 +93,9 @@
   margin: auto;
   margin-top: 10rem;
 }
+.numbers_div{
+font-family: verdana;
+font-weight: bold;
+text-align: center;
+font-size: 30px;
+color: rgb(91,156,54);}

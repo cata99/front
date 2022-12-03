@@ -38,10 +38,18 @@ import DonorPage from "../UsersPage/DonorPage";
 import DonorsFormEdit from "../UsersPage/DonorFormEdit";
 import DonorsFormInfo from "../UsersPage/DonorFormInfo";
 import VolunteerFormInfo from "../UsersPage/VolunteerFormInfo";
+import VolunteerFormEdit from "../UsersPage/VolunteerFormEdit";
+import VolunteerPage from "../UsersPage/VolunteerPage";
+import GroupPage from "../UsersPage/GroupPage";
+import ProductFormEdit from "../MovementPage/ProductFormEdit";
+import GroupFormInfo from "../UsersPage/GroupFormInfo";
+import DonationFormInfo from "../MovementPage/DonationFormInfo";
 
 const ReferentRoute = () => {
   return (
     <Routes>
+      <Route path="/volunteers" element={<VolunteerPage />} />
+      <Route path="/groups" element={<GroupPage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/donations" element={<DonationPage />} />
       <Route path="/institutions" element={<InstitutionPage />} />
@@ -50,6 +58,8 @@ const ReferentRoute = () => {
       <Route path="/diseases" element={<DiseasePage />} />
       <Route path="/deliveries" element={<DeliveryPage />} />
       <Route path="/products" element={<ProductPage />} />
+      <Route path="/product_form_info/:id" element={<ProductFormInfo />} />
+      <Route path="/product_form_edit/:id" element={<ProductFormEdit />} />
       <Route path="/authority_form" element={<AuthorityForm />} />
       <Route path="/authority_form_edit/:id" element={<AuthorityFormEdit />} />
       <Route path="/authority_form_info/:id" element={<AuthorityFormInfo />} />
@@ -66,6 +76,7 @@ const ReferentRoute = () => {
         path="/institution_form_edit/:id"
         element={<InstitutionFormEdit />}
       />
+      <Route path="/donations_form_info/:id" element={<DonationFormInfo />} />
       <Route path="/add_disease/:id" element={<AddDisease />} />
       <Route path="/disease_form_edit/:id" element={<DiseaseFormEdit />} />
       <Route path="/disease_form_info/:id" element={<DiseaseFormInfo />} />
@@ -80,8 +91,10 @@ const ReferentRoute = () => {
       <Route path="/product_form_info/:id" element={<ProductFormInfo />} />
       <Route path="/product_form" element={<ProductForm />} />
       <Route path="/type_form" element={<TypeForm />} />
-        <Route path="/add_attributes/:id" element={<AttributeForm />} />
-        <Route path="/users_form_info/:id" element={<VolunteerFormInfo />} />
+      <Route path="/add_attributes/:id" element={<AttributeForm />} />
+      <Route path="/users_form_info/:id" element={<VolunteerFormInfo />} />
+      <Route path="/profile/:id" element={<VolunteerFormEdit />} />
+      <Route path="/group_form_info/:id" element={<GroupFormInfo />} />
     </Routes>
   );
 };

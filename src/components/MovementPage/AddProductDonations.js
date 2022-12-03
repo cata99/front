@@ -105,7 +105,7 @@ function AddProductFormDonations() {
       {redirect && <Navigate to="/donations"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
-          <Title>Asociar producto a la donacion</Title>
+          <Title>Asociar producto a la donación</Title>
         </div>
         <form onSubmit={submitHandler}>
           <div className={classes.attribute_div}>

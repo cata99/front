@@ -59,7 +59,7 @@ function DeliveryFormEdit() {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Entregas">
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Informacion entrega</Title>

@@ -27,6 +27,17 @@ function VolunteerPage() {
     fetchVolunteers();
   }, []);
 
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
+
   const searchUserFirstNameRef = useRef();
   const searchUserLastNameRef = useRef();
   const searchUserUserName = useRef();
@@ -158,7 +169,7 @@ function VolunteerPage() {
               </div>
             </div>
             <div className={button.button_div_right}>
-            {appliedFilters && (
+              {appliedFilters && (
                 <div>
                   <SecondaryButton type="button" onClick={handleSearchReset}>
                     Resetear Filtros
@@ -184,9 +195,11 @@ function VolunteerPage() {
         <Link to="/groups">
           <SecondaryButton>Ver grupos</SecondaryButton>
         </Link>
-        <Link to="/users_option">
-          <Button>+</Button>
-        </Link>
+        {adminRole && (
+          <Link to="/users_option">
+            <Button>+</Button>
+          </Link>
+        )}
       </div>
       {filteredVolunteers.reverse().map((volunteer) => {
         return (

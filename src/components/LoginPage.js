@@ -5,7 +5,7 @@ import Button from "./Buttons/Button";
 import Card from "./Card/Card";
 import style from "./Card/Card.module.css";
 import AuthContext from "./Store/auth-context";
-import ErrorModal from "./Modal/ErrorModal";
+import { Alert } from "@material-ui/lab";
 
 function Login() {
   const authCtx = useContext(AuthContext);
@@ -23,31 +23,21 @@ function Login() {
 
   const LoginHandler = (event) => {
     event.preventDefault();
-    authCtx.onLogin(user, password).then(
-      (response) => {
-        if(!response){
+    authCtx.onLogin(user, password).then((response) => {
+      if (!response) {
         setError({
           title: "Error",
           message:
             "No se ha podido crear la autoridad, por favor comuniquese con el area de sistemas",
-        });}
+        });
       }
-    );
-  };
-
-  const errorHandler = () => {
-    setError(null);
+      setUser("");
+      setPassword("");
+    });
   };
 
   return (
     <Card className={style.login}>
-      {error && (
-        <ErrorModal
-          title={error.title}
-          message={error.message}
-          onConfirm={errorHandler}
-        ></ErrorModal>
-      )}
       <form onSubmit={LoginHandler}>
         <label>
           <b>Usuario</b>
@@ -79,7 +69,18 @@ function Login() {
           value={password}
           onChange={passwordHandler}
         />
-        <div>
+        {error && (
+          <Alert severity="error">
+            El usuario y la contraseña no corresponden
+          </Alert>
+        )}
+        <div
+          style={{
+            display: "flex",
+            alignContent: "center",
+            padding: "2% 32%",
+          }}
+        >
           <Button type="submit">Iniciar sesion</Button>
         </div>
       </form>

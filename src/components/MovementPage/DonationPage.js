@@ -70,6 +70,17 @@ function DonationPage() {
     }
   };
 
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
+
   const handleSearchReset = () => {
     searchDonorFirstNameRef.current.value = "";
     searchDonorLastNameRef.current.value = "";
@@ -207,9 +218,11 @@ function DonationPage() {
         <Link to="/deliveries">
           <SecondaryButton>Ver entregas</SecondaryButton>
         </Link>
-        <Link to="/donation_form">
-          <Button>+</Button>
-        </Link>
+        {adminRole && (
+          <Link to="/donation_form">
+            <Button>+</Button>
+          </Link>
+        )}
       </div>
       {filteredMovements.reverse().map((movement) => {
         return (

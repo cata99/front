@@ -28,6 +28,17 @@ function VolunteerFormEdit() {
 
   const styles = useStyles();
 
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
+
   const [firstName, setFirstName] = useState("");
 
   const firstNameChangeHandler = (event) => {
@@ -378,34 +389,67 @@ function VolunteerFormEdit() {
             </div>
           </div>
           <div className={classes.forth_row}>
-            <div className={classes.column}>
-              <label>Grupo</label>
-              <Autocomplete
-                options={groups}
-                getOptionLabel={(option) => option.label}
-                required={true}
-                classes={{
-                  option: styles.option,
-                }}
-                style={{ width: "35rem" }}
-                inputValue={groupInputValue}
-                onInputChange={(_event, newInputValue) => {
-                  setGroupInputValue(newInputValue);
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    placeholder="Seleccione grupo"
-                  />
-                )}
-                value={selectedGroup}
-                onChange={(_event, newGroup) => {
-                  setSelectedGroups(newGroup);
-                  setGroupNotSet(true);
-                }}
-              ></Autocomplete>
-            </div>
+            {adminRole && (
+              <div className={classes.column}>
+                <label>Grupo</label>
+                <Autocomplete
+                  options={groups}
+                  getOptionLabel={(option) => option.label}
+                  required={true}
+                  classes={{
+                    option: styles.option,
+                  }}
+                  style={{ width: "35rem" }}
+                  inputValue={groupInputValue}
+                  onInputChange={(_event, newInputValue) => {
+                    setGroupInputValue(newInputValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="outlined"
+                      placeholder="Seleccione grupo"
+                    />
+                  )}
+                  value={selectedGroup}
+                  onChange={(_event, newGroup) => {
+                    setSelectedGroups(newGroup);
+                    setGroupNotSet(true);
+                  }}
+                ></Autocomplete>
+              </div>
+            )}
+            {!adminRole && (
+              <div className={classes.column}>
+                <label>Grupo</label>
+                <Autocomplete
+                  options={groups}
+                  getOptionLabel={(option) => option.label}
+                  disabled
+                  required={true}
+                  classes={{
+                    option: styles.option,
+                  }}
+                  style={{ width: "35rem" }}
+                  inputValue={groupInputValue}
+                  onInputChange={(_event, newInputValue) => {
+                    setGroupInputValue(newInputValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="outlined"
+                      placeholder="Seleccione grupo"
+                    />
+                  )}
+                  value={selectedGroup}
+                  onChange={(_event, newGroup) => {
+                    setSelectedGroups(newGroup);
+                    setGroupNotSet(true);
+                  }}
+                ></Autocomplete>
+              </div>
+            )}
             <div className={classes.column}>
               <label>Contraseña</label>
               <TextField
@@ -452,32 +496,67 @@ function VolunteerFormEdit() {
               ></Autocomplete>
             </div>
             <div className={classes.column}>
-              <label>Rol</label>
-              <Autocomplete
-                options={roles}
-                getOptionLabel={(option) => option.label}
-                required={true}
-                style={{ width: "35rem" }}
-                classes={{
-                  option: styles.option,
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="outlined"
-                    placeholder="Seleccione rol"
-                  />
-                )}
-                inputValue={roleInputValue}
-                onInputChange={(_event, newInputValue) => {
-                  setRoleInputValue(newInputValue);
-                }}
-                value={role}
-                onChange={(_event, newRole) => {
-                  setRole(newRole);
-                  setRoleNotSet(true);
-                }}
-              ></Autocomplete>
+              {adminRole &&
+                <div>
+                  <label>Rol</label>
+                  <Autocomplete
+                    options={roles}
+                    getOptionLabel={(option) => option.label}
+                    required={true}
+                    style={{ width: "35rem" }}
+                    classes={{
+                      option: styles.option,
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        placeholder="Seleccione rol"
+                      />
+                    )}
+                    inputValue={roleInputValue}
+                    onInputChange={(_event, newInputValue) => {
+                      setRoleInputValue(newInputValue);
+                    }}
+                    value={role}
+                    onChange={(_event, newRole) => {
+                      setRole(newRole);
+                      setRoleNotSet(true);
+                    }}
+                  ></Autocomplete>
+                </div>
+              }
+              {!adminRole &&
+                <div>
+                  <label>Rol</label>
+                  <Autocomplete
+                    options={roles}
+                    getOptionLabel={(option) => option.label}
+                    required={true}
+                    disabled
+                    style={{ width: "35rem" }}
+                    classes={{
+                      option: styles.option,
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        placeholder="Seleccione rol"
+                      />
+                    )}
+                    inputValue={roleInputValue}
+                    onInputChange={(_event, newInputValue) => {
+                      setRoleInputValue(newInputValue);
+                    }}
+                    value={role}
+                    onChange={(_event, newRole) => {
+                      setRole(newRole);
+                      setRoleNotSet(true);
+                    }}
+                  ></Autocomplete>
+                </div>
+              }
             </div>
           </div>
 

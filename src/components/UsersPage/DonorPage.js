@@ -62,6 +62,19 @@ function DonorPage() {
     setAppliedFilters(false);
   };
 
+  const [adminRole, setAdminRole] = useState(false);
+  const [referentRole, setReferentRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+      if (role === "ROLE_REFERENTE") setReferentRole(true);
+    };
+
+    fetchRole();
+  }, []);
+
   return (
     <Layout title="Donantes">
       <Accordion style={{ borderRadius: "10px", background: "azure" }}>
@@ -141,9 +154,16 @@ function DonorPage() {
         <Link to="/groups">
           <SecondaryButton>Ver grupos</SecondaryButton>
         </Link>
-        <Link to="/donor_form">
-          <Button>+</Button>
-        </Link>
+        {adminRole && (
+          <Link to="/donor_form">
+            <Button>+</Button>
+          </Link>
+        )}
+        {referentRole && (
+          <Link to="/donor_form">
+            <Button>+</Button>
+          </Link>
+        )}
       </div>
       {filteredDonors.reverse().map((donor) => {
         return (

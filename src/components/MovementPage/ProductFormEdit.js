@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
 import Button from "../Buttons/Button";
-import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import classes from "./Movement.module.css";
 import Title from "../Card/Title";

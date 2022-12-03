@@ -54,6 +54,8 @@ import VolunteerFormInfo from "../UsersPage/VolunteerFormInfo";
 import GroupFormEdit from "../UsersPage/GroupFormEdit";
 import GroupFormInfo from "../UsersPage/GroupFormInfo";
 import AddProductFormDeliveries from "../MovementPage/AddProductDelivery";
+import DonationStadistics from "../Estadistics/DonationStadistics";
+import DeliveryStadistics from "../Estadistics/DeliveryStadistics";
 
 function AdminRoute() {
   return (
@@ -140,6 +142,11 @@ function AdminRoute() {
         <Route path="/volunteers" element={<VolunteerPage />} />
         <Route path="/donors" element={<DonorPage />} />
         <Route path="/groups" element={<GroupPage />} />
+        <Route path="/donation_stadistics" element={<DonationStadistics/>} />
+        
+        <Route path="/delivery_stadistics" element={<DeliveryStadistics/>} />
+        
+        <Route path="/profile/:id" element={<VolunteerFormEdit/>} />
       
         
         <Route path="*" element={<Navigate to="/" />}/>

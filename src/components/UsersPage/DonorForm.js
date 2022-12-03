@@ -11,10 +11,23 @@ import ResponseModal from "../Modal/ResponseModal";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import { Navigate } from "react-router-dom";
 
+
+const useStyles = makeStyles({
+  option: {
+    "&:hover": {
+      backgroundColor: "grey",
+    },
+  },
+});
+
 function DonorForm() {
+  
+  const styles = useStyles();
   const [enteredFirstName, setEnteredFirstName] = useState("");
   const [enteredLastName, setEnteredLastName] = useState("");
   const [enteredDNI, setEnteredDNI] = useState("");
@@ -38,9 +51,6 @@ function DonorForm() {
     setEnteredPhone(event.target.value);
   };
 
-  const genderChangeHandler = (event) => {
-    setEnteredGender(event.target.value);
-  };
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -52,6 +62,16 @@ function DonorForm() {
 
   const [redirect, setRedirect] = useState(false);
 
+  const [gender, setGender] = useState("");
+
+  
+  const genders = [
+    { label: "Femenino" },
+    { label: "Masculino" },
+    { label: "No binario" },
+    { label: "Otro" },
+  ];
+
   const submitHandler = async (event) => {
     event.preventDefault();
     if (
@@ -61,7 +81,7 @@ function DonorForm() {
       enteredGender === 0 ||
       enteredDNI === 0 ||
       enteredEmail === 0
-    ){
+    ) {
       setError({
         title: "Error",
         message: "Los campos no pueden estar vacios para registrar un comedor",
@@ -74,21 +94,21 @@ function DonorForm() {
       setEnteredEmail("");
       return;
     }
-      axios
-        .post("http://localhost:8080/api/personal_information/", {
-          firstName: enteredFirstName,
-          lastName: enteredLastName,
-          phone: enteredPhone,
-          gender: enteredGender,
-          email: enteredEmail,
-          identificationNumber: enteredDNI,
-        })
-        .then((response) => {
-          setAssert({
-            title: "Felicitaciones",
-            message: "La operación se ha completado con exito",
-          });
+    axios
+      .post("http://localhost:8080/api/personal_information/", {
+        firstName: enteredFirstName,
+        lastName: enteredLastName,
+        phone: enteredPhone,
+        gender: enteredGender,
+        email: enteredEmail,
+        identificationNumber: enteredDNI,
+      })
+      .then((response) => {
+        setAssert({
+          title: "Felicitaciones",
+          message: "La operación se ha completado con exito",
         });
+      });
   };
 
   const errorHandler = () => {
@@ -175,19 +195,26 @@ function DonorForm() {
             </div>
             <div className={classes.column}>
               <label>Genero</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
-                required={true}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
+              <Autocomplete
+                options={genders}
+                getOptionLabel={(option) => option.label}
+                classes={{
+                  option: styles.option,
                 }}
-                type="text"
-                placeholder="Ingrese el genero del donante"
-                value={enteredGender}
-                onChange={genderChangeHandler}
-              />
+                required={true}
+                style={{ width: "35rem" }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Seleccione grupo"
+                  />
+                )}
+                value={gender}
+                onChange={(_event, newGender) => {
+                  setGender(newGender);
+                }}
+              ></Autocomplete>
             </div>
           </div>
           <div className={classes.third_row}>

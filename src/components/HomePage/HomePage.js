@@ -4,7 +4,8 @@ import Layout from "../Layout/Layout";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
-import style from "../Card/Card.module.css"
+import style from "../Card/Card.module.css";
+import classes from "./HomeItem.module.css";
 
 function HomePage() {
   const [institutionTotal, setInstitutionTotal] = useState("");
@@ -82,7 +83,7 @@ function HomePage() {
   return (
     <Layout title="Home">
       <div style={{ display: "flex" }}>
-        <div style={{ width: "25rem" }}>
+        <div style={{ width: "25rem" }} className={classes.number_div}>
           <Link
             to="/donations"
             style={{ textDecoration: "none", color: "black" }}
@@ -93,7 +94,7 @@ function HomePage() {
             ></HomeItem>
           </Link>
         </div>
-        <div style={{ width: "25rem" }}>
+        <div style={{ width: "25rem" }} className={classes.number_div}>
           <Link
             to="/deliveries"
             style={{ textDecoration: "none", color: "black" }}
@@ -104,7 +105,7 @@ function HomePage() {
             ></HomeItem>
           </Link>
         </div>
-        <div style={{ width: "25rem" }}>
+        <div style={{ width: "25rem" }} className={classes.number_div}>
           <Link
             to="/volunteers"
             style={{ textDecoration: "none", color: "black" }}
@@ -115,7 +116,7 @@ function HomePage() {
             ></HomeItem>
           </Link>
         </div>
-        <div style={{ width: "25rem" }}>
+        <div style={{ width: "25rem" }} className={classes.number_div}>
           <Link
             to="/institutions"
             style={{ textDecoration: "none", color: "black" }}
@@ -128,9 +129,9 @@ function HomePage() {
         </div>
       </div>
       <Card className={style.home_item}>
-        <h2>Bienvenido usuario: {userName}</h2>
-        <h4>Estas asociado a la institución: {institucion}</h4>
-        <h4>Con el grupo: {group}</h4>
+        <h2>Bienvenido {userName}</h2>
+        <h4 className={classes.number_div}><Link   to="/institutions"  style={{ textDecoration: "none", color: "black" }}>Estas asociado a la institución:</Link> {institucion}</h4>
+        <h4 className={classes.number_div}><Link   to="/groups"  style={{ textDecoration: "none", color: "black" }}>Con el grupo: {group}</Link></h4>
         <h4>Estas operando bajo el rol de : {role}</h4>
       </Card>
     </Layout>

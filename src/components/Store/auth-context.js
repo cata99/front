@@ -6,7 +6,7 @@ const AuthContext = React.createContext({
   isLoggedIn: sessionStorage.getItem("token") ? true : false,
   onLogout: () => {},
   onLogin: (username, password) => {},
-  username: "",
+  username: sessionStorage.getItem("username") || "",
   roles: sessionStorage.getItem("roles") || "",
   token: sessionStorage.getItem("token") || "",
   userId: sessionStorage.getItem("userId") || "",
@@ -29,7 +29,7 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
   };
 
-  const loginHandler = async(username, password) => {
+  const loginHandler = async (username, password) => {
     let response;
     await axios
       .post("http://localhost:8080/api/auth/signin", {
@@ -42,17 +42,20 @@ export const AuthContextProvider = (props) => {
         setRoles(response.data.roles);
         setUserId(response.data.id);
         setIsLoggedIn(true);
+        console.log(response);
 
         sessionStorage.setItem("userId", response.data.id);
         sessionStorage.setItem("token", response.data.accessToken);
         sessionStorage.setItem("roles", response.data.roles);
-
-        navigate("/"); return response = true
+        sessionStorage.setItem("username", response.data.username);
+        
+        navigate("/");
+        return (response = true);
       })
-      .catch(function(error) {
-        response = false
+      .catch(function (error) {
+        response = false;
       });
-      return response
+    return response;
   };
 
   return (

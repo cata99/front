@@ -60,6 +60,16 @@ function GroupPage() {
     setFilteredGroups(groups);
     setAppliedFilters(false);
   };
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
 
   return (
     <Layout title="Grupos">
@@ -139,9 +149,9 @@ function GroupPage() {
         <Link to="/volunteers">
           <SecondaryButton>Ver voluntarios</SecondaryButton>
         </Link>
-        <Link to="/group_form">
+        {adminRole &&<Link to="/group_form">
           <Button>+</Button>
-        </Link>
+        </Link>}
       </div>
       {filteredGroups.reverse().map((group) => {
         return (

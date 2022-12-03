@@ -10,7 +10,7 @@ import classes from "./User.module.css";
 
 function OptionUser() {
   return (
-    <Layout>
+    <Layout title="Voluntarios">
       <Card className={style.filter}>
         <div className={classes.options_title}>
           <Title>Seleccione elemento a registrar</Title>

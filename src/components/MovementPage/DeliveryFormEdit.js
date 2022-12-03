@@ -120,7 +120,7 @@ function DeliveryFormEdit() {
   };
 
   return (
-    <Layout>
+    <Layout title="Entregas">
       {error && (
         <ErrorModal
           title={error.title}

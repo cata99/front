@@ -8,7 +8,8 @@ ul {
 .session_button {
   display: flex;
   justify-content: right;
-  width: 75%;
+  width: 88.5%;
+  margin-top: 1.6rem;
 }
 .title {
   display: flex;
@@ -16,4 +17,3 @@ ul {
   font-size: 1rem;
   margin-left: 22vh;
 }
-

@@ -24,6 +24,18 @@ function DeliveryPage() {
     });
   }, []);
 
+  
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
+
   const searchInstitutionRef = useRef();
   const searchUserFirstNameRef = useRef();
   const searchUserLastNameRef = useRef();
@@ -161,9 +173,9 @@ function DeliveryPage() {
         <Link to="/donations">
           <SecondaryButton>Ver donaciones</SecondaryButton>
         </Link>
-        <Link to="/delivery_form">
+       {adminRole && <Link to="/delivery_form">
           <Button>+</Button>
-        </Link>
+        </Link>}
       </div>
       {filteredMovements.reverse().map((movement) => {
         return (

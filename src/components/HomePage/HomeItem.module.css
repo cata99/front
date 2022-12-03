@@ -8,11 +8,8 @@
     flex: 1;
   }
   
-  .home-item h2 {
-    color:grey;
-    font-size: 1rem;
-    flex: 1;
-    margin: 0 1rem;
+  .home_title h2 {
+    color:black; 
   }
   
   .home-item__quantity {
@@ -37,5 +34,10 @@
       padding: 0.5rem 1.5rem;
     }
   }
+
+  .number_div a:hover{
+    font-size: large;
+  }
+
 
   

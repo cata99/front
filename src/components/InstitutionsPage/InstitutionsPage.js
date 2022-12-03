@@ -59,6 +59,17 @@ function InstitutionPage() {
     setFilteredInstitution(instituciones);
     setAppliedFilters(false);
   };
+
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
   return (
     <Layout title="Comedores">
       <Accordion style={{ borderRadius: "10px", background: "azure" }}>
@@ -136,9 +147,11 @@ function InstitutionPage() {
         <Link to="/authorities">
           <SecondaryButton>Ver autoridades</SecondaryButton>
         </Link>
-        <Link to="/institution_option">
-          <Button>+</Button>
-        </Link>
+        {adminRole && (
+          <Link to="/institution_form">
+            <Button>+</Button>
+          </Link>
+        )}
       </div>
       {filteredInstitution.reverse().map((institucion) => {
         return (

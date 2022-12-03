@@ -9,6 +9,17 @@ import SecondaryButton from "../Buttons/SecondaryButton";
 function DonationCard(props) {
   const [associatedProducts, setAssociatesProducts] = useState(true);
   const [donationProducts, setDonationProducts] = useState();
+
+  const [adminRole, setAdminRole] = useState(false);
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      let role = sessionStorage.getItem("roles");
+      if (role === "ROLE_ADMIN") setAdminRole(true);
+    };
+
+    fetchRole();
+  }, []);
   useEffect(() => {
     const fetchDonation = async () => {
       axios
@@ -45,13 +56,19 @@ function DonationCard(props) {
             Donante: {props.donor}
           </h3>
         </div>
-        <div className={classes.right} style={{padding:"5%"}}>
-          <Link to={`/add_product_donations/${props.id}`}>
-            <SecondaryButton style={{ fontSize: "small" }}>Agregar prod</SecondaryButton>
-          </Link>
-          <Link to={`/donations_form_edit/${props.id}`}>
-            <SecondaryButton>Editar</SecondaryButton>
-          </Link>
+        <div className={classes.right} style={{ padding: "5%" }}>
+          {adminRole && (
+            <Link to={`/add_product_donations/${props.id}`}>
+              <SecondaryButton style={{ fontSize: "small" }}>
+                Agregar prod
+              </SecondaryButton>
+            </Link>
+          )}
+          {adminRole && (
+            <Link to={`/donations_form_edit/${props.id}`}>
+              <SecondaryButton>Editar</SecondaryButton>
+            </Link>
+          )}
           <Link to={`/donations_form_info/${props.id}`}>
             <Button>Info</Button>
           </Link>
