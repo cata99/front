@@ -136,7 +136,7 @@ function DonorForm() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/users"></Navigate>}
+      {redirect && <Navigate to="/donors"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Registrar donante</Title>

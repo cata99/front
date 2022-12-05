@@ -9,6 +9,7 @@ import style from "../Card/Card.module.css";
 import classes from "./Institution.module.css";
 import button from "../Buttons/Button.module.css";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import { Navigate } from "react-router-dom";
 
 import { useState } from "react";
@@ -54,36 +55,28 @@ function InstitutionForm() {
       setEnteredPhone("");
       return;
     }
-    const jsonBody = {
-      name: enteredName,
-      phone: enteredPhone,
-      location: enteredLocation,
-    };
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(jsonBody),
-    };
-    let data = await fetch(
-      "http://localhost:8080/api/institutions/",
-      requestOptions
-    );
-    if (data.status > 400) {
-      setError({
-        title: "Algo ha salido mal!",
-        message: "La operación no ha podido completarse, por favor ",
+    axios
+      .post("http://localhost:8080/api/institutions/", {
+        name: enteredName,
+        phone: enteredPhone,
+        location: enteredLocation,
+      })
+      .then((response) => {
+        setAssert({
+          title: "Felicitaciones",
+          message: "La operación se ha completado con exito",
+        });
+        setEnteredName("");
+        setEnteredLocation("");
+        setEnteredPhone("");
+      })
+      .catch((error) => {
+        setError({
+          title: "Algo ha salido mal!",
+          message: "La operación no ha podido completarse, por favor comuniquese con el area de sistemas",
+        });
+        return;
       });
-      return;
-    }
-
-    setAssert({
-      title: "Felicitaciones",
-      message: "La operación se ha completado con exito",
-    });
-
-    setEnteredName("");
-    setEnteredLocation("");
-    setEnteredPhone("");
   };
 
   const errorHandler = () => {
