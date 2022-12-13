@@ -133,7 +133,7 @@ function LifeEventForm() {
                   required
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione institución"
+                    placeholder="Seleccione usuario"
                   />
                 )}
                 value={selectedUser}

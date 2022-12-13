@@ -44,7 +44,6 @@ const VolunteerRoute = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/donations" element={<DonationPage />} />
       <Route path="/institutions" element={<InstitutionPage />} />
-      <Route path="/users" element={<UserPage />} />
       <Route path="/groups" element={<GroupPage />} />
       <Route path="/group_form_info/:id" element={<GroupFormInfo />} />
       <Route path="/authorities" element={<AuthorityPage />} />

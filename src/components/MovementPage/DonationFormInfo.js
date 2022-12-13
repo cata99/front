@@ -121,7 +121,7 @@ function DonationFormInfo() {
             </div>
 
             <p>
-              <b>Informacion personal</b>
+              <b>Información personal</b>
             </p>
             <div className={classes.wrapper_date}>
               <div className={classes.space_margin}>

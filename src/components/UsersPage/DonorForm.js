@@ -74,32 +74,13 @@ function DonorForm() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (
-      enteredFirstName === 0 ||
-      enteredLastName === 0 ||
-      enteredPhone === 0 ||
-      enteredGender === 0 ||
-      enteredDNI === 0 ||
-      enteredEmail === 0
-    ) {
-      setError({
-        title: "Error",
-        message: "Los campos no pueden estar vacios para registrar un comedor",
-      });
-      setEnteredFirstName("");
-      setEnteredLastName("");
-      setEnteredPhone("");
-      setEnteredGender("");
-      setEnteredDNI("");
-      setEnteredEmail("");
-      return;
-    }
+    debugger
     axios
       .post("http://localhost:8080/api/personal_information/", {
         firstName: enteredFirstName,
         lastName: enteredLastName,
         phone: enteredPhone,
-        gender: enteredGender,
+        gender: gender.label,
         email: enteredEmail,
         identificationNumber: enteredDNI,
       })
@@ -194,7 +175,7 @@ function DonorForm() {
               />
             </div>
             <div className={classes.column}>
-              <label>Genero</label>
+              <label>Género</label>
               <Autocomplete
                 options={genders}
                 getOptionLabel={(option) => option.label}
@@ -207,7 +188,7 @@ function DonorForm() {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione grupo"
+                    placeholder="Seleccione género"
                   />
                 )}
                 value={gender}
@@ -219,7 +200,7 @@ function DonorForm() {
           </div>
           <div className={classes.third_row}>
             <div className={classes.column}>
-              <label>Telefono</label>
+              <label>Teléfono</label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -229,7 +210,7 @@ function DonorForm() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                placeholder="Ingrese telefono del donante"
+                placeholder="Ingrese teléfono del donante"
                 value={enteredPhone}
                 onChange={phoneChangeHandler}
               />

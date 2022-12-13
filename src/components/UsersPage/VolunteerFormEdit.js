@@ -356,7 +356,7 @@ function VolunteerFormEdit() {
           </div>
           <div className={classes.third_row}>
             <div className={classes.column}>
-              <label>Telefono</label>
+              <label>Teléfono</label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -366,7 +366,7 @@ function VolunteerFormEdit() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                placeholder="Ingrese el telefono del voluntario"
+                placeholder="Ingrese el teléfono del voluntario"
                 value={phone}
                 onChange={phoneChangeHandler}
               />
@@ -469,7 +469,7 @@ function VolunteerFormEdit() {
           </div>
           <div className={classes.fifth_row}>
             <div className={classes.column}>
-              <label>Genero</label>
+              <label>Género</label>
               <Autocomplete
                 options={genders}
                 getOptionLabel={(option) => option.label}
@@ -486,7 +486,7 @@ function VolunteerFormEdit() {
                   <TextField
                     {...params}
                     variant="outlined"
-                    placeholder="Seleccione genero"
+                    placeholder="Seleccione género"
                   />
                 )}
                 value={gender}

@@ -137,7 +137,7 @@ function ProductForm() {
           <Title>Nuevo producto</Title>
         </div>
         <form onSubmit={submitHandler}>
-          <div>
+          <div  style={{"padding":"1% 0"}}>
             <label>Producto</label>
             <TextField
               id="text-field group"
@@ -212,7 +212,7 @@ function ProductForm() {
             </div>
           </div>
           <div className={button.button_div_right}>
-            <Button type="submit">Crear producto</Button>
+            <Button type="submit">Registrar</Button>
           </div>
         </form>
       </Card>

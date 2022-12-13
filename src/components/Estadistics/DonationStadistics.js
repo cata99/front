@@ -225,7 +225,7 @@ function DonationStadistics() {
         <h2>Estadísticas de donaciones</h2>
         <div style={{ display: "flex", gap:"3rem", margin:"3rem" }}>
           <div>
-            <h5>Cantidad de donaciones por genero</h5>
+            <h5>Cantidad de donaciones por género</h5>
             <BarChart
               width={500}
               height={300}

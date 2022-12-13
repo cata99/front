@@ -9,14 +9,24 @@ import style from "../Card/Card.module.css";
 import ErrorModal from "../Modal/ErrorModal";
 import ResponseModal from "../Modal/ResponseModal";
 import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+import { makeStyles } from "@material-ui/core/styles";
 import { useParams, Navigate } from "react-router-dom";
 
+const useStyles = makeStyles({
+  option: {
+    "&:hover": {
+      backgroundColor: "grey",
+    },
+  },
+});
 function DonorsFormEdit() {
   const { id } = useParams();
-  const [enteredFirstName, setEnteredFirstName] = useState("");
+  const [enteredFirstName, setEnteredFirstName] = useState("");  
+  const styles = useStyles();
   const [enteredLastName, setEnteredLastName] = useState("");
   const [enteredDNI, setEnteredDNI] = useState("");
   const [enteredPhone, setEnteredPhone] = useState("");
@@ -39,9 +49,8 @@ function DonorsFormEdit() {
     setEnteredPhone(event.target.value);
   };
 
-  const genderChangeHandler = (event) => {
-    setEnteredGender(event.target.value);
-  };
+  
+  const [genderInputValue, setGenderInputValue] = useState("");
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -80,7 +89,7 @@ function DonorsFormEdit() {
           firstName: enteredFirstName,
           lastName: enteredLastName,
           phone: enteredPhone,
-          gender: enteredGender,
+          gender: gender.label,
           email: enteredEmail,
           identificationNumber: enteredDNI,
         })
@@ -101,6 +110,16 @@ function DonorsFormEdit() {
     setRedirect(true);
   };
 
+  const genders = [
+    { label: "Femenino" },
+    { label: "Masculino" },
+    { label: "No binario" },
+    { label: "Otro" },
+  ];
+
+  
+  const [gender, setGender] = useState("");
+
   useEffect(() => {
     axios.get(`http://localhost:8080/api/personal_information/${id}`).then((response) => {
         const data = response.data;
@@ -109,7 +128,7 @@ function DonorsFormEdit() {
         setEnteredLastName(data.lastName);
         setEnteredPhone(data.phone);
         setEnteredDNI(data.identificationNumber);
-        setEnteredGender(data.gender);
+        setGenderInputValue(data.gender);
         setEnteredEmail(data.email);
       });
   }, []);
@@ -130,7 +149,7 @@ function DonorsFormEdit() {
           onConfirm={assertHandler}
         ></ResponseModal>
       )}
-      {redirect && <Navigate to="/users"></Navigate>}
+      {redirect && <Navigate to="/donors"></Navigate>}
       <Card className={style.filter}>
         <div className={classes.title}>
           <Title>Editar donante</Title>
@@ -187,26 +206,38 @@ function DonorsFormEdit() {
                 onChange={dniChangeHandler}
               />
             </div>
+           
             <div className={classes.column}>
-              <label>Genero</label>
-              <TextField
-                id="text-field group"
-                style={{ width: "35rem" }}
+              <label>Género</label>
+              <Autocomplete
+                options={genders}
+                getOptionLabel={(option) => option.label}
                 required={true}
-                variant="outlined"
-                inputProps={{
-                  style: { width: "35rem" },
+                classes={{
+                  option: styles.option,
                 }}
-                type="text"
-                placeholder="Ingrese el genero del donante"
-                value={enteredGender}
-                onChange={genderChangeHandler}
-              />
+                inputValue={genderInputValue}
+                onInputChange={(_event, newInputValue) => {
+                  setGenderInputValue(newInputValue);
+                }}
+                style={{ width: "35rem" }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="outlined"
+                    placeholder="Seleccione género"
+                  />
+                )}
+                value={gender}
+                onChange={(_event, newGender) => {
+                  setGender(newGender);
+                }}
+              ></Autocomplete>
             </div>
           </div>
           <div className={classes.third_row}>
             <div className={classes.column}>
-              <label>Telefono</label>
+              <label>Teléfono</label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -216,7 +247,7 @@ function DonorsFormEdit() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                placeholder="Ingrese telefono del donante"
+                placeholder="Ingrese teléfono del donante"
                 value={enteredPhone}
                 onChange={phoneChangeHandler}
               />

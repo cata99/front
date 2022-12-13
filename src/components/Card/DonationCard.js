@@ -48,7 +48,7 @@ function DonationCard(props) {
           )}
           {!associatedProducts && (
             <h3>
-              <b>No tiene productos asociados</b>
+              <b  style={{color:"red"}}>No tiene productos asociados</b>
             </h3>
           )}
           <h3>
@@ -60,7 +60,7 @@ function DonationCard(props) {
           {adminRole && (
             <Link to={`/add_product_donations/${props.id}`}>
               <SecondaryButton style={{ fontSize: "small" }}>
-                Agregar prod
+                + productos
               </SecondaryButton>
             </Link>
           )}

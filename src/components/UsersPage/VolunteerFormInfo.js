@@ -137,7 +137,7 @@ function VolunteerFormInfo() {
           </div>
           <div className={classes.third_row}>
             <div className={classes.column}>
-              <label>Telefono</label>
+              <label>Teléfono</label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -179,7 +179,7 @@ function VolunteerFormInfo() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                placeholder="Ingrese nombre del voluntario"
+                placeholder="Ingrese grupo del voluntario"
                 value={groups}
               />
             </div>
@@ -201,7 +201,7 @@ function VolunteerFormInfo() {
           </div>
           <div className={classes.fifth_row}>
             <div className={classes.column}>
-              <label>Genero</label>
+              <label>Género</label>
               <TextField
                 id="text-field group"
                 style={{ width: "35rem" }}
@@ -211,7 +211,7 @@ function VolunteerFormInfo() {
                   style: { width: "35rem" },
                 }}
                 type="text"
-                placeholder="Ingrese genero del voluntario"
+                placeholder="Ingrese género del voluntario"
                 value={gender}
               />
             </div>

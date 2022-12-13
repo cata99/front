@@ -53,7 +53,6 @@ const ReferentRoute = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/donations" element={<DonationPage />} />
       <Route path="/institutions" element={<InstitutionPage />} />
-      <Route path="/users" element={<UserPage />} />
       <Route path="/authorities" element={<AuthorityPage />} />
       <Route path="/diseases" element={<DiseasePage />} />
       <Route path="/deliveries" element={<DeliveryPage />} />

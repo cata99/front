@@ -241,7 +241,7 @@ function DonationFormEdit() {
             </div>
 
             <p>
-              <b>Informacion personal</b>
+              <b>Información personal</b>
             </p>
             <div className={classes.wrapper_date}>
               <div className={classes.space_margin}>
@@ -273,7 +273,7 @@ function DonationFormEdit() {
                 ></Autocomplete>
               </div>
               <div className={classes.space_margin}>
-                <label>Usuario</label>
+                <label>Voluntario</label>
                 <Autocomplete
                   options={users}
                   inputValue={userInputValue}

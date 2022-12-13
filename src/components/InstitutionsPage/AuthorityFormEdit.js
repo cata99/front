@@ -139,7 +139,7 @@ function AuthorityFormEdit() {
             />
           </div>
           <div className={classes.input_div}>
-            <label>Ubicacion</label>
+            <label>Ubicación</label>
             <TextField
               id="text-field group"
               style={{ width: "35rem" }}

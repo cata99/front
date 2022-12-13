@@ -25,7 +25,7 @@ function HomePage() {
       console.log(userData);
       const name =
         userData.personalInformation.firstName +
-        " , " +
+        " " +
         userData.personalInformation.lastName;
         setUserName(name);
         setGroup(userData.group.label);

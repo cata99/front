@@ -86,9 +86,9 @@ function AddProductFormDeliveries() {
       })
       .catch(function(error) {
         setError({
-          title: "Esta operación es incorrecta",
+          title: "Operacion incompleta",
           message:
-            "No se pudo asociar el producto ya que la cantidad ya que exceede la cantidad en stock",
+            "Producto sin stock",
         });
       });
     setEnteredProduct("");

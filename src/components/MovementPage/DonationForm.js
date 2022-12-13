@@ -183,7 +183,7 @@ function DonationForm() {
             </p>
             <div className={classes.wrapper_date}>
               <div className={classes.space_margin}>
-                <label>Fecha de donacion</label>
+                <label>Fecha de donación</label>
                 <TextField
                   id="text-field group"
                   style={{ width: "35rem" }}
@@ -198,7 +198,7 @@ function DonationForm() {
                 />
               </div>
               <div className={classes.space_margin}>
-                <label>fecha de retiro de donacion</label>
+                <label>fecha de retiro de donación</label>
                 <TextField
                   id="text-field group"
                   style={{ width: "35rem" }}
@@ -215,7 +215,7 @@ function DonationForm() {
             </div>
 
             <p>
-              <b>Informacion sobre las personas</b>
+              <b>Información sobre las personas</b>
             </p>
             <div className={classes.wrapper_date}>
               <div className={classes.space_margin}>
@@ -232,7 +232,7 @@ function DonationForm() {
                       {...params}
                       required={true}
                       variant="outlined"
-                      placeholder="Seleccione usuario que realizo la entrega"
+                      placeholder="Seleccione donante"
                     />
                   )}
                   placeholder="Quien realizo la donacion"
@@ -243,7 +243,7 @@ function DonationForm() {
                 ></Autocomplete>
               </div>
               <div className={classes.space_margin}>
-                <label>Voluntario que retiro</label>
+                <label>Voluntario a cargo</label>
                 <Autocomplete
                   options={users}
                   getOptionLabel={(option) => option.label}
@@ -256,7 +256,7 @@ function DonationForm() {
                       {...params}
                       required={true}
                       variant="outlined"
-                      placeholder="Seleccione usuario que realizo la entrega"
+                      placeholder="Seleccione voluntario que retiro la donación"
                     />
                   )}
                   placeholder="Usuario que retiro la donacion"
